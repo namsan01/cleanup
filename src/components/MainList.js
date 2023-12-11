@@ -59,7 +59,7 @@ const List = () => {
     cursor: pointer;
     background-color: #dae2ff;
     transition: background-color 0.3s;
-    background-image: url("../assets/images/checkicon.svg");
+    background-image: url("../assets/images/bt_checkicon.svg");
     background-repeat: no-repeat;
     background-position: center;
 
@@ -78,7 +78,7 @@ const List = () => {
       <ListContent>
         <ListDiv>
           <ListImg>
-            <img src="../assets/images/calendar.svg" />
+            <img src="../assets/images/bt_calendar.svg" />
           </ListImg>
           <ListText>
             <ListTitle>세탁기 청소</ListTitle>
@@ -90,7 +90,7 @@ const List = () => {
             <ListCheckbox type="checkbox"></ListCheckbox>
           </CheckboxDiv>
           <ListImg>
-            <img src="../assets/images/scissors.svg" />
+            <img src="../assets/images/bt_scissors.svg" />
           </ListImg>
         </ListDiv>
       </ListContent>

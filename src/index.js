@@ -4,12 +4,10 @@ import "./styles/normalize.css";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-import List from "./components/MainList";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <List></List>
     <App />
   </BrowserRouter>,
 );
