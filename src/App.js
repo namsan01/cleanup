@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import List from "./components/MainList";
 
 const App = () => {
   const Wrap = styled.div`
