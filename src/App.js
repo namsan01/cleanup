@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import FeedList from "./components/FeedList";
 import List from "./components/MainList";
 import Header from "./components/Header";
+import Confirm from "./components/Confirm";
 
 const App = () => {
   const Wrap = styled.div`
@@ -20,6 +21,7 @@ const App = () => {
       </Routes>
       <List></List>
       <FeedList></FeedList>
+      <Confirm></Confirm>
       <Footer></Footer>
     </Wrap>
   );
