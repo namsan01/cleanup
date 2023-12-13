@@ -1,30 +1,24 @@
 import React from "react";
-import Feedliststyle from "../styles/feedliststyle";
+import {FeedListHeader, FeedListHeaderContent, FeedListMedia, FeedListTxt, Feedliststyle} from "../styles/feedliststyle";
 
 const FeedList = () => {
   return (
     <Feedliststyle>
-      <div className="feedlist-header">
-        <div className="feedlist-header-content">
+      <FeedListHeader>
+        <FeedListHeaderContent>
           <img
-            src="../assets/images/bt_background.svg"
+            src="../assets/images/bt_feedlist_user.svg"
             alt=""
-            className="feed-user-background"
-          />
-          <img
-            src="../assets/images/bt_user.svg"
-            alt=""
-            className="feed-user"
           />
           <h2>UserName</h2>
-        </div>
+        </FeedListHeaderContent>
         <img src="../assets/images/bt_etc_icon.svg" alt=""></img>
-      </div>
-      <div className="feedlist-media">
-        <img src="../assets/images/bt_media.svg" alt="" className="feed-img" />
-        <img src="../assets/images/bt_media.svg" alt="" className="feed-img" />
-      </div>
-      <div className="feedlist-txt">
+      </FeedListHeader>
+      <FeedListMedia>
+        <img src="../assets/images/bt_media.svg" alt="" className="feed-img-before" />
+        <img src="../assets/images/bt_media.svg" alt="" className="feed-img-after" />
+      </FeedListMedia>
+      <FeedListTxt>
         <h2>Title</h2>
         <h3>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -33,7 +27,7 @@ const FeedList = () => {
           adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet,
           consectetur adipiscing elit, sed do eiusmod tempor.
         </h3>
-      </div>
+      </FeedListTxt>
     </Feedliststyle>
   );
 };

@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-const Feedliststyle = styled.section`
+export const Feedliststyle = styled.section`
   width: 918px;
   display: flex;
   justify-content: center;
@@ -10,32 +10,24 @@ const Feedliststyle = styled.section`
   border-radius: 12px;
   border: 1px solid var(--m-3-sys-light-outline-variant, #c5c6d0);
   flex-direction: column;
-  .feedlist-header {
-    display: flex;
-    height: 72px;
-    padding: 12px 4px 12px 16px;
-    align-items: center;
-    align-self: stretch;
-  }
-  .feedlist-header-content {
-    display: flex;
-    position: relative;
-    align-items: center;
-    gap: 16px;
-    flex: 1 0 0;
-  }
-  .feed-user-background {
+  margin: 0 auto;
+`;
+export const FeedListHeader = styled.div`
+  display: flex;
+  height: 72px;
+  padding: 12px 4px 12px 16px;
+  align-items: center;
+  align-self: stretch;
+`;
+export const FeedListHeaderContent = styled.div`
+  display: flex;
+  position: relative;
+  align-items: center;
+  gap: 16px;
+  flex: 1 0 0;
+  img {
     width: 40px;
     height: 40px;
-    flex-shrink: 0;
-    fill: var(--m-3-sys-light-primary, #0055d5);
-  }
-  .feed-user {
-    position: absolute;
-    left: 8px;
-    width: 24px;
-    height: 24px;
-    flex-shrink: 0;
   }
   h2 {
     display: flex;
@@ -43,24 +35,38 @@ const Feedliststyle = styled.section`
     align-items: flex-start;
     gap: 4px;
     flex: 1 0 0;
+
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
   }
-  .feedlist-media {
-    display: flex;
-    flex: 1 0 0;
-    align-self: stretch;
-  }
-  .feed-img {
+`;
+export const FeedListMedia = styled.div`
+  display: flex;
+  flex: 1 0 0;
+  align-self: stretch;
+  .feed-img-before {
     width: 458.5px;
     height: 100%;
     border: solid 1px #e7e7e7;
   }
-  .feedlist-txt {
-    display: flex;
-    padding: 16px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 32px;
-    align-self: stretch;
+  .feed-img-after {
+    width: 458.5px;
+    height: 100%;
+    border: solid 1px #e7e7e7;
+  }
+`;
+export const FeedListTxt = styled.div`
+  display: flex;
+  padding: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  align-self: stretch;
+  h2 {
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
   }
   h3 {
     color: var(--m-3-sys-light-on-surface-variant, #45464f);
@@ -79,5 +85,3 @@ const Feedliststyle = styled.section`
     -webkit-box-orient: vertical;
   }
 `;
-
-export default Feedliststyle;
