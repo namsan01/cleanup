@@ -1,8 +1,9 @@
 import styled from "@emotion/styled";
 import React from "react";
 import { Link, Route, Routes } from "react-router-dom";
-import Footer from "./components/Footer";
+import DiaryAdd from "./components/DiaryAdd";
 import FeedList from "./components/FeedList";
+import Footer from "./components/Footer";
 import List from "./components/MainList";
 import Header from "./components/Header";
 import Confirm from "./components/Confirm";
@@ -21,10 +22,10 @@ const App = () => {
       <Routes>
         <Route path="*" element={<h1>파일이 없네요.</h1>}></Route>
       </Routes>
-      <List></List>
       <FeedList></FeedList>
       <Confirm></Confirm>
       <Footer></Footer>
+      <DiaryAdd></DiaryAdd>
     </Wrap>
   );
 };
