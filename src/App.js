@@ -6,6 +6,7 @@ import FeedList from "./components/FeedList";
 import List from "./components/MainList";
 import Header from "./components/Header";
 import SubBar from "./components/SubBar";
+import CreateEditList from "./components/CreateEditList";
 
 const App = () => {
   const Wrap = styled.div`
