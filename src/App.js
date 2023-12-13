@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import FeedList from "./components/FeedList";
 import List from "./components/MainList";
 import Header from "./components/Header";
+import Confirm from "./components/Confirm";
 import SubBar from "./components/SubBar";
 import CreateEditList from "./components/CreateEditList";
 
@@ -20,6 +21,10 @@ const App = () => {
       <Routes>
         <Route path="*" element={<h1>파일이 없네요.</h1>}></Route>
       </Routes>
+      <List></List>
+      <FeedList></FeedList>
+      <Confirm></Confirm>
+      <Footer></Footer>
     </Wrap>
   );
 };
