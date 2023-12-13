@@ -1,5 +1,5 @@
 import React from "react";
-import { BtNo, BtYes, CreateList, CreateTitle } from "../styles/create";
+import { BtNo, BtYes, CreateList, CreateTitle } from "../styles/createeditlist";
 
 const CreateEditList = () => {
   return (

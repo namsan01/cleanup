@@ -18,6 +18,7 @@ const App = () => {
 
   return (
     <Wrap maxw={1024}>
+      <CreateEditList></CreateEditList>
       <SubBar></SubBar>
       <Routes>
         <Route path="*" element={<h1>파일이 없네요.</h1>}></Route>
