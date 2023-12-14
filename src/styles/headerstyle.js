@@ -28,8 +28,7 @@ export const Topbar = styled.header`
       display: block;
       width: 24px;
       height: 25px;
-      margin-top: 5px;
-      padding-right: 12px;
+      padding-right: 7px;
       background: url("../assets/images/bt_user.svg") no-repeat;
       color: #fff;
       font-size: 20px;

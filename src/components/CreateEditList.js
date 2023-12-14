@@ -1,12 +1,17 @@
 import React from "react";
-import { BtNo, BtYes, CreateList, CreateTitle } from "../styles/create";
+import {
+  BtNo,
+  BtYes,
+  CreateList,
+  CreateTitle,
+} from "../styles/createeditstyle";
 
-const CreateEditList = () => {
+const CreateEditList = ({ text }) => {
   return (
     <CreateList>
       <div className="create-header">
         <div>
-          <CreateTitle>리스트 작성</CreateTitle>
+          <CreateTitle>리스트 {text}</CreateTitle>
         </div>
         <img className="create-logo" src="./assets/images/logo.svg" alt="" />
       </div>
@@ -35,8 +40,8 @@ const CreateEditList = () => {
         </div>
       </div>
       <div className="create-footer">
-        <BtNo>취 소</BtNo>
-        <BtYes>완 료</BtYes>
+        <button className="bt-no">취 소</button>
+        <button className="bt-yes">완 료</button>
       </div>
     </CreateList>
   );

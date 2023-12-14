@@ -29,6 +29,10 @@ const App = () => {
       <Confirm></Confirm>
       <Footer></Footer>
       <DiaryAdd></DiaryAdd>
+      <Header text="메인화면"></Header>
+      <Header text="청소화면"></Header>
+      <CreateEditList text="수정"></CreateEditList>
+      <CreateEditList text="작성"></CreateEditList>
     </Wrap>
   );
 };
