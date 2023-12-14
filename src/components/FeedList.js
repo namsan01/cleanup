@@ -1,7 +1,7 @@
 import React from "react";
 import {FeedListHeader, FeedListHeaderContent, FeedListMedia, FeedListTxt, Feedliststyle} from "../styles/feedliststyle";
 
-const FeedList = () => {
+const FeedList = (props) => {
   return (
     <Feedliststyle>
       <FeedListHeader>
@@ -10,7 +10,7 @@ const FeedList = () => {
             src="../assets/images/bt_feedlist_user.svg"
             alt=""
           />
-          <h2>UserName</h2>
+          <h2>{props.children}</h2>
         </FeedListHeaderContent>
         <img src="../assets/images/bt_etc_icon.svg" alt=""></img>
       </FeedListHeader>

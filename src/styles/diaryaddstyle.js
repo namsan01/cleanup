@@ -62,7 +62,6 @@ export const DiaryAddMainTitle = styled.div`
     width: 911px;
     height: 80px;
     flex-shrink: 0;
-
     display: flex;
     padding: 28px;
     justify-content: space-between;
@@ -91,7 +90,7 @@ export const DiaryAddMainTitle = styled.div`
     width: 28px;
     height: 28px;
     border-radius: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: transparent;
     flex-shrink: 0;
     border: none;
     background-image: url("../assets/images/bt_cancel.svg");
@@ -109,6 +108,7 @@ export const DiaryAddMainContent = styled.div`
     padding: 28px;
     border-radius: 15px;
     border: 1.5px solid rgba(0, 0, 0, 0.3);
+    resize: none;
 
     color: rgba(0, 0, 0, 0.3);
     font-family: Roboto;
