@@ -21,6 +21,7 @@ export const ConfirmImage = styled.div`
     display: block;
     width: 100%;
     height: 100%;
+    text-align: center;
   }
 `;
 export const ConfirmText = styled.div`
@@ -52,7 +53,7 @@ export const ConfirmButton = styled.div`
     border-radius: 10px;
     font-weight: 700;
   }
-  button:first-child {
+  button {
     background-color: #d9d9d9;
     font-size: 3rem;
     color: #000;
@@ -61,5 +62,11 @@ export const ConfirmButton = styled.div`
     background-color: #176bff;
     font-size: 3rem;
     color: #fff;
+  }
+  .bt_no {
+    position: relative;
+  }
+  .bt_ok {
+    position: relative;
   }
 `;
