@@ -6,24 +6,32 @@ import {
   ConfirmText,
   ConfirmWrap,
 } from "../styles/confirmstyle";
-const Confirm = () => {
+
+const Confirm = ({ txt, onNo, onOk, type }) => {
   return (
     <ConfirmWrap>
       <ConfirmHeader>
         <ConfirmImage>
-          <img src="/public/assets/images/bt_alert.svg" alt="" />
+          {type === 1 ? (
+            <img src="./assets/images/bt_save.svg" alt="" />
+          ) : (
+            <img src="./assets/images/bt_alert.svg" alt="" />
+          )}
         </ConfirmImage>
       </ConfirmHeader>
       <ConfirmText>
-        <div>
-          작성을 <span>취소</span>하고 나가시겠습니까?
-        </div>
+        <div>{txt}</div>
       </ConfirmText>
       <ConfirmButton>
-        <button>아니오</button>
-        <button>네</button>
+        <button className="bt_no" onClick={onNo}>
+          아니오
+        </button>
+        <button className="bt_ok" onClick={onOk}>
+          네
+        </button>
       </ConfirmButton>
     </ConfirmWrap>
   );
 };
+
 export default Confirm;
