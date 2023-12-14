@@ -109,6 +109,7 @@ export const DiaryAddMainContent = styled.div`
     padding: 28px;
     border-radius: 15px;
     border: 1.5px solid rgba(0, 0, 0, 0.3);
+    resize: none;
 
     color: rgba(0, 0, 0, 0.3);
     font-family: Roboto;
