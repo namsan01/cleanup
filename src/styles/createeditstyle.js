@@ -97,6 +97,43 @@ export const CreateList = styled.div`
     justify-content: end;
     align-items: end;
   }
+
+  .bt-yes {
+    display: flex;
+    width: 86px;
+    height: 47px;
+    padding: 10px 24px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 100px;
+    border: none;
+    background: var(--m-3-sys-light-primary, #0055d5);
+    font-weight: 700;
+    margin-left: 15px;
+    color: #fff;
+    font-size: 15px;
+    font-family: Roboto;
+  }
+
+  .bt-no {
+    display: flex;
+    width: 86px;
+    height: 47px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    border: 1.5px solid #757780;
+    background: transparent;
+    gap: 8px;
+    flex-shrink: 0;
+    font-weight: 700;
+    font-size: 15px;
+    font-family: Roboto;
+    color: #0055d5;
+  }
 `;
 
 export const CreateTitle = styled.h2`
@@ -108,41 +145,4 @@ export const CreateTitle = styled.h2`
   line-height: 20px;
   letter-spacing: 0.1px;
   margin-left: 36px;
-`;
-
-export const BtYes = styled.button`
-  display: flex;
-  width: 86px;
-  height: 47px;
-  padding: 10px 24px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  border-radius: 100px;
-  border: none;
-  background: var(--m-3-sys-light-primary, #0055d5);
-  font-weight: 700;
-  margin-left: 15px;
-  color: #fff;
-  font-size: 15px;
-  font-family: Roboto;
-`;
-
-export const BtNo = styled.button`
-  display: flex;
-  width: 86px;
-  height: 47px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 100px;
-  border: 1.5px solid #757780;
-  background: transparent;
-  gap: 8px;
-  flex-shrink: 0;
-  font-weight: 700;
-  font-size: 15px;
-  font-family: Roboto;
-  color: #0055d5;
 `;
