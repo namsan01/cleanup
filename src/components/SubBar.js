@@ -1,89 +1,32 @@
-import styled from "@emotion/styled";
 import React from "react";
-
-const SubBarWrap = styled.section`
-  width: 512px;
-  height: 1366px;
-`;
-const HiUser = styled.div`
-  height: 150px;
-  width: 100%;
-  padding: 45px 42px 28px 50px;
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1.5px solid #176bff;
-`;
-const HiUserDiv = styled.div`
-  width: 225px;
-  height: 65px;
-`;
-const UserName = styled.h2`
-  color: #176bff;
-  font-size: 45px;
-  position: absolute;
-  margin-bottom: auto;
-  line-height: 1.1;
-`;
-const SubBarSayHi = styled.p`
-  color: #c6c6c6;
-  font-size: 20px;
-`;
-const SubBarApp = styled.div`
-  height: 225px;
-  background-image: url("../assets/images/subbar_app.svg");
-  padding: 42px;
-  border-bottom: 1.5px solid #176bff;
-`;
-const SubBarAppP = styled.p`
-  font-size: 18px;
-`;
-const SubBarTitle = styled.span`
-  font-size: 30px;
-  font-weight: 800;
-  color: #176bff;
-  line-height: 0.9;
-`;
-const SubBarDocs = styled.p`
-  font-size: 22px;
-  color: #454545;
-  line-height: 1.1;
-  margin-top: 14px;
-`;
-const SubBarPlan = styled.div`
-  height: 225px;
-  background-image: url("../assets/images/subbar_plan.svg");
-  padding: 62px 40px;
-  border-bottom: 1.5px solid #176bff;
-  margin: auto;
-`;
-const SubBarWrite = styled.div`
-  height: 225px;
-  background-image: url("../assets/images/subbar_write.svg");
-  padding: 62px 40px;
-  border-bottom: 1.5px solid #176bff;
-`;
-const SubBarLogo = styled.div`
-  height: 541px;
-  width: 512px;
-`;
-const SubBarLogoImg = styled.div`
-  background-image: url("../assets/images/subbar_logo.svg");
-  background-position: center center;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
-`;
-
+import {
+  ArrowButton,
+  HiUser,
+  HiUserDiv,
+  SubBarApp,
+  SubBarAppP,
+  SubBarDocs,
+  SubBarLogo,
+  SubBarLogoImg,
+  SubBarMain,
+  SubBarPlan,
+  SubBarSayHi,
+  SubBarTitle,
+  SubBarWrite,
+  UserName,
+} from "../styles/subbarstyle";
+// {jsonData.nickName}
 const SubBar = () => {
   return (
-    <SubBarWrap>
+    <SubBarMain>
       <HiUser>
         <HiUserDiv>
           <SubBarSayHi>안녕하세요</SubBarSayHi>
           <UserName>userName</UserName>
         </HiUserDiv>
-        <img src="../assets/images/subbar_arrow.svg" />
+        <ArrowButton>
+          <img src="../assets/images/subbar_arrow.svg" />
+        </ArrowButton>
       </HiUser>
       <SubBarApp>
         <SubBarAppP>[ 청소 일정 관리 앱 ]</SubBarAppP>
@@ -109,7 +52,7 @@ const SubBar = () => {
       <SubBarLogo>
         <SubBarLogoImg></SubBarLogoImg>
       </SubBarLogo>
-    </SubBarWrap>
+    </SubBarMain>
   );
 };
 

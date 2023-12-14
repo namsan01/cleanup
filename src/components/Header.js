@@ -1,12 +1,12 @@
 import { Topbar } from "../styles/headerstyle";
 
-const Header = () => {
+const Header = ({ text }) => {
   return (
     <Topbar>
       <div>
         <h2>userName</h2>
 
-        <span>메인 화면</span>
+        <span>{text}</span>
 
         <button>
           <img src="./assets/images/bt_menu.svg" alt=""></img>
