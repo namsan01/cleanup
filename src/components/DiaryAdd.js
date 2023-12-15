@@ -21,7 +21,7 @@ const DiaryAdd = () => {
             완료한 청소에 대해 <br /> 기록해 주세요.
           </h2>
         </DiaryAddHeaderComment>
-        <img src="../assets/images/logo.svg" alt="" />
+        <img src={process.env.PUBLIC_URL + "../assets/images/logo.svg"} alt="" />
       </DiaryAddHeader>
       <DiaryAddMain>
         <DiaryAddMainTitle>
@@ -46,12 +46,12 @@ const DiaryAdd = () => {
         </DiaryAddMainContent>
         <DiaryAddMainImage>
           <img
-            src="../assets/images/bt_media.svg"
+            src={process.env.PUBLIC_URL + "../assets/images/bt_media.svg"}
             alt=""
             className="diaryadd-img-before"
           />
           <img
-            src="../assets/images/bt_media.svg"
+            src={process.env.PUBLIC_URL + "../assets/images/bt_media.svg"}
             alt=""
             className="diaryadd-img-after"
           />
@@ -67,7 +67,7 @@ const DiaryAdd = () => {
       </DiaryAddMain>
       <DiaryAddFooter>
         <button>
-          <img src="../assets/images/bt_checkicon.svg" />
+          <img src={process.env.PUBLIC_URL + "../assets/images/bt_checkicon.svg"} />
           저장
         </button>
       </DiaryAddFooter>
