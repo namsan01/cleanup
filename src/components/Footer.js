@@ -4,27 +4,40 @@ import {
   FooterDiaryList,
   FooterStyle,
 } from "../styles/footerstyle";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
+
+  const handleClickMain = () => {
+    navigate(`/main`);
+  };
+
+  const handleClickFeed = () => {
+    navigate(`/feedlist`);
+  };
+
   return (
     <FooterStyle>
-      <Link to={"/Home"}>
-        <FooterCalendar>
-          <section className="bt-active">
-            <img src="../assets/images/bt_calendar.svg" alt="" />
-          </section>
-          <h3>일정 관리</h3>
-        </FooterCalendar>
-      </Link>
-      <Link to={"/Diary"}>
-        <FooterDiaryList>
-          <section>
-            <img src="../assets/images/bt_diarylist.svg" alt="" />
-          </section>
-          <h3>내 청소일기</h3>
-        </FooterDiaryList>
-      </Link>
+      <FooterCalendar onClick={handleClickMain}>
+        <section className="bt-active">
+          <img
+            src={process.env.PUBLIC_URL + "../assets/images/bt_calendar.svg"}
+            alt=""
+          />
+        </section>
+        <h3>일정 관리</h3>
+      </FooterCalendar>
+
+      <FooterDiaryList onClick={handleClickFeed}>
+        <section>
+          <img
+            src={process.env.PUBLIC_URL + "../assets/images/bt_diarylist.svg"}
+            alt=""
+          />
+        </section>
+        <h3>내 청소일기</h3>
+      </FooterDiaryList>
     </FooterStyle>
   );
 };

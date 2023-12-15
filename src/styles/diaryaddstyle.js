@@ -2,8 +2,10 @@ import styled from "@emotion/styled";
 
 export const DiaryAddStyle = styled.div`
   margin: 0 auto;
+  padding: 100px 0;
   width: 918px;
-  height: 1108px;
+  min-height: 100vh;
+  /* height: 1108px; */
   flex-shrink: 0;
 `;
 export const DiaryAddHeader = styled.div`
