@@ -2,12 +2,13 @@ import styled from "@emotion/styled";
 
 export const FooterStyle = styled.footer`
   display: flex;
+  position: fixed;
+  bottom: 0;
+  transform: translate(0%, 0%);
   width: 1024px;
   padding: 0px 8px;
-  align-items: flex-start;
   gap: 8px;
   background: var(--m-3-sys-light-surface-container, #efedf1);
-
 
   img {
     width: 24px;

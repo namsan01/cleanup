@@ -2,8 +2,10 @@ import styled from "@emotion/styled";
 
 export const DiaryAddStyle = styled.div`
   margin: 0 auto;
+  padding: 100px 0;
   width: 918px;
-  height: 1108px;
+  min-height: 100vh;
+  /* height: 1108px; */
   flex-shrink: 0;
 `;
 export const DiaryAddHeader = styled.div`
@@ -126,12 +128,14 @@ export const DiaryAddMainImage = styled.div`
   margin-bottom: 30px;
   .diaryadd-img-before {
     width: 458.5px;
-    height: 100%;
+    height: 270px;
+    object-fit: contain;
     border: solid 1px #e7e7e7;
   }
   .diaryadd-img-after {
-    width: 458.5px;
-    height: 100%;
+    width: 458px;
+    height: 270px;
+    object-fit: contain;
     border: solid 1px #e7e7e7;
   }
 `;
