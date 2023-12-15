@@ -127,7 +127,7 @@ export const DiaryAddMainImage = styled.div`
   align-self: stretch;
   margin-bottom: 30px;
   .diaryadd-img-before {
-    width: 458.5px;
+    width: 458px;
     height: 270px;
     object-fit: contain;
     border: solid 1px #e7e7e7;

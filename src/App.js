@@ -5,6 +5,7 @@ import Confirm from "./components/Confirm";
 import SubBar from "./components/SubBar";
 import ErrorPage from "./pages/ErrorPage";
 import Header from "./components/Header";
+import DiaryEdit from "./pages/DiaryEdit";
 import Footer from "./components/Footer";
 import DiaryAddPage from "./pages/DiaryAddPage";
 
@@ -25,6 +26,7 @@ const App = () => {
     <Wrap maxw={1024}>
       {/* <SubBar></SubBar>
       <ErrorPage></ErrorPage> */}
+      <DiaryEdit></DiaryEdit>
       {/* <Header text="메인화면"></Header> */}
       <Routes>
         <Route path="/diary/add" element={<DiaryAddPage />}></Route>
