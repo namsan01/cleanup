@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 export const SubBarMain = styled.div`
   width: 512px;
   height: 1366px;
+  background-color: #fff;
 `;
 export const HiUser = styled.div`
   height: 150px;
@@ -42,7 +43,7 @@ export const SubBarSayHi = styled.p`
 `;
 export const SubBarApp = styled.div`
   height: 225px;
-  background-image: url("../assets/images/subbar_app.svg");
+  background-image: url(${process.env.PUBLIC_URL}/assets/images/subbar_app.svg);
   padding: 42px;
   border-bottom: 1.5px solid #176bff;
 `;
@@ -64,14 +65,16 @@ export const SubBarDocs = styled.p`
 `;
 export const SubBarPlan = styled.div`
   height: 225px;
-  background-image: url("../assets/images/subbar_plan.svg");
+  background-image: url(
+    ${process.env.PUBLIC_URL}/assets/images/subbar_plan.svg
+    );
   padding: 62px 40px;
   border-bottom: 1.5px solid #176bff;
   margin: auto;
 `;
 export const SubBarWrite = styled.div`
   height: 225px;
-  background-image: url("../assets/images/subbar_write.svg");
+  background-image: url(${process.env.PUBLIC_URL}assets/images/subbar_write.svg);
   padding: 62px 40px;
   border-bottom: 1.5px solid #176bff;
 `;
@@ -80,7 +83,7 @@ export const SubBarLogo = styled.div`
   width: 512px;
 `;
 export const SubBarLogoImg = styled.div`
-  background-image: url("../assets/images/subbar_logo.svg");
+  background-image: url(${process.env.PUBLIC_URL}/assets/images/subbar_logo.svg);
   background-position: center center;
   background-repeat: no-repeat;
   width: 100%;

@@ -125,13 +125,15 @@ export const DiaryAddMainImage = styled.div`
   align-self: stretch;
   margin-bottom: 30px;
   .diaryadd-img-before {
-    width: 458.5px;
-    height: 100%;
+    width: 458px;
+    height: 270px;
+    object-fit: contain;
     border: solid 1px #e7e7e7;
   }
   .diaryadd-img-after {
-    width: 458.5px;
-    height: 100%;
+    width: 458px;
+    height: 270px;
+    object-fit: contain;
     border: solid 1px #e7e7e7;
   }
 `;

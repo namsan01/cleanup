@@ -38,7 +38,9 @@ const List = () => {
       <ListContent>
         <ListDiv>
           <ListImg>
-            <img src="../assets/images/bt_calendar.svg" />
+            <img
+              src={process.env.PUBLIC_URL + "/assets/images/bt_calendar.svg"}
+            />
           </ListImg>
           <ListText>
             <ListTitle>세탁기청소</ListTitle>

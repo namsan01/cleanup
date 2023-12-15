@@ -25,7 +25,9 @@ const SubBar = () => {
           <UserName>userName</UserName>
         </HiUserDiv>
         <ArrowButton>
-          <img src="../assets/images/subbar_arrow.svg" />
+          <img
+            src={process.env.PUBLIC_URL + "/assets/images/subbar_arrow.svg"}
+          />
         </ArrowButton>
       </HiUser>
       <SubBarApp>
