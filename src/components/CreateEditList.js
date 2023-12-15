@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  BtNo,
-  BtYes,
-  CreateList,
-  CreateTitle,
-} from "../styles/createeditstyle";
+import { CreateList, CreateTitle } from "../styles/createeditstyle";
 
 const CreateEditList = ({ text }) => {
   return (
