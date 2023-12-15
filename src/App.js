@@ -5,6 +5,7 @@ import Confirm from "./components/Confirm";
 import SubBar from "./components/SubBar";
 import ErrorPage from "./pages/ErrorPage";
 import Header from "./components/Header";
+import Diary from "./pages/Diary";
 import CreateEditList from "./components/CreateEditList";
 import Main from "./pages/Main";
 import { Wrap } from "./components/Common";
@@ -26,6 +27,10 @@ const App = () => {
       <DiaryEdit></DiaryEdit>
       {/* <Header text="메인화면"></Header> */}
       <Routes>
+        {/* <Route path="/diary/add" element={<DiaryAdd />}></Route> */}
+        <Route path="*" element={<h1>파일이 없네요.</h1>}></Route>
+        <Route path="/" element={<Diary />}></Route>
+      </Routes>
         <Route path="/diary/add" element={<DiaryAddPage />}></Route>
         <Route path="*" element={<h1>파일이 없네요.</h1>} />
 
