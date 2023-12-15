@@ -12,6 +12,7 @@ import {
   ListText,
   ListTitle,
 } from "../styles/mainliststyle";
+import MenuTab from "./MenuTab";
 // {jsonData.title}
 
 const List = () => {
@@ -34,11 +35,17 @@ const List = () => {
   };
 
   return (
-    <ListMain backgroundColor={isChecked ? "#E4E2E6" : "#fff"}>
+    <ListMain
+      
+      
+      backgroundColor={isChecked ? "#E4E2E6" : "#fff"}
+    >
       <ListContent>
         <ListDiv>
           <ListImg>
-            <img src="../assets/images/bt_calendar.svg" />
+            <img
+              src={process.env.PUBLIC_URL + "/assets/images/bt_calendar.svg"}
+            />
           </ListImg>
           <ListText>
             <ListTitle>세탁기청소</ListTitle>
@@ -58,7 +65,7 @@ const List = () => {
             {isPopupOpen && (
               <EditDelete>
                 {/* 팝업 컴포넌트 넣기 */}
-                <div className="popup-content">수정 및 삭제</div>
+                <MenuTab />
                 {/* 오버레이 */}
                 <div onClick={handlePopupToggle}></div>
               </EditDelete>
