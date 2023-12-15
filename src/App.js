@@ -6,6 +6,7 @@ import Confirm from "./components/Confirm";
 import SubBar from "./components/SubBar";
 import ErrorPage from "./pages/ErrorPage";
 import Header from "./components/Header";
+import Diary from "./pages/Diary";
 
 const App = () => {
   const Wrap = styled.div`
@@ -28,6 +29,7 @@ const App = () => {
       <Routes>
         {/* <Route path="/diary/add" element={<DiaryAdd />}></Route> */}
         <Route path="*" element={<h1>파일이 없네요.</h1>}></Route>
+        <Route path="/" element={<Diary />}></Route>
       </Routes>
 
       {/* <Confirm
