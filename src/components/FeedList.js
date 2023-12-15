@@ -7,16 +7,16 @@ const FeedList = (props) => {
       <FeedListHeader>
         <FeedListHeaderContent>
           <img
-            src="../assets/images/bt_feedlist_user.svg"
+            src={process.env.PUBLIC_URL + "../assets/images/bt_feedlist_user.svg"}
             alt=""
           />
           <h2>{props.children}</h2>
         </FeedListHeaderContent>
-        <img src="../assets/images/bt_etc_icon.svg" alt=""></img>
+        <img src={process.env.PUBLIC_URL + "../assets/images/bt_etc_icon.svg"} alt=""></img>
       </FeedListHeader>
       <FeedListMedia>
-        <img src="../assets/images/bt_media.svg" alt="" className="feed-img-before" />
-        <img src="../assets/images/bt_media.svg" alt="" className="feed-img-after" />
+        <img src={process.env.PUBLIC_URL + "../assets/images/bt_media.svg"} alt="" className="feed-img-before" />
+        <img src={process.env.PUBLIC_URL + "../assets/images/bt_media.svg"} alt="" className="feed-img-after" />
       </FeedListMedia>
       <FeedListTxt>
         <h2>Title</h2>

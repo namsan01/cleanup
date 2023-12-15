@@ -3,6 +3,8 @@ import styled from "@emotion/styled";
 export const Topbar = styled.header`
   .header-wrap {
     display: flex;
+    position: fixed;
+    top: 0;
     width: 1024px;
     height: 85px;
     padding: 8px 32px;
