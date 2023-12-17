@@ -10,6 +10,8 @@ export const FooterStyle = styled.footer`
   gap: 8px;
   background: var(--m-3-sys-light-surface-container, #efedf1);
 
+  cursor: pointer;
+
   img {
     width: 24px;
     height: 24px;
