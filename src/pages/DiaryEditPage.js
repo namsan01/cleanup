@@ -28,8 +28,6 @@ const DiaryEdit = () => {
         method: "POST",
         body: formData,
         headers: {
-
-            
           "Content-Type": "multipart/form-data",
         },
       });
@@ -62,9 +60,12 @@ const DiaryEdit = () => {
         <DiaryAddHeader>
           <DiaryAddHeaderComment>
             <h1>어서오세요!</h1>
-            <h2>
-              완료한 청소에 대해 <br /> 기록해 주세요.
-            </h2>
+            <span>
+              완료한 <b>청소</b> 에 대해
+            </span>
+            <span>
+              <b>기록</b>해 주세요.
+            </span>
           </DiaryAddHeaderComment>
           <img
             src={process.env.PUBLIC_URL + "/assets/images/logo.svg"}

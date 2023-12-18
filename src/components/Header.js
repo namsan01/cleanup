@@ -2,16 +2,16 @@ import { useNavigate } from "react-router-dom";
 import { Topbar } from "../styles/headerstyle";
 import { useState } from "react";
 import SubBar from "./SubBar";
-
 const Header = ({ text, type }) => {
+  const navigate = useNavigate();
+  const handleClickSubBar = () => {
+    navigate("/sub");
+  };
   // isPopupOpen: 현재 팝업의 열림/닫힘 상태를 나타내는 상태
   // setPopupOpen: isPopupOpen 상태를 갱신하는 함수
   const [isPopupOpen, setPopupOpen] = useState();
 
-  const handlePopupToggle = () => {
-    // setPopupOpen 함수를 사용하여 isPopupOpen 상태를 반전시킴
-    setPopupOpen(!isPopupOpen);
-  };
+
   const confirmBt = () => {
     {isPopupOpen && <SubBar />}
   };
@@ -19,6 +19,7 @@ const Header = ({ text, type }) => {
     <Topbar>
       <div className="header-wrap">
         <div className="header-left">
+
           <button
             disabled={type === 1}
             onClick={type !== 1 ? confirmBt : undefined}
@@ -35,6 +36,7 @@ const Header = ({ text, type }) => {
           </button>
           <h2>{type === 1 ? "userName" : ""}</h2>
         </div>
+
         <div>
           <span>{text}</span>
 
@@ -47,5 +49,4 @@ const Header = ({ text, type }) => {
     </Topbar>
   );
 };
-
 export default Header;
