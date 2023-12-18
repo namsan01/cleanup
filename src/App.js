@@ -14,26 +14,17 @@ import Footer from "./components/Footer";
 import DiaryAddPage from "./pages/DiaryAddPage";
 
 const App = () => {
-  
-
   return (
     <Wrap maxw={1024}>
       <Routes>
         <Route path="/main" element={<Main />}></Route>
-        <Route path="/diary/add" element={<DiaryAdd />}></Route>
         <Route path="*" element={<h1>파일이 없네요.</h1>}></Route>
-      {/* <SubBar></SubBar>
+        {/* <SubBar></SubBar>
       <ErrorPage></ErrorPage> */}
-      <DiaryEdit></DiaryEdit>
-      {/* <Header text="메인화면"></Header> */}
-      <Routes>
-        {/* <Route path="/diary/add" element={<DiaryAdd />}></Route> */}
-        <Route path="*" element={<h1>파일이 없네요.</h1>}></Route>
-        <Route path="/" element={<Diary />}></Route>
-      </Routes>
+        {/* <DiaryEdit></DiaryEdit> */}
+        {/* <Header text="메인화면"></Header> */}
         <Route path="/diary/add" element={<DiaryAddPage />}></Route>
         <Route path="*" element={<h1>파일이 없네요.</h1>} />
-
       </Routes>
     </Wrap>
   );

@@ -17,7 +17,7 @@ import Header from "../components/Header";
 import styled from "@emotion/styled";
 
 const init = "";
-const DiaryAddPage = (props,{children}) => {
+const DiaryAddPage = (props, { children }) => {
   const list = props.list;
   const setList = props.setList;
 
@@ -78,7 +78,7 @@ const DiaryAddPage = (props,{children}) => {
 
   return (
     <Wrap maxw={1024} maxh={1366}>
-      <Header text="내 청소일기"></Header>
+      <Header text="내 청소일기" type="1"></Header>
       <DiaryAddStyle>
         <DiaryAddHeader>
           <DiaryAddHeaderComment>
@@ -87,7 +87,10 @@ const DiaryAddPage = (props,{children}) => {
               완료한 청소에 대해 <br /> 기록해 주세요.
             </h2>
           </DiaryAddHeaderComment>
-          <img src="../assets/images/logo.svg" alt="" />
+          <img
+            src={process.env.PUBLIC_URL + "/assets/images/logo.svg"}
+            alt=""
+          />
         </DiaryAddHeader>
         <DiaryAddMain>
           <DiaryAddMainTitle>
@@ -146,6 +149,7 @@ const DiaryAddPage = (props,{children}) => {
                 청소 후 사진 업로드
               </button>
             </label>
+
             <input
               type="file"
               accept="image/png, image/gif, image/jpeg"
@@ -159,7 +163,9 @@ const DiaryAddPage = (props,{children}) => {
         </DiaryAddMain>
         <DiaryAddFooter>
           <button>
-            <img src="../assets/images/bt_checkicon.svg" />
+            <img
+              src={process.env.PUBLIC_URL + "/assets/images/bt_checkicon.svg"}
+            />
             저장
           </button>
         </DiaryAddFooter>
