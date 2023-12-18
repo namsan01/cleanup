@@ -26,11 +26,11 @@ const App = () => {
       {/* <Header text="메인화면"></Header> */}
       <Routes>
         {/* diary 첫 화면 page */}
+
         {/* <Route path="*" element={<h1>파일이 없네요.</h1>}></Route> */}
         <Route path="/main" element={<Main />}></Route>
         <Route path="/diary" element={<DiaryPage />}></Route>
         <Route path="/diary/add" element={<DiaryAddPage />}></Route>
-        <Route path="*" element={<h1>파일이 없네요.</h1>} />
         <Route path="/diary/edit" element={<DiaryEdit />}></Route>
       </Routes>
       {/* confirm 컴포넌트 나열 */}

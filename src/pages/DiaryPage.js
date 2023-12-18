@@ -6,26 +6,37 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import DiaryMain from "../components/diary/DiaryMain";
 import SubBar from "../components/SubBar";
+import MenuTab from "../components/MenuTab";
 import { MainAddBt } from "../styles/basic";
 
 const Diary = () => {
   // navigate 로 path 전달!
   const navigate = useNavigate();
-  const handleClickDiaryAdd = () => {
-    // DiaryAddPage 로 가기
-    navigate("/");
-  };
 
-
-  // const handleClickSubBar = () => {
-  //   // SubBar 로 가기
-  //   navigate("/sub");
-  // };
+  const MainAddBt = styled.div`
+    display: block;
+    img {
+      position: fixed;
+      bottom: 125px;
+      left: 468px;
+      height: 88px;
+      width: 88px;
+      display: block;
+      &:active {
+        filter: brightness(0.8);
+        cursor: pointer;
+      }
+    }
+  `;
+  // SubBar 로 가기
 
   const handleClickSubBar = () => {
-    navigate(-1);
+    navigate("/sub");
   };
-
+  // main 탭으로 가기
+  const handleClickMain = () => {
+    navigate(`/main`);
+  };
   return (
     <div>
       <Header
@@ -40,6 +51,7 @@ const Diary = () => {
       <DiaryMain>
         <FeedList title={"화장실 청소"}>
           <div>고길동</div>
+
         </FeedList>
         <FeedList title={"주방 청소"}>
           <div>고길동</div>
@@ -55,7 +67,7 @@ const Diary = () => {
           </Link>
         </MainAddBt>
       </DiaryMain>
-      <Footer></Footer>
+      <Footer onClick={handleClickMain}></Footer>
     </div>
   );
 };
