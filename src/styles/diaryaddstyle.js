@@ -38,21 +38,23 @@ export const DiaryAddHeaderComment = styled.div`
     line-height: normal;
     letter-spacing: 0.5px;
   }
-  h2 {
+  span {
     display: flex;
     width: 758px;
-    height: 101px;
-    flex-direction: column;
-    justify-content: center;
-    flex-shrink: 0;
+
+    /* flex-direction: column; */
+    /* justify-content: center; */
 
     color: rgba(0, 0, 0, 0.4);
     font-family: Roboto;
     font-size: 50px;
-    font-style: normal;
     font-weight: 700;
-    line-height: 55px; /* 110% */
-    letter-spacing: 0.5px;
+    /* letter-spacing: 0.5px; */
+    line-height: 1.2;
+  }
+  b {
+    color: #176bff;
+    margin-left: 8px;
   }
 `;
 export const DiaryAddMain = styled.div`

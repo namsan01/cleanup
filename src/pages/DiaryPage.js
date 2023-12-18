@@ -7,6 +7,7 @@ import Header from "../components/Header";
 import DiaryMain from "../components/diary/DiaryMain";
 import SubBar from "../components/SubBar";
 import MenuTab from "../components/MenuTab";
+import { MainAddBt } from "../styles/basic";
 
 const Diary = () => {
   // navigate 로 path 전달!
@@ -28,6 +29,7 @@ const Diary = () => {
     }
   `;
   // SubBar 로 가기
+
   const handleClickSubBar = () => {
     navigate("/sub");
   };

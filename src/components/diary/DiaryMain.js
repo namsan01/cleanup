@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import React from "react";
 
+
+
 const DiaryMain = props => {
   const Contents = styled.div`
     width: 100%;
@@ -13,5 +15,6 @@ const DiaryMain = props => {
   `;
   return <Contents>{props.children}</Contents>;
 };
+
 
 export default DiaryMain;

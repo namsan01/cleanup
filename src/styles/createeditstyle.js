@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 export const CreateList = styled.div`
   width: 864px;
   height: 525px;
+  position: fixed;
   /* background: yellowgreen; */
 
   .create-header {

@@ -15,7 +15,7 @@ import {
 import MenuTab from "./MenuTab";
 // {jsonData.title}
 
-const List = () => {
+const MainList = () => {
   // check박스 체크 시 ListWrap 배경색 갱신
   const [isChecked, setChecked] = useState(false);
 
@@ -75,4 +75,4 @@ const List = () => {
   );
 };
 
-export default List;
+export default MainList;

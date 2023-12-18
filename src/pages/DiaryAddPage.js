@@ -17,7 +17,7 @@ import Header from "../components/Header";
 import styled from "@emotion/styled";
 
 const init = "";
-const DiaryAddPage = (props,{children}) => {
+const DiaryAddPage = (props, { children }) => {
   const list = props.list;
   const setList = props.setList;
 
