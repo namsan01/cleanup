@@ -5,9 +5,9 @@ import Confirm from "./components/Confirm";
 import SubBar from "./components/SubBar";
 import ErrorPage from "./pages/ErrorPage";
 import Header from "./components/Header";
-import DiaryEdit from "./pages/DiaryEdit";
 import Footer from "./components/Footer";
 import DiaryAddPage from "./pages/DiaryAddPage";
+import DiaryEditPage from "./pages/DiaryEditPage";
 
 const App = () => {
   const Wrap = styled.div`
@@ -26,12 +26,12 @@ const App = () => {
     <Wrap maxw={1024}>
       {/* <SubBar></SubBar>
       <ErrorPage></ErrorPage> */}
-      <DiaryEdit></DiaryEdit>
+      <DiaryEditPage></DiaryEditPage>
+      <Header></Header>
       {/* <Header text="메인화면"></Header> */}
       <Routes>
         <Route path="/diary/add" element={<DiaryAddPage />}></Route>
         <Route path="*" element={<h1>파일이 없네요.</h1>} />
-
       </Routes>
 
       {/* <Confirm

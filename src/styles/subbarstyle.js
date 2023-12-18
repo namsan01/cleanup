@@ -1,9 +1,19 @@
 import styled from "@emotion/styled";
 
-export const SubBarMain = styled.div`
+export const SubBarBody = styled.div`
+  width: 1024px;
+  height: 1366px;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  background-color: rgba(0, 0, 0, 0.2);
+`;
+export const SubBarDiv = styled.div`
   width: 512px;
   height: 1366px;
   background-color: #fff;
+  float: right;
+  text-align: left;
 `;
 export const HiUser = styled.div`
   height: 150px;
@@ -17,28 +27,23 @@ export const HiUserDiv = styled.div`
   width: 225px;
   height: 65px;
 `;
-export const UserName = styled.h2`
+export const UserName = styled.p`
   color: #176bff;
   font-size: 45px;
   position: absolute;
   margin-bottom: auto;
   line-height: 1.1;
+  font-weight: 900;
 `;
-export const ArrowButton = styled.button`
-  background-color: transparent;
-  border: none;
-  &:hover {
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-    transition: 0.7s;
-  }
-
-  &:active {
-    background-color: rgba(0, 0, 0, 0.05);
-    transition: 0.7s;
-  }
+export const ArrowButton = styled.div`
+  width: 66px;
+  height: 66px;
+  background-image: url(${process.env.PUBLIC_URL}/assets/images/subbar_arrow.svg);
+  object-fit: cover;
+  
 `;
 export const SubBarSayHi = styled.p`
-  color: #c6c6c6;
+  color: #c6c6c6; 
   font-size: 20px;
 `;
 export const SubBarApp = styled.div`
@@ -51,9 +56,9 @@ export const SubBarAppP = styled.p`
   font-size: 18px;
   margin-bottom: 5px;
 `;
-export const SubBarTitle = styled.span`
+export const SubBarTitle = styled.p`
   font-size: 30px;
-  font-weight: 800;
+  font-weight: 900;
   color: #176bff;
   line-height: 0.9;
 `;
@@ -65,9 +70,7 @@ export const SubBarDocs = styled.p`
 `;
 export const SubBarPlan = styled.div`
   height: 225px;
-  background-image: url(
-    ${process.env.PUBLIC_URL}/assets/images/subbar_plan.svg
-    );
+  background-image: url(${process.env.PUBLIC_URL}/assets/images/subbar_plan.svg);
   padding: 62px 40px;
   border-bottom: 1.5px solid #176bff;
   margin: auto;

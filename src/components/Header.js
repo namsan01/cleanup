@@ -1,23 +1,43 @@
+import { useNavigate } from "react-router-dom";
 import { Topbar } from "../styles/headerstyle";
-
-const Header = ({ text }) => {
+import { useState } from "react";
+import SubBar from "./SubBar";
+const Header = ({ text, type }) => {
+  const navigate = useNavigate();
+  const handleClickSubBar = () => {
+    navigate("/sub");
+  };
+  // isPopupOpen: 현재 팝업의 열림/닫힘 상태를 나타내는 상태
+  // setPopupOpen: isPopupOpen 상태를 갱신하는 함수
+  const [isPopupOpen, setPopupOpen] = useState();
+  const handlePopupToggle = () => {
+    // setPopupOpen 함수를 사용하여 isPopupOpen 상태를 반전시킴
+    setPopupOpen(!isPopupOpen);
+  };
   return (
     <Topbar>
       <div className="header-wrap">
         <div className="header-left">
           <button>
-            <img src={process.env.PUBLIC_URL + "/assets/images/bt_user.svg"} />
+            {type === 1 ? (
+              <img
+                src={process.env.PUBLIC_URL + "/assets/images/bt_user.svg"}
+              />
+            ) : (
+              <img
+                src={process.env.PUBLIC_URL + "/assets/images/bt_arrow.svg"}
+              />
+            )}
           </button>
           <h2>userName</h2>
         </div>
         <span>{text}</span>
-
-        <button>
+        <button onClick={handlePopupToggle}>
           <img src={process.env.PUBLIC_URL + "/assets/images/bt_menu.svg"} />
+          {isPopupOpen && <SubBar />}
         </button>
       </div>
     </Topbar>
   );
 };
-
 export default Header;
