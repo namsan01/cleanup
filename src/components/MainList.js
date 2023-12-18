@@ -36,8 +36,6 @@ const List = () => {
 
   return (
     <ListMain
-      
-      
       backgroundColor={isChecked ? "#E4E2E6" : "#fff"}
     >
       <ListContent>

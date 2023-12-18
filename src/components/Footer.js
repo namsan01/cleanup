@@ -14,7 +14,7 @@ const Footer = () => {
   };
 
   const handleClickFeed = () => {
-    navigate(`/feedlist`);
+    navigate(`/diary`);
   };
 
   return (
