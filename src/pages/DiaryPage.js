@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import DiaryMain from "../components/diary/DiaryMain";
 import SubBar from "../components/SubBar";
+import { MainAddBt } from "../styles/basic";
 
 const Diary = () => {
   // navigate 로 path 전달!
@@ -15,22 +16,7 @@ const Diary = () => {
     navigate("/");
   };
 
-  const MainAddBt = styled.div`
-    display: block;
 
-    img {
-      position: fixed;
-      bottom: 125px;
-      left: 468px;
-      height: 88px;
-      width: 88px;
-      display: block;
-      &:active {
-        filter: brightness(0.8);
-        cursor: pointer;
-      }
-    }
-  `;
   // const handleClickSubBar = () => {
   //   // SubBar 로 가기
   //   navigate("/sub");

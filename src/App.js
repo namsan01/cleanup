@@ -5,7 +5,8 @@ import DiaryPage from "./pages/DiaryPage";
 import DiaryEdit from "./pages/DiaryEdit";
 import DiaryAddPage from "./pages/DiaryAddPage";
 import Confirm from "./components/Confirm";
-import SubBar from './components/SubBar';
+import SubBar from "./components/SubBar";
+import Main from "./pages/Main";
 
 const App = () => {
   return (
@@ -13,11 +14,10 @@ const App = () => {
       <Routes>
         {/* diary 첫 화면 page */}
         {/* <Route path="*" element={<h1>파일이 없네요.</h1>}></Route> */}
-        <Route path="/" element={<DiaryPage />}></Route>
+        <Route path="/main" element={<Main />}></Route>
         <Route path="/diary" element={<DiaryPage />}></Route>
         <Route path="/diary/add" element={<DiaryAddPage />}></Route>
         <Route path="/diary/edit" element={<DiaryEdit />}></Route>
-        <Route path="/sub" element={<SubBar />}></Route>
       </Routes>
       {/* confirm 컴포넌트 나열 */}
       {/* <Confirm

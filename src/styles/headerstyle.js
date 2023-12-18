@@ -13,6 +13,7 @@ export const Topbar = styled.header`
     flex-shrink: 0;
     background: var(--m-3-sys-light-surface-tint, #0055d5);
     color: #ffffff;
+    z-index: 1;
     .header-left {
       display: flex;
       gap: 10px;
