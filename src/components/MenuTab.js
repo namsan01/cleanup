@@ -10,14 +10,14 @@ import { useNavigate } from "react-router-dom";
 
 const MenuTab = props => {
   const navigate = useNavigate();
-  const handleClickMenu = () => {
-    navigate("/DiaryEdit");
+  const handleClickEdit = () => {
+    navigate("/diary/edit ");
   };
   const pk = props.pk;
   const handleClick = props.handleClick;
   return (
     <MenuTabStyle>
-      <MenuTabEdit handleClickMenu={handleClickMenu}>
+      <MenuTabEdit onClick={handleClickEdit}>
         <h3>수정하기</h3>
       </MenuTabEdit>
       <MenuTabDelete
