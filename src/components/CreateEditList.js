@@ -8,7 +8,11 @@ const CreateEditList = ({ text }) => {
         <div>
           <CreateTitle>리스트 {text}</CreateTitle>
         </div>
-        <img className="create-logo" src="./assets/images/logo.svg" alt="" />
+        <img
+          className="create-logo"
+          src={process.env.PUBLIC_URL + "./assets/images/logo.svg"}
+          alt=""
+        />
       </div>
       <div className="create-main">
         <div className="create-main-top">
@@ -30,7 +34,10 @@ const CreateEditList = ({ text }) => {
             placeholder="일정을 입력해 주세요."
           />
           <div className="create-main-bt">
-            <img src="./assets/images/bt_cancel.svg" alt="" />
+            <img
+              src={process.env.PUBLIC_URL + "./assets/images/bt_cancel.svg"}
+              alt=""
+            />
           </div>
         </div>
       </div>

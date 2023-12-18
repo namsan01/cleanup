@@ -4,7 +4,10 @@ import styled from "@emotion/styled";
 export const ListMain = styled.div`
   width: 918px;
   height: 120px;
-  margin: 0 auto;
+  margin-top: ${props => (props.mgt ? "10px" : "50px")};
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: ${props => (props.mgb ? "10px" : "45px")};
   padding: 10px 0;
   border: 1px solid #c5c6d0;
   transition: background-color 0.3s ease;
@@ -93,4 +96,5 @@ export const ListEditButton = styled.button`
 export const EditDelete = styled.div`
   position: absolute;
   cursor: pointer;
+  transform: translate(-110px, 0px);
 `;

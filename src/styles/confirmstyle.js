@@ -45,7 +45,7 @@ export const ConfirmButton = styled.div`
   padding: 0 32px;
   display: flex;
   gap: 16px;
-  // justify-content: space-between;
+  margin-bottom: 32px;
   button {
     width: 205px;
     height: 86px;

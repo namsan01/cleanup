@@ -28,6 +28,8 @@ export const FeedListHeaderContent = styled.div`
   img {
     width: 40px;
     height: 40px;
+    // 해당 이미지가 스크롤 시, header 위에 위치하여 z-index 를 줌
+    z-index: -1;
   }
   h2 {
     display: flex;
