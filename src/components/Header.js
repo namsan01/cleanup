@@ -1,6 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import { Topbar } from "../styles/headerstyle";
 
 const Header = ({ text, type }) => {
+  const navigate = useNavigate();
+  const handleClickSubBar = () => {
+    navigate("/sub");
+  };
+
   return (
     <Topbar>
       <div className="header-wrap">
@@ -20,7 +26,7 @@ const Header = ({ text, type }) => {
         </div>
         <span>{text}</span>
 
-        <button>
+        <button onClick={handleClickSubBar}>
           <img src={process.env.PUBLIC_URL + "/assets/images/bt_menu.svg"} />
         </button>
       </div>
