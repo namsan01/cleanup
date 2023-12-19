@@ -4,6 +4,11 @@ export const ConfirmWrap = styled.div`
   position: relative;
   width: 489px;
   height: 285px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
   border-radius: 20px;
   background-color: #fff;
   border: 1px solid black;

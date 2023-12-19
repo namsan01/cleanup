@@ -6,10 +6,12 @@ export const Wrap = styled.div`
 `;
 
 export const MainAddBt = styled.div`
-  img {
+  .MainAddBt {
     position: fixed;
-    bottom: 125px;
-    left: 468px;
+    left: 50%;
+    top: 85%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
     height: 88px;
     width: 88px;
     display: block;
