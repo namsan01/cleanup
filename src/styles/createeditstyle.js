@@ -1,10 +1,21 @@
 import styled from "@emotion/styled";
 
+export const CreateListBg = styled.div`
+  width: 1024px;
+  height: 1500px;
+  background: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0%;
+`;
+
 export const CreateList = styled.div`
   width: 864px;
   height: 525px;
   position: fixed;
-  /* background: yellowgreen; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
 
   .create-header {
     display: flex;
@@ -97,6 +108,7 @@ export const CreateList = styled.div`
     height: 168px;
     justify-content: end;
     align-items: end;
+    padding-bottom: 20px;
   }
 
   .bt-yes {

@@ -21,6 +21,7 @@ a:f {
 html {
   font-size: 10px;
   width: 1024px;
+  margin: 0 auto;
 }
 body {
   font-family: "Roboto", sans-serif;
