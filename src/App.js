@@ -1,19 +1,10 @@
 import React from "react";
-import { Link, Route, Routes } from "react-router-dom";
-import Confirm from "./components/Confirm";
-import SubBar from "./components/SubBar";
-import ErrorPage from "./pages/ErrorPage";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import DiaryAddPage from "./pages/DiaryAddPage";
-import DiaryEditPage from "./pages/DiaryEditPage";
 import { Route, Routes } from "react-router-dom";
 import { Wrap } from "./components/Common";
-import DiaryPage from "./pages/DiaryPage";
-import DiaryEdit from "./pages/DiaryEdit";
+import Header from "./components/Header";
 import DiaryAddPage from "./pages/DiaryAddPage";
-import Confirm from "./components/Confirm";
-import SubBar from "./components/SubBar";
+import DiaryEditPage from "./pages/DiaryEditPage";
+import DiaryPage from "./pages/DiaryPage";
 import Main from "./pages/Main";
 
 const App = () => {
@@ -31,7 +22,7 @@ const App = () => {
         <Route path="/main" element={<Main />}></Route>
         <Route path="/diary" element={<DiaryPage />}></Route>
         <Route path="/diary/add" element={<DiaryAddPage />}></Route>
-        <Route path="/diary/edit" element={<DiaryEdit />}></Route>
+        <Route path="/diary/edit" element={<DiaryEditPage />}></Route>
       </Routes>
       {/* confirm 컴포넌트 나열 */}
       {/* <Confirm
