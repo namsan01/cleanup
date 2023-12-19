@@ -11,15 +11,20 @@ const Header = ({ text, type }) => {
   // setPopupOpen: isPopupOpen 상태를 갱신하는 함수
   const [isPopupOpen, setPopupOpen] = useState();
 
+  const handlePopupToggle = () => {
+    // setPopupOpen 함수를 사용하여 isPopupOpen 상태를 반전시킴
+    setPopupOpen(!isPopupOpen);
+  };
 
   const confirmBt = () => {
-    {isPopupOpen && <SubBar />}
+    {
+      isPopupOpen && <SubBar />;
+    }
   };
   return (
     <Topbar>
       <div className="header-wrap">
         <div className="header-left">
-
           <button
             disabled={type === 1}
             onClick={type !== 1 ? confirmBt : undefined}

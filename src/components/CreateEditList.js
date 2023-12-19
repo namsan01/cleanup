@@ -1,5 +1,6 @@
 import React from "react";
 import { CreateList, CreateTitle } from "../styles/createeditstyle";
+import { Link } from "react-router-dom";
 
 const CreateEditList = ({ text }) => {
   return (
@@ -42,8 +43,14 @@ const CreateEditList = ({ text }) => {
         </div>
       </div>
       <div className="create-footer">
-        <button className="bt-no">취 소</button>
-        <button className="bt-yes">완 료</button>
+        <div className="create-footer">
+          <button className="bt-no">
+            <Link to="/diary/add" />취 소
+          </button>
+          <button className="bt-yes" type="submit">
+            완 료
+          </button>
+        </div>
       </div>
     </CreateList>
   );
