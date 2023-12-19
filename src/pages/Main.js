@@ -7,11 +7,13 @@ import { MainAddBt } from "../styles/basic";
 import CreateEditList from "../components/CreateEditList";
 
 const Main = () => {
-  const [isPopupOpen, setPopupOpen] = useState();
 
-  const handlePopupToggle = () => {
-    // setPopupOpen 함수를 사용하여 isPopupOpen 상태를 반전시킴
-    setPopupOpen(!isPopupOpen);
+  const [isPopupOpen, setPopupOpen] = useState(false);
+  const handleButtonClick = () => {
+    setPopupOpen(true);
+  };
+  const handleCancel = () => {
+    setPopupOpen(!true);
   };
 
   return (
@@ -27,11 +29,16 @@ const Main = () => {
         <List></List>
         <List mgb={false}></List>
 
-        <MainAddBt onClick={handlePopupToggle}>
+        <MainAddBt
+          onClick={() => {
+            handleButtonClick(true);
+          }}
+        >
           <img
+            className="MainAddBt"
             src={process.env.PUBLIC_URL + "../assets/images/bt_main_add.svg"}
           />
-          {isPopupOpen && <CreateEditList />}
+          {isPopupOpen === true ? <CreateEditList /> : null}
         </MainAddBt>
       </div>
       <Footer></Footer>
