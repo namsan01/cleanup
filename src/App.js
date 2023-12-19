@@ -1,8 +1,8 @@
 import React from "react";
-import { Link, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import { Wrap } from "./components/Common";
 import DiaryAddPage from "./pages/DiaryAddPage";
 import DiaryEditPage from "./pages/DiaryEditPage";
-import { Wrap } from "./components/Common";
 import DiaryPage from "./pages/DiaryPage";
 import Main from "./pages/Main";
 

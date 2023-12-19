@@ -12,9 +12,8 @@ const Main = () => {
   const handlePopupToggle = () => {
     // setPopupOpen 함수를 사용하여 isPopupOpen 상태를 반전시킴
     setPopupOpen(!isPopupOpen);
-
-    
   };
+
   return (
     <Wrap maxw={1024} maxh={1366}>
       <Header text="메인화면" type={1} />

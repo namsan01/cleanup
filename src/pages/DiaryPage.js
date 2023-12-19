@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import FeedList from "../components/FeedList";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import Confirm from "../components/Confirm";
 import DiaryMain from "../components/diary/DiaryMain";
 import SubBar from "../components/SubBar";
 import MenuTab from "../components/MenuTab";
@@ -44,14 +45,10 @@ const Diary = () => {
         type={1}
         // onClick={handleClickSubBar}
         handleClickSubBar={handleClickSubBar}
-      >
-        {/* <Link to="/sub"></Link> */}
-        {/* <SubBar></SubBar> */}
-      </Header>
+      ></Header>
       <DiaryMain>
         <FeedList title={"화장실 청소"}>
           <div>고길동</div>
-
         </FeedList>
         <FeedList title={"주방 청소"}>
           <div>고길동</div>

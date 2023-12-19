@@ -1,7 +1,13 @@
 import styled from "@emotion/styled";
 
 export const ConfirmWrap = styled.div`
-  position: relative;
+  /* 추가코드 */
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  /* 원코드 */
   width: 489px;
   height: 285px;
   border-radius: 20px;
