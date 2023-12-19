@@ -7,6 +7,7 @@ import { MainAddBt } from "../styles/basic";
 import CreateEditList from "../components/CreateEditList";
 
 const Main = () => {
+
   const [isPopupOpen, setPopupOpen] = useState(false);
   const handleButtonClick = () => {
     setPopupOpen(true);
@@ -14,6 +15,7 @@ const Main = () => {
   const handleCancel = () => {
     setPopupOpen(!true);
   };
+
   return (
     <Wrap maxw={1024} maxh={1366}>
       <Header text="메인화면" type={1} />

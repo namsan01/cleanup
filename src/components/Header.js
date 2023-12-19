@@ -16,10 +16,6 @@ const Header = ({ text, type }) => {
     }
   };
 
-  const navigate = useNavigate();
-  const handleClickSubBar = () => {
-    navigate("/sub");
-  };
 
   // isPopupOpen: 현재 팝업의 열림/닫힘 상태를 나타내는 상태
   // setPopupOpen: isPopupOpen 상태를 갱신하는 함수
