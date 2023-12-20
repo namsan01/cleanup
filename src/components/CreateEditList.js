@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   CreateList,
   CreateListBg,
   CreateTitle,
 } from "../styles/createeditstyle";
-import { Link } from "react-router-dom";
 
-const CreateEditList = ({ text }) => {
+const CreateEditList = ({ text, handleCancel }) => {
   return (
     <CreateListBg>
       <CreateList>
@@ -49,8 +48,13 @@ const CreateEditList = ({ text }) => {
         </div>
         <div className="create-footer">
           <div className="create-footer">
-            <button className="bt-no">
-              <Link to="/diary/add" />취 소
+            <button
+              className="bt-no"
+              onClick={() => {
+                handleCancel();
+              }}
+            >
+              취 소
             </button>
             <button className="bt-yes" type="submit">
               완 료

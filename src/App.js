@@ -14,6 +14,7 @@ const App = () => {
         <Route path="/diary" element={<DiaryPage />}></Route>
         <Route path="/diary/add" element={<DiaryAddPage />}></Route>
         <Route path="/diary/edit" element={<DiaryEditPage />}></Route>
+        <Route path="/diary/edit" element={<DiaryEditPage />}></Route>
       </Routes>
     </Wrap>
   );
