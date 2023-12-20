@@ -24,7 +24,13 @@ const Wrap = styled.div`
   max-height: ${props => props.maxh + "px"};
 `;
 
-const DiaryAddPage = (props, { children }) => {
+const DiaryAddPage = (props) => {
+
+  const [ diaryList, setDiaryList ] = useState([]);
+  // const handleClickPostDiary = () => {
+  //   postDiary(postResultAction, obj)
+  // }
+
   const list = props.list;
   const setList = props.setList;
   const navigate = useNavigate();
@@ -50,7 +56,8 @@ const DiaryAddPage = (props, { children }) => {
     };
     const arr = [...list, item];
     setList(arr);
-    postDiary(arr);
+    // 데이터 전송 ()
+    postDiary();
     navigate(`/diary`);
   };
 

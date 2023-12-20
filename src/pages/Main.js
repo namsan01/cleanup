@@ -7,19 +7,18 @@ import { MainAddBt } from "../styles/basic";
 import CreateEditList from "../components/CreateEditList";
 
 const Main = () => {
-
   const [isPopupOpen, setPopupOpen] = useState(false);
   const handleButtonClick = () => {
     setPopupOpen(true);
   };
   const handleCancel = () => {
-    setPopupOpen(!true);
+    setPopupOpen(isPopupOpen => !isPopupOpen);
   };
 
   return (
     <Wrap maxw={1024} maxh={1366}>
       <Header text="메인화면" type={1} />
-      <div style={{ padding: "70px 0" }}>
+      <div style={{ paddingTop: "90px", paddingBottom: "300px " }}>
         <List mgt={false}></List>
         <List></List>
         <List></List>
@@ -38,8 +37,8 @@ const Main = () => {
             className="MainAddBt"
             src={process.env.PUBLIC_URL + "../assets/images/bt_main_add.svg"}
           />
-          {isPopupOpen === true ? <CreateEditList /> : null}
         </MainAddBt>
+        {isPopupOpen && <CreateEditList handleCancel={handleCancel} />}
       </div>
       <Footer></Footer>
     </Wrap>

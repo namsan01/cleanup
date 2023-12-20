@@ -14,21 +14,6 @@ const Diary = () => {
   // navigate 로 path 전달!
   const navigate = useNavigate();
 
-  const MainAddBt = styled.div`
-    display: block;
-    img {
-      position: fixed;
-      bottom: 125px;
-      left: 468px;
-      height: 88px;
-      width: 88px;
-      display: block;
-      &:active {
-        filter: brightness(0.8);
-        cursor: pointer;
-      }
-    }
-  `;
   // SubBar 로 가기
 
   const handleClickSubBar = () => {
@@ -58,6 +43,7 @@ const Diary = () => {
         <MainAddBt>
           <Link to="/diary/add">
             <img
+              className="MainAddBt"
               src={process.env.PUBLIC_URL + "../assets/images/bt_main_add.svg"}
               alt=""
             />
