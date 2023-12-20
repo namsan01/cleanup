@@ -16,7 +16,6 @@ const Header = ({ text, type }) => {
     }
   };
 
-
   // isPopupOpen: 현재 팝업의 열림/닫힘 상태를 나타내는 상태
   // setPopupOpen: isPopupOpen 상태를 갱신하는 함수
   const [isPopupOpen, setPopupOpen] = useState(false);
@@ -57,7 +56,7 @@ const Header = ({ text, type }) => {
           </button>
         </div>
       </div>
-      {isModal && <Confirm />}
+      {isModal && <Confirm setIsModal={setIsModal} isModal ={isModal} />}
     </Topbar>
   );
 };
