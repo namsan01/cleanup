@@ -12,8 +12,15 @@ import {
   GoMainBtDiv,
   GoMainBtP,
 } from "../styles/errorpagestyle";
+import { useNavigate } from "react-router";
 
 const ErrorPage = () => {
+  const navigate = useNavigate();
+
+  const goToMainPage = () => {
+    // 프로그래밍 방식으로 메인 페이지로 이동
+    navigate("/");
+  };
   return (
     <ErrorPageMain>
       <ErrorPageDiv>
@@ -29,7 +36,7 @@ const ErrorPage = () => {
           </ErrorDocsText>
         </ErrorDocsDiv>
         <GoMainBtDiv>
-          <GoMainBt>
+          <GoMainBt onClick={goToMainPage}>
             <GoMainBtP>메인으로 가기</GoMainBtP>
           </GoMainBt>
         </GoMainBtDiv>
