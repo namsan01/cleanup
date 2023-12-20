@@ -18,7 +18,12 @@ export const FeedListHeader = styled.div`
   padding: 12px 4px 12px 16px;
   align-items: center;
   align-self: stretch;
+  button{
+    border: none;
+    background: transparent;
+  }
 `;
+
 export const FeedListHeaderContent = styled.div`
   display: flex;
   position: relative;

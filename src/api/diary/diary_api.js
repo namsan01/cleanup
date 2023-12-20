@@ -34,7 +34,7 @@ export const putDiary = async (loginedUserId, page, fnc) => {
   fnc([...res.data]);
 };
 
-export const fetchDiary = async (loginedUserId, page, fnc) => {
+export const patchDiary = async (loginedUserId, page, fnc) => {
   const res = await axios.fetch(
     `${SERVER_URL}/api/diary?loginedUserId=${loginedUserId}&page=${page}`,
   );
