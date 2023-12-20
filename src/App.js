@@ -18,7 +18,6 @@ const App = () => {
         <Route path="/diary/add" element={<DiaryAddPage />}></Route>
         <Route path="/diary/edit" element={<DiaryEditPage />}></Route>
         <Route path="*" element={<ErrorPage />}></Route>
-        
       </Routes>
     </Wrap>
   );
