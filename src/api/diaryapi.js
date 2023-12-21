@@ -2,10 +2,10 @@ import axios from "axios";
 
 export const postDiary = async () => {
   const obj = {
-    loginedUserId: 3,
+    // loginedUserId: 3,
     title: "string",
     content: "string",
-    pics: ["arr1", "arr2"],
+    pics: ["", ""],
   };
   try {
     const res = await axios.post(`api/diary`, obj);

@@ -11,6 +11,7 @@ const Diary = () => {
   // navigate 로 path 전달!
   const navigate = useNavigate();
   // main 탭으로 가기
+
   const handleClickMain = () => {
     navigate(`/main`);
   };
@@ -56,8 +57,8 @@ const Diary = () => {
           </Link>
         </MainAddBt>
       </DiaryMain>
-      <Footer onClick={handleClickMain}></Footer>
-    </Wrap>
+      <Footer type={2}></Footer>
+    </div>
   );
 };
 

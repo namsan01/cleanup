@@ -16,6 +16,7 @@ import MenuTab from "./MenuTab";
 import { deleteTodo } from "../api/todo/todo_api";
 // {jsonData.title}
 
+
 const MainList = props => {
   const item = props.item;
   const loginedUserId = props.loginedUserId;
@@ -87,7 +88,9 @@ const MainList = props => {
             {isPopupOpen && (
               <EditDelete>
                 {/* 팝업 컴포넌트 넣기 */}
-                <MenuTab handleClick={() => handleClick()} />
+
+                <MenuTab type={1} handleButtonClick={props.handleButtonClick}/>
+
                 {/* 오버레이 */}
                 <div onClick={handlePopupToggle}></div>
               </EditDelete>

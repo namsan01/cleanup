@@ -64,7 +64,7 @@ const DiaryAddPage = (props) => {
 
   return (
     <Wrap maxw={1024} maxh={1366}>
-      <Header text="내 청소일기"></Header>
+      <Header text="작성하기"></Header>
       <DiaryAdd></DiaryAdd>
       <Footer></Footer>
     </Wrap>

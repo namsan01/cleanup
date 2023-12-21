@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 
 import Header from "../components/Header";
@@ -23,6 +24,7 @@ const DiaryEditPage = props => {
       <DiaryEdit></DiaryEdit>
       <Footer></Footer>
     </Wrap>
+
   );
 };
 
