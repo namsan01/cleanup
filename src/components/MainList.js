@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   CheckboxDiv,
   EditDelete,
@@ -13,11 +13,23 @@ import {
   ListTitle,
 } from "../styles/mainliststyle";
 import MenuTab from "./MenuTab";
+import { deleteTodo } from "../api/todo/todo_api";
 // {jsonData.title}
 
-const MainList = (props) => {
+
+const MainList = props => {
+  const item = props.item;
+  const loginedUserId = props.loginedUserId;
+  console.log("item", item);
   // check박스 체크 시 ListWrap 배경색 갱신
   const [isChecked, setChecked] = useState(false);
+  // 체크 된 상태 표현
+  useEffect(() => {
+    // 상태 체크
+    if (item.isChecked) {
+      setChecked(true);
+    }
+  }, []);
 
   const handleCheckboxChange = () => {
     setChecked(!isChecked);
@@ -34,10 +46,23 @@ const MainList = (props) => {
     setPopupOpen(!isPopupOpen);
   };
 
+  const deleteTodoResultAction = result => {
+    if (result === 0) {
+      alert("수정이 실패하였습니다.");
+    } else if (result === 1) {
+      alert("수정이 성공하였습니다.");
+    } else if (result === 500) {
+      alert("서버가 불안정합니다. ");
+    }
+  };
+  const handleClick = () => {
+    //  todo를 삭제하고 싶은 유저의 PK
+    // 	해당 todo의 PK
+    deleteTodo(loginedUserId, item.todoId, deleteTodoResultAction);
+  };
+  
   return (
-    <ListMain
-      backgroundColor={isChecked ? "#E4E2E6" : "#fff"}
-    >
+    <ListMain backgroundColor={isChecked ? "#E4E2E6" : "#fff"}>
       <ListContent>
         <ListDiv>
           <ListImg>
@@ -46,11 +71,11 @@ const MainList = (props) => {
             />
           </ListImg>
           <ListText>
-            <ListTitle>세탁기청소</ListTitle>
+            <ListTitle>{item.cleaning}</ListTitle>
           </ListText>
         </ListDiv>
         <ListDiv>
-          <ListDate>yy.mm.dd</ListDate>
+          <ListDate>{item.doDay}</ListDate>
           <CheckboxDiv>
             <ListCheckbox
               type="checkbox"
@@ -63,7 +88,9 @@ const MainList = (props) => {
             {isPopupOpen && (
               <EditDelete>
                 {/* 팝업 컴포넌트 넣기 */}
+
                 <MenuTab type={1} handleButtonClick={props.handleButtonClick}/>
+
                 {/* 오버레이 */}
                 <div onClick={handlePopupToggle}></div>
               </EditDelete>

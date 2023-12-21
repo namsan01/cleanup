@@ -124,7 +124,7 @@ export const CreateList = styled.div`
     border: none;
     background: var(--m-3-sys-light-primary, #0055d5);
     font-weight: 700;
-    margin-left: 15px;
+    margin-right: 50px;
     color: #fff;
     font-size: 15px;
     font-family: Roboto;
@@ -141,6 +141,7 @@ export const CreateList = styled.div`
     border: 1.5px solid #757780;
     background: transparent;
     gap: 8px;
+    margin-right: 15px;
     flex-shrink: 0;
     font-weight: 700;
     font-size: 15px;

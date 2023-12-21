@@ -1,44 +1,51 @@
-import styled from "@emotion/styled";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import FeedList from "../components/FeedList";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import Confirm from "../components/Confirm";
 import DiaryMain from "../components/diary/DiaryMain";
-import SubBar from "../components/SubBar";
-import MenuTab from "../components/MenuTab";
-import { MainAddBt } from "../styles/basic";
+import { MainAddBt, Wrap } from "../styles/basic";
+import { getDiary } from "../api/diary/diary_api";
 
 const Diary = () => {
   // navigate 로 path 전달!
   const navigate = useNavigate();
-
-  // SubBar 로 가기
-
-  const handleClickSubBar = () => {
-    navigate("/sub");
-  };
   // main 탭으로 가기
-  // const handleClickMain = () => {
-  //   navigate(`/main`);
-  // };
+
+  const handleClickMain = () => {
+    navigate(`/main`);
+  };
+
+  const [loginedUserId, setLoginedUserId] = useState("2");
+  const [page, setPage] = useState(1);
+  const [diaryList, setDiaryList] = useState([]);
+
+  useEffect(() => {
+    getDiary(loginedUserId, page, setDiaryList);
+  }, []);
+
   return (
-    <div>
-      <Header
-        text={"내 청소일기"}
-        type={1}
-        // onClick={handleClickSubBar}
-        handleClickSubBar={handleClickSubBar}
-      ></Header>
+    <Wrap maxw={1024} maxh={1366}>
+      <Header text={"내 청소일기"} type={1}></Header>
       <DiaryMain>
-        <FeedList title={"화장실 청소"}>
-          <div>고길동</div>
-        </FeedList>
-        <FeedList title={"주방 청소"}>
-          <div>고길동</div>
-        </FeedList>
-        <FeedList></FeedList>
+        {diaryList.map(item => (
+          <FeedList
+            nickname={item.nickname}
+            key={item.diaryId}
+            title={item.title}
+            loginedUserId={loginedUserId}
+            contents={item.contents}
+          ></FeedList>
+        ))}
+        {/* <FeedList>
+          {diary.map((item, index) => {
+            return (
+              <div key={index}>
+                <FeedList><h2>{item}</h2></FeedList>
+              </div>
+            );
+          })}
+        </FeedList> */}
 
         <MainAddBt>
           <Link to="/diary/add">
