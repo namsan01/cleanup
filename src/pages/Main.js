@@ -38,7 +38,9 @@ const Main = () => {
             src={process.env.PUBLIC_URL + "../assets/images/bt_main_add.svg"}
           />
         </MainAddBt>
-        {isPopupOpen && <CreateEditList handleCancel={handleCancel} />}
+        {isPopupOpen && (
+          <CreateEditList text="작성" handleCancel={handleCancel} />
+        )}
       </div>
       <Footer></Footer>
     </Wrap>
