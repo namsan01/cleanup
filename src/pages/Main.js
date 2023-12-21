@@ -19,7 +19,7 @@ const Main = () => {
     <Wrap maxw={1024} maxh={1366}>
       <Header text="메인화면" type={1} />
       <div style={{ paddingTop: "90px", paddingBottom: "300px " }}>
-        <List mgt={false}></List>
+        <List mgt={false} handleButtonClick={handleButtonClick}></List>
         <List></List>
         <List></List>
         <List></List>
@@ -40,7 +40,7 @@ const Main = () => {
         </MainAddBt>
         {isPopupOpen && <CreateEditList handleCancel={handleCancel} />}
       </div>
-      <Footer></Footer>
+      <Footer type={1}></Footer>
     </Wrap>
   );
 };

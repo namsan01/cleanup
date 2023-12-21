@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   DiaryAddFooter,
   DiaryAddHeader,
@@ -33,29 +33,48 @@ const DiaryAdd = () => {
   const [uploadImgAfter, setUploadImgAfter] = useState(
     `${process.env.PUBLIC_URL}/assets/images/bt_media.svg`,
   );
-  const handleChange = async (event, type) => {
+  // const handleChange = async (event, type) => {
+  //   const file = event.target.files[0];
+  //   const formData = new FormData();
+  //   formData.append("pic", file);
+
+  //   try {
+  //     const res = await fetch("/upload/images", {
+  //       method: "POST",
+  //       body: formData,
+  //       headers: {
+  //         "Content-Type": "multipart/form-data",
+  //       },
+  //     });
+
+  //     console.log("전송완료", res);
+  //     // 이미지 타입에 따라 다른 상태 업데이트
+  //     if (type === "before") {
+  //       setUploadImgBefore(URL.createObjectURL(file));
+  //     } else if (type === "after") {
+  //       setUploadImgAfter(URL.createObjectURL(file));
+  //     }
+  //   } catch (error) {
+  //     console.log("업로드 실패", error);
+  //   }
+  // };
+  useEffect(() => {
+    // uploadImgBefore 또는 uploadImgAfter 상태가 변경될 때 실행됩니다.
+  }, [uploadImgBefore, uploadImgAfter]);
+  const handleChange = (event, type) => {
     const file = event.target.files[0];
-    const formData = new FormData();
-    formData.append("pic", file);
-
-    try {
-      const res = await fetch("/upload/images", {
-        method: "POST",
-        body: formData,
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-
-      console.log("전송완료", res);
+    const reader = new FileReader();
+    reader.onload = () => {
+      const imageUrl = reader.result;
       // 이미지 타입에 따라 다른 상태 업데이트
       if (type === "before") {
-        setUploadImgBefore(URL.createObjectURL(file));
+        setUploadImgBefore(imageUrl);
       } else if (type === "after") {
-        setUploadImgAfter(URL.createObjectURL(file));
+        setUploadImgAfter(imageUrl);
       }
-    } catch (error) {
-      console.log("업로드 실패", error);
+    };
+    if (file) {
+      reader.readAsDataURL(file); // 파일을 읽어 URL로 변환
     }
   };
 

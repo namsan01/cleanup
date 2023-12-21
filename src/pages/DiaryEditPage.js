@@ -11,52 +11,46 @@ import {
   DiaryAddMainTitle,
   DiaryAddStyle,
 } from "../styles/diaryaddstyle";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import DiaryAdd from "../components/DiaryAdd";
 
 const init = "";
 const DiaryEdit = () => {
   // 미리 보여줄 이미지 주소
-  const [uploadImgBefore, setUploadImgBefore] = useState(init);
-  const [uploadImgAfter, setUploadImgAfter] = useState(init);
+  // const [uploadImgBefore, setUploadImgBefore] = useState(init);
+  // const [uploadImgAfter, setUploadImgAfter] = useState(init);
 
-  const handleChange = async (event, type) => {
-    const file = event.target.files[0];
-    const formData = new FormData();
-    formData.append("pic", file);
+  // const handleChange = async (event, type) => {
+  //   const file = event.target.files[0];
+  //   const formData = new FormData();
+  //   formData.append("pic", file);
 
-    try {
-      const res = await fetch("/upload/images", {
-        method: "POST",
-        body: formData,
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+  //   try {
+  //     const res = await fetch("/upload/images", {
+  //       method: "POST",
+  //       body: formData,
+  //       headers: {
+  //         "Content-Type": "multipart/form-data",
+  //       },
+  //     });
 
-      console.log("전송완료", res);
+  //     console.log("전송완료", res);
 
-      // 이미지 타입에 따라 다른 상태 업데이트
-      if (type === "before") {
-        setUploadImgBefore(URL.createObjectURL(file));
-      } else if (type === "after") {
-        setUploadImgAfter(URL.createObjectURL(file));
-      }
-    } catch (error) {
-      console.log("업로드 실패", error);
-    }
-  };
+  //     // 이미지 타입에 따라 다른 상태 업데이트
+  //     if (type === "before") {
+  //       setUploadImgBefore(URL.createObjectURL(file));
+  //     } else if (type === "after") {
+  //       setUploadImgAfter(URL.createObjectURL(file));
+  //     }
+  //   } catch (error) {
+  //     console.log("업로드 실패", error);
+  //   }
+  // };
   return (
     <>
-      <Topbar>
-        <div>
-          <button>
-            <img
-              src={process.env.PUBLIC_URL + "/assets/images/bt_menu.svg"}
-              alt=""
-            ></img>
-          </button>
-        </div>
-      </Topbar>
-      <DiaryAddStyle>
+      <Header text="수정하기"></Header>
+      {/* <DiaryAddStyle>
         <DiaryAddHeader>
           <DiaryAddHeaderComment>
             <h1>어서오세요!</h1>
@@ -151,7 +145,9 @@ const DiaryEdit = () => {
             저장
           </button>
         </DiaryAddFooter>
-      </DiaryAddStyle>
+      </DiaryAddStyle> */}
+      <DiaryAdd></DiaryAdd>
+      <Footer></Footer>
     </>
   );
 };

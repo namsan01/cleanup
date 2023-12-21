@@ -15,7 +15,7 @@ import {
 import MenuTab from "./MenuTab";
 // {jsonData.title}
 
-const MainList = () => {
+const MainList = (props) => {
   // check박스 체크 시 ListWrap 배경색 갱신
   const [isChecked, setChecked] = useState(false);
 
@@ -63,7 +63,7 @@ const MainList = () => {
             {isPopupOpen && (
               <EditDelete>
                 {/* 팝업 컴포넌트 넣기 */}
-                <MenuTab />
+                <MenuTab type={1} handleButtonClick={props.handleButtonClick}/>
                 {/* 오버레이 */}
                 <div onClick={handlePopupToggle}></div>
               </EditDelete>

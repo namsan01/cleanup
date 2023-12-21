@@ -20,9 +20,9 @@ const Diary = () => {
     navigate("/sub");
   };
   // main 탭으로 가기
-  const handleClickMain = () => {
-    navigate(`/main`);
-  };
+  // const handleClickMain = () => {
+  //   navigate(`/main`);
+  // };
   return (
     <div>
       <Header
@@ -50,7 +50,7 @@ const Diary = () => {
           </Link>
         </MainAddBt>
       </DiaryMain>
-      <Footer onClick={handleClickMain}></Footer>
+      <Footer type={2}></Footer>
     </div>
   );
 };

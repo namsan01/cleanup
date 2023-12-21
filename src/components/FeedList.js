@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   FeedListHeader,
   FeedListHeaderContent,
+  FeedListHeaderMenu,
   FeedListMedia,
   FeedListTxt,
   Feedliststyle,
@@ -9,6 +10,10 @@ import {
 import MenuTab from "./MenuTab";
 import { EditDelete } from "../styles/mainliststyle";
 import styled from "@emotion/styled";
+import { getDiary } from "../api/diary/feeddiaryapi";
+
+
+const initData = [];
 
 const FeedList = ({ title, children }) => {
   // isPopupOpen: 현재 팝업의 열림/닫힘 상태를 나타내는 상태
@@ -19,19 +24,17 @@ const FeedList = ({ title, children }) => {
     // setPopupOpen 함수를 사용하여 isPopupOpen 상태를 반전시킴
     setPopupOpen(!isPopupOpen);
   };
-  const FeedListHeaderMenu = styled.div`
-    position: relative;
-    display: block;
-    button {
-      width: 48px;
-      height: 48px;
-      display: block;
-      &:active {
-        filter: brightness(0.8);
-        cursor: pointer;
-      }
-    }
-  `;
+
+  const [DiaryData, setDiaryData] = useState(initData);
+
+  const getDiaryAction = () => {
+    console.log("자료호출");
+    getDiary(setDiaryData);
+  }
+
+  useEffect( () => {
+    getDiaryAction();
+  }, [])
 
   return (
     <Feedliststyle>

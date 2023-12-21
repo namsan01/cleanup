@@ -18,7 +18,7 @@ export const FeedListHeader = styled.div`
   padding: 12px 4px 12px 16px;
   align-items: center;
   align-self: stretch;
-  button{
+  button {
     border: none;
     background: transparent;
   }
@@ -46,6 +46,19 @@ export const FeedListHeaderContent = styled.div`
     font-family: Roboto;
     font-size: 16px;
     font-style: normal;
+  }
+`;
+export const FeedListHeaderMenu = styled.div`
+  position: relative;
+  display: block;
+  button {
+    width: 48px;
+    height: 48px;
+    display: block;
+    &:active {
+      filter: brightness(0.8);
+      cursor: pointer;
+    }
   }
 `;
 export const FeedListMedia = styled.div`
