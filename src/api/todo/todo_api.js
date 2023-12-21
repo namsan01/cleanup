@@ -18,11 +18,10 @@ export const getTodo = async (loginedUserId, page, setCleanList) => {
   }
 };
 
+
 // 내용 추가하기
 export const postTodo = async (loginedUserId, page, fnc) => {
-  const res = await axios.post(
-    `${SERVER_URL}/api/todo?loginedUserId=${loginedUserId}&page=${page}`,
-  );
+  const res = await axios.post(`${SERVER_URL}/api/todo`);
   fnc([...res.data]);
 };
 

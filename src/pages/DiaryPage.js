@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import DiaryMain from "../components/diary/DiaryMain";
 import { MainAddBt, Wrap } from "../styles/basic";
+import { getDiary } from "../api/diary/diary_api";
 
 const Diary = () => {
   // navigate 로 path 전달!
@@ -14,22 +15,27 @@ const Diary = () => {
     navigate(`/main`);
   };
 
-  // // useState 는 화면 새로 고침
-  // const [diary, setDiary] = useState([]);
+  const [loginedUserId, setLoginedUserId] = useState("2");
+  const [page, setPage] = useState(1);
+  const [diaryList, setDiaryList] = useState([]);
 
-  // getDiary(setDiary);
-  // useEffect(() => {
-  //   // 화면이 완료되면 get 호출
-  //   const getdiary = getDiary();
-  //   setDiary(getdiary);
-  // }, []);
+  useEffect(() => {
+    getDiary(loginedUserId, page, setDiaryList);
+  }, []);
 
   return (
     <Wrap maxw={1024} maxh={1366}>
       <Header text={"내 청소일기"} type={1}></Header>
       <DiaryMain>
-        <FeedList title={"화장실 청소"}></FeedList>
-        <FeedList title={"주방 청소"}></FeedList>
+        {diaryList.map(item => (
+          <FeedList
+            nickname={item.nickname}
+            key={item.diaryId}
+            title={item.title}
+            loginedUserId={loginedUserId}
+            contents={item.contents}
+          ></FeedList>
+        ))}
         {/* <FeedList>
           {diary.map((item, index) => {
             return (

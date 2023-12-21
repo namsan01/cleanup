@@ -59,6 +59,7 @@ const MainList = props => {
     // 	해당 todo의 PK
     deleteTodo(loginedUserId, item.todoId, deleteTodoResultAction);
   };
+  
   return (
     <ListMain backgroundColor={isChecked ? "#E4E2E6" : "#fff"}>
       <ListContent>
