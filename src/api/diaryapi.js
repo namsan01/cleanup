@@ -5,7 +5,9 @@ export const postDiary = async (obj, postSuccess, postFail) => {
   try {
     const res = await axios.post(`api/diary`, obj);
     console.log(res.data);
+
     // 상태 코드를 글자로 만들어서 첫 글자만 추출
+
     const resStatus = res.status.toString();
     // 정상이라면
     if (resStatus.charAt(0) === "2") {

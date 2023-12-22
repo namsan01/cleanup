@@ -1,6 +1,9 @@
 import styled from "@emotion/styled";
 
 export const Topbar = styled.header`
+  position: relative;
+  z-index: 9;
+
   .header-wrap {
     display: flex;
     position: fixed;
