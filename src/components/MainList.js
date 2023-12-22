@@ -14,8 +14,8 @@ import {
 } from "../styles/mainliststyle";
 import MenuTab from "./MenuTab";
 import { deleteTodo } from "../api/todo/todo_api";
+import CreateEdit from "./CreateEdit";
 // {jsonData.title}
-
 
 const MainList = props => {
   const item = props.item;
@@ -46,11 +46,15 @@ const MainList = props => {
     setPopupOpen(!isPopupOpen);
   };
 
-  const deleteTodoResultAction = result => {
+  const deleteTodoResultAction = obj => {
+    console.log("여기요..", obj);
+    const result = parseInt(obj.result);
+
     if (result === 0) {
       alert("수정이 실패하였습니다.");
     } else if (result === 1) {
       alert("수정이 성공하였습니다.");
+      props.getTodoAllfn();
     } else if (result === 500) {
       alert("서버가 불안정합니다. ");
     }
@@ -60,7 +64,7 @@ const MainList = props => {
     // 	해당 todo의 PK
     deleteTodo(loginedUserId, item.todoId, deleteTodoResultAction);
   };
-  
+
   return (
     <ListMain backgroundColor={isChecked ? "#E4E2E6" : "#fff"}>
       <ListContent>
@@ -89,7 +93,12 @@ const MainList = props => {
               <EditDelete>
                 {/* 팝업 컴포넌트 넣기 */}
 
-                <MenuTab type={1} handleButtonClick={props.handleButtonClick}/>
+                <MenuTab
+                  type={1}
+                  handleButtonClick={props.handleButtonClick}
+                  handleButtonClickEdit={props.handleButtonClickEdit}
+                  handleClick={handleClick}
+                />
 
                 {/* 오버레이 */}
                 <div onClick={handlePopupToggle}></div>
