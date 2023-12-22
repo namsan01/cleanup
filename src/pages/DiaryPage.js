@@ -35,6 +35,7 @@ const Diary = () => {
             title={item.title}
             loginedUserId={loginedUserId}
             contents={item.contents}
+            item={item}
           ></FeedList>
         ))}
         {/* <FeedList>

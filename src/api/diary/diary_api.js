@@ -27,6 +27,31 @@ export const getDiary = async (loginedUserId, page, setDiaryList) => {
     setDiaryList(demo.data);
   }
 };
+export const getDiaryFind = async (
+  loginedUserId,
+  page,
+  setNowDiary,
+  diaryId,
+) => {
+  try {
+    const url = `${SERVER_URL}/api/diary?loginedUserId=${loginedUserId}&page=${page}`;
+    console.log(url);
+    const res = await axios.get(url);
+    // 전달받은 diaryId 를 이용해서 하나의 객체를 찾는다.
+    const tempDiary = res.data.filter(item => item.diaryId === diaryId);
+    // 찾았으면 Edit 창의 set 을 통해서 자료를 넘기나.
+    setNowDiary(tempDiary);
+  } catch (error) {
+    // 개발 중에만 활용. 실제 서비스에서는 경고창 마무리
+    alert(` ${error} 가 발생했습니다. 데모데이터를 쓸게요.`);
+    // 데모 데이터를 이용하여 작업은 진행
+    const demo = await axios.get("getDiary.json");
+    // 전달받은 diaryId 를 이용해서 하나의 객체를 찾는다.
+    const tempDiary = demo.filter(item => item.diaryId === diaryId);
+    // 찾았으면 Edit 창의 set 을 통해서 자료를 넘기나.
+    setNowDiary(tempDiary);
+  }
+};
 
 // 내용 추가하기
 export const postDiary = async (loginedUserId, page, fnc) => {
@@ -41,6 +66,8 @@ export const putDiary = async (
   fnc,
   postSuccess,
   postFail,
+  putSuccess,
+  putFail,
 ) => {
   try {
     const res = await axios.put(`${SERVER_URL}/api/diary`);
@@ -50,6 +77,7 @@ export const putDiary = async (
       console.log("전송성공");
       fnc([...res.data]);
       postSuccess();
+      putSuccess();
     } else {
       // 리액트가 잘못인 경우 : 약속된 단어 또는 값을 잘못인 경우
       // 백엔드의 문제인 경우 : 서버가 수정된 단어 및 값을 잘못 전달되거나 안 알려준 경우
@@ -61,9 +89,13 @@ export const putDiary = async (
   } catch (error) {
     console.log(error);
     postFail();
+      putFail();
+    }
+  } catch (error) {
+    console.log(error);
+    putFail();
   }
 };
-
 export const patchDiary = async (loginedUserId, page, fnc) => {
   const res = await axios.fetch(
     `${SERVER_URL}/api/diary?loginedUserId=${loginedUserId}&page=${page}`,

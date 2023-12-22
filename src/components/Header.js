@@ -1,8 +1,9 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { Topbar } from "../styles/headerstyle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SubBar from "./SubBar";
 import Confirm from "./Confirm";
+import { getTodo } from "../api/todo/todo_api";
 const Header = ({ text, type }) => {
   const location = useLocation();
   const pathname = location.pathname;
@@ -11,7 +12,7 @@ const Header = ({ text, type }) => {
 
   const haldeClickBt = () => {
     // console.log(pathname);
-    if (pathname === "/diary/add") {
+    if (pathname === "/diary/add" || pathname.startsWith("/diary/edit/")) {
       setIsModal(true);
     }
   };
@@ -23,6 +24,19 @@ const Header = ({ text, type }) => {
   const handlePopupToggle = () => {
     // setPopupOpen 함수를 사용하여 isPopupOpen 상태를 반전시킴
     setPopupOpen(!isPopupOpen);
+  };
+
+  const [confirmOpen, setConfirmOpen] = useState(false);
+
+  const handleButtonClick = () => {
+    setConfirmOpen(true);
+  };
+  const handleConfirm = e => {
+    // e.preventDefault();
+    Navigate(`/diary`);
+  };
+  const handleCancel = () => {
+    setConfirmOpen(false);
   };
 
   return (
@@ -56,7 +70,9 @@ const Header = ({ text, type }) => {
           </button>
         </div>
       </div>
-      {isModal && <Confirm setIsModal={setIsModal} isModal ={isModal} />}
+
+      {isModal && <Confirm setIsModal={setIsModal} isModal={isModal} />}
+
     </Topbar>
   );
 };

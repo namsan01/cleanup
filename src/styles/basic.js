@@ -11,7 +11,7 @@ export const MainAddBt = styled.div`
     left: 50%;
     top: 85%;
     transform: translate(-50%, -50%);
-    z-index: 9999;
+    z-index: 1;
     height: 88px;
     width: 88px;
     display: block;
