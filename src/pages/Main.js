@@ -28,13 +28,12 @@ const Main = () => {
     <Wrap maxw={1024} maxh={1366}>
       <Header text="메인화면" type={1} />
       <div style={{ paddingTop: "90px", paddingBottom: "300px " }}>
-
         {cleanList.map(item => (
           <List
             key={item.todoId}
             item={item}
             loginedUserId={loginedUserId}
-handleButtonClick={handleButtonClick}  
+            handleButtonClick={handleButtonClick}
           ></List>
         ))}
 

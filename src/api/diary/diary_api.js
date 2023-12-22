@@ -10,7 +10,15 @@ export const getDiary = async (loginedUserId, page, setDiaryList) => {
     console.log(url);
 
     const res = await axios.get(url);
-    setDiaryList([...res.data]);
+
+    const resStatus = res.status.toString();
+    // 정상이라면
+    if (resStatus.charAt(0) === "2") {
+      console.log("전송성공");
+      setDiaryList([...res.data]);
+    } else {
+      alert("데이터 전송에 실패했습니다.");
+    }
   } catch (error) {
     // 개발 중에만 활용. 실제 서비스에서는 경고창 마무리
     alert(` ${error} 가 발생했습니다. 데모데이터를 쓸게요.`);
@@ -27,9 +35,33 @@ export const postDiary = async (loginedUserId, page, fnc) => {
 };
 
 // 내용 수정하기
-export const putDiary = async (loginedUserId, page, fnc) => {
-  const res = await axios.put(`${SERVER_URL}/api/diary`);
-  fnc([...res.data]);
+export const putDiary = async (
+  loginedUserId,
+  page,
+  fnc,
+  postSuccess,
+  postFail,
+) => {
+  try {
+    const res = await axios.put(`${SERVER_URL}/api/diary`);
+    const resStatus = res.status.toString();
+    // 정상이라면
+    if (resStatus.charAt(0) === "2") {
+      console.log("전송성공");
+      fnc([...res.data]);
+      postSuccess();
+    } else {
+      // 리액트가 잘못인 경우 : 약속된 단어 또는 값을 잘못인 경우
+      // 백엔드의 문제인 경우 : 서버가 수정된 단어 및 값을 잘못 전달되거나 안 알려준 경우
+      // 400 : 잘못된 문법으로 인하여 서버가 요청을 이해할 수 없음을 의미
+      // 403 : 클라이언트는 콘텐츠에 접근할 권리를 가지고 있지 않습니다. 예를들어 그들은 미승인이어서 서버는 거절을 위한 적절한 응답을 보냅니다. 401과 다른 점은 서버가 클라이언트가 누구인지 알고 있습니다.
+      alert("데이터 전송에 실패했습니다.");
+      postFail();
+    }
+  } catch (error) {
+    console.log(error);
+    postFail();
+  }
 };
 
 export const patchDiary = async (loginedUserId, page, fnc) => {

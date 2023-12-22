@@ -28,19 +28,6 @@ const FeedList = props => {
     setPopupOpen(!isPopupOpen);
   };
 
-  const FeedListHeaderMenu = styled.div`
-    position: relative;
-    display: block;
-    button {
-      width: 48px;
-      height: 48px;
-      display: block;
-      &:active {
-        filter: brightness(0.8);
-        cursor: pointer;
-      }
-    }
-  `;
   // const handleClickEditDelete = () => {
   //   // deleteDiary(loginedUserId, page, fnc);
   // };

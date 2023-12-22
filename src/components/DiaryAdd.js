@@ -12,27 +12,73 @@ import {
 } from "../styles/diaryaddstyle";
 import { useNavigate } from "react-router-dom";
 import Confirm from "./Confirm";
+import { postDiary } from "../api/diaryapi";
 
 const DiaryAdd = () => {
   const navigate = useNavigate();
 
   const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [pics, setPics] = useState([]);
+  // 제목입력 업데이트
   const handleChangeTitle = e => {
-    // 입력 값 업데이트
     setTitle(e.target.value);
   };
+  // 내용 입력 값 업데이트
+  const handleChangeContent = e => {
+    setContent(e.target.value);
+  };
+  // 입력 필드의 내용을 지우기
   const handleClearTitle = e => {
-    // 입력 필드의 내용을 지우기
     // e.preventDefault();
     setTitle("");
   };
 
+  // 미리보기 이미지 (전)
   const [uploadImgBefore, setUploadImgBefore] = useState(
     `${process.env.PUBLIC_URL}/assets/images/bt_media.svg`,
   );
+  // 업로드용 이미지
+  const [uploadImgBeforeFile, setUploadImgBeforeFile] = useState(null);
+  // 업로드된 이미지 FB 의 URL
+  const [urlBefore, setUrlBefore] = useState("");
+
+  // 미리보기 이미지 (후)
   const [uploadImgAfter, setUploadImgAfter] = useState(
     `${process.env.PUBLIC_URL}/assets/images/bt_media.svg`,
   );
+  // 업로드용 이미지
+  const [uploadImgAfterFile, setUploadImgAfterFile] = useState(null);
+  // 업로드된 이미지 FB 의 URL
+  const [urlAfter, setUrlAfter] = useState("");
+
+  // 파일 보관 총 갯수
+  const [fileCount, setFileCount] = useState();
+  // 첫번째 이미지 추가 보완 작업 ( 이미지 미리 보기 처리 )
+  const handleChangeFileOne = e => {
+    const file = e.target.files[0];
+    if (file) {
+      // 미리보기
+      // 웹 브라우저 임시주소
+      const tempUrl = URL.createObjectURL(file);
+      setUploadImgBefore(tempUrl); // 미리 보기 끝
+      setUploadImgBeforeFile(file); // FB 업로드를 위한 파일 보관 끝
+      setFileCount(prev => prev + 1); // 파일 추가 되었어요.
+    }
+  };
+  // 두번째 이미지 추가 보완 작업 ( 이미지 미리 보기 처리 )
+  const handleChangeFileTwo = e => {
+    const file = e.target.files[0];
+    if (file) {
+      // 미리보기
+      // 웹 브라우저 임시주소
+      const tempUrl = URL.createObjectURL(file);
+      setUploadImgAfter(tempUrl); // 미리 보기 끝
+      setUploadImgAfterFile(file); // FB 업로드를 위한 파일 보관 끝
+      setFileCount(prev => prev + 1); // 파일 추가 되었어요.
+    }
+  };
+
   // const handleChange = async (event, type) => {
   //   const file = event.target.files[0];
   //   const formData = new FormData();
@@ -83,8 +129,33 @@ const DiaryAdd = () => {
     setConfirmOpen(true);
   };
   const handleConfirm = e => {
+    if (title === "") {
+      alert("제목을 입력하세요.");
+      return;
+    }
+    if (content === "") {
+      alert("내용을 입력하세요.");
+      return;
+    }
+    const obj = {
+      loginedUserId: 3,
+      title: title,
+      contents: content,
+      pics: [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/NewJeans_X_OLENS_1_%28cropped%29.jpg/250px-NewJeans_X_OLENS_1_%28cropped%29.jpg",
+        "",
+      ],
+    };
+    postDiary(obj, postSuccess, postFail);
+  };
+  const postSuccess = () => {
     navigate(`/diary`);
   };
+  const postFail = () => {
+    alert("서버가 불안정합니다. 다시 작성해주세요.");
+    setConfirmOpen(false);
+  };
+
   const handleCancel = () => {
     setConfirmOpen(false);
   };
@@ -129,6 +200,8 @@ const DiaryAdd = () => {
           <textarea
             type="text"
             maxLength={2000}
+            value={content}
+            onChange={handleChangeContent}
             placeholder="내용을 입력해 주세요."
             name="content"
           />
@@ -153,7 +226,7 @@ const DiaryAdd = () => {
             type="file"
             accept="image/png, image/gif, image/jpeg"
             onChange={event => {
-              handleChange(event, "before");
+              handleChangeFileOne(event, "before");
             }}
             id="input-file-before"
             style={{ display: "none" }}
@@ -173,7 +246,7 @@ const DiaryAdd = () => {
             type="file"
             accept="image/png, image/gif, image/jpeg"
             onChange={event => {
-              handleChange(event, "after");
+              handleChangeFileTwo(event, "after");
             }}
             id="input-file-after"
             style={{ display: "none" }}
