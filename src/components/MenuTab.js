@@ -10,10 +10,13 @@ import { useNavigate } from "react-router-dom";
 import CreateEditList from "./CreateEditList";
 
 const MenuTab = props => {
+  const item = props.item;
   const navigate = useNavigate();
 
   const handleClickEdit = () => {
-    navigate("/diary/edit ");
+    // 여기서 item을 넘겨야 해요.
+    console.log("보자", item);
+    navigate(`/diary/edit/${item.diaryId}`);
   };
 
   const pk = props.pk;

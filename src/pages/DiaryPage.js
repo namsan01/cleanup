@@ -35,6 +35,7 @@ const Diary = () => {
             title={item.title}
             loginedUserId={loginedUserId}
             contents={item.contents}
+            item={item}
           ></FeedList>
         ))}
         {/* <FeedList>
@@ -58,7 +59,7 @@ const Diary = () => {
         </MainAddBt>
       </DiaryMain>
       <Footer type={2}></Footer>
-    </div>
+    </Wrap>
   );
 };
 

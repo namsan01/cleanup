@@ -17,7 +17,7 @@ const FeedList = props => {
   const title = props.title;
   const nickname = props.nickname;
   const contents = props.contents;
-
+  const item = props.item;
 
   // isPopupOpen: 현재 팝업의 열림/닫힘 상태를 나타내는 상태
   // setPopupOpen: isPopupOpen 상태를 갱신하는 함수
@@ -67,7 +67,6 @@ const FeedList = props => {
     deleteDiary(diaryListClean, deleteDiaryResultAction);
   };
 
-
   return (
     <Feedliststyle>
       <FeedListHeader>
@@ -89,7 +88,7 @@ const FeedList = props => {
             {isPopupOpen && (
               <EditDelete>
                 {/* 팝업 컴포넌트 넣기 */}
-                <MenuTab onClick={() => handleClick()} />
+                <MenuTab onClick={() => handleClick()} item={item} />
                 {/* 오버레이 */}
                 <div onClick={handlePopupToggle}></div>
               </EditDelete>
