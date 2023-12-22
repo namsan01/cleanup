@@ -36,6 +36,7 @@ const FeedList = props => {
   const handleClcik = props.handleClick;
 
   const [diaryListClean, setDiaryListClean] = useState();
+  const [a, b] = useState([]);
 
   const deleteDiaryResultAction = result => {
     if (result === 0) {

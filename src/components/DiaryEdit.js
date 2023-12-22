@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Topbar } from "../styles/headerstyle";
 import {
   DiaryAddFooter,
   DiaryAddHeader,
@@ -11,11 +10,12 @@ import {
   DiaryAddMainTitle,
   DiaryAddStyle,
 } from "../styles/diaryaddstyle";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import { getDiary, getDiaryFind, putDiary } from "../api/diary/diary_api";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import Confirm from "./Confirm";
+
+// ==============================================================
+// 더미 ?
 const obj = {
   loginedUserId: 0,
   diaryId: 0,
@@ -25,14 +25,22 @@ const obj = {
   pics: ["string"],
   createdAt: "string",
 };
+// ==============================================================
+
 const DiaryEdit = props => {
   const params = useParams();
   const diaryId = params.diaryId;
+  // ==========================================
+  // const { diaryId } = useParams();
+  // const diaryData = params.find(Diary => props.diaryId === parseInt(diaryId));
+  // console.log("나와주세요..", diaryData);
+  // ====================================================
   console.log("편집할 ID", diaryId);
   const [loginedUserId, setLoginedUserId] = useState("2");
   const [page, setPage] = useState(1);
   const [diaryList, setDiaryList] = useState([]);
   const [nowDiary, setNowDiary] = useState({});
+
   useEffect(() => {
     getDiaryFind(loginedUserId, page, setNowDiary, diaryId);
   }, []);
@@ -40,29 +48,21 @@ const DiaryEdit = props => {
     const tempDiary = diaryList.filter(item => item.diaryId === diaryId);
     setNowDiary(tempDiary);
   };
+
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [pics, setPics] = useState([]);
-  // 제목입력 업데이트
-  const handleChangeTitle = e => {
-    setTitle(e.target.value);
-  };
-  // 내용 입력 값 업데이트
-  const handleChangeContent = e => {
-    setContent(e.target.value);
-  };
-  const handleClearTitle = e => {
-    // 입력 필드의 내용을 지우기
-    // e.preventDefault();
-    setTitle("");
-  };
+
+  // ==============================================================
   const [uploadImgBefore, setUploadImgBefore] = useState(
     `${process.env.PUBLIC_URL}/assets/images/bt_media.svg`,
   );
   const [uploadImgAfter, setUploadImgAfter] = useState(
     `${process.env.PUBLIC_URL}/assets/images/bt_media.svg`,
   );
+  // ==============================================================
+
   useEffect(() => {
     // uploadImgBefore 또는 uploadImgAfter 상태가 변경될 때 실행됩니다.
   }, [uploadImgBefore, uploadImgAfter]);
@@ -82,29 +82,42 @@ const DiaryEdit = props => {
       reader.readAsDataURL(file); // 파일을 읽어 URL로 변환
     }
   };
+
   const [confirmOpen, setConfirmOpen] = useState(false);
   const handleButtonClick = () => {
     setConfirmOpen(true);
   };
-  const handleConfirm = e => {
-    if (title === "") {
+  const handleConfirm = async e => {
+    if (nowDiary.title === "") {
+      setConfirmOpen(false);
       alert("제목을 입력하세요.");
       return;
     }
-    if (content === "") {
+    if (nowDiary.content === "") {
+      setConfirmOpen(false);
       alert("내용을 입력하세요.");
       return;
     }
-    const obj = {
-      loginedUserId: 3,
-      title: title,
-      contents: content,
-      pics: [
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/NewJeans_X_OLENS_1_%28cropped%29.jpg/250px-NewJeans_X_OLENS_1_%28cropped%29.jpg",
-        "",
-      ],
-    };
+    // const obj = {
+    //   loginedUserId: 3,
+    //   title: title,
+    //   contents: content,
+    //   pics: [
+    //     "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/NewJeans_X_OLENS_1_%28cropped%29.jpg/250px-NewJeans_X_OLENS_1_%28cropped%29.jpg",
+    //     "",
+    //   ],
+    // };
     putDiary(obj, putSuccess, putFail);
+    // PUT 요청 보내기
+    try {
+      await putDiary(nowDiary); // 수정이 필요한 요청으로 변경해야 함
+      navigate(`/diary`);
+    } catch (error) {
+      console.error("Error updating diary:", error);
+      alert("서버가 불안정합니다. 다시 시도해주세요.");
+    }
+
+    setConfirmOpen(false);
   };
   const putSuccess = () => {
     navigate(`/diary`);
@@ -116,6 +129,31 @@ const DiaryEdit = props => {
   const handleCancel = () => {
     setConfirmOpen(false);
   };
+
+  // ==============================================================
+  // 제목입력 업데이트
+  const handleChangeTitle = e => {
+    setNowDiary(prevDiary => ({
+      ...prevDiary,
+      title: e.target.value,
+    }));
+  };
+  // 내용 입력 값 업데이트
+  const handleChangeContent = e => {
+    setNowDiary(prevDiary => ({
+      ...prevDiary,
+      contents: e.target.value,
+    }));
+  };
+  const handleClearTitle = () => {
+    // 입력 필드의 내용을 지우기
+    setNowDiary(prevDiary => ({
+      ...prevDiary,
+      title: "",
+    }));
+    console.log("Title cleared");
+  };
+  // ==============================================================
   return (
     <DiaryAddStyle>
       <DiaryAddHeader>
@@ -156,7 +194,7 @@ const DiaryEdit = props => {
           <textarea
             type="text"
             maxLength={2000}
-            value={content}
+            value={nowDiary.contents}
             onChange={handleChangeContent}
             placeholder="내용을 입력해 주세요."
             name="content"

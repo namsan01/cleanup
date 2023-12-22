@@ -37,7 +37,9 @@ const Header = ({ text, type }) => {
     navigate(`/diary`);
   };
   const handleCancel = () => {
+    console.log("handleCancel 함수 호출");
     setConfirmOpen(false);
+    setIsModal(false);
   };
 
   return (
