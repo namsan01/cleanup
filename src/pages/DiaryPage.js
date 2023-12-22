@@ -58,7 +58,7 @@ const Diary = () => {
         </MainAddBt>
       </DiaryMain>
       <Footer type={2}></Footer>
-    </div>
+    </Wrap>
   );
 };
 

@@ -5,8 +5,7 @@ import {
   CreateTitle,
 } from "../styles/createeditstyle";
 
-const CreateEditList = ({ text, handleCancel }) => {
-  
+const CreateEdit = ({ text, handleCancel }) => {
   return (
     <CreateListBg>
       <CreateList>
@@ -27,7 +26,7 @@ const CreateEditList = ({ text, handleCancel }) => {
             </div>
             <div className="create-main-right">
               <div className="create-date">
-                <span>mm/dd/yyyy</span>
+                <input type="memo" maxLength={10} placeholder="yyyy/mm/dd" />
               </div>
               <h2>날짜를 입력해 주세요!</h2>
             </div>
@@ -67,4 +66,4 @@ const CreateEditList = ({ text, handleCancel }) => {
   );
 };
 
-export default CreateEditList;
+export default CreateEdit;
