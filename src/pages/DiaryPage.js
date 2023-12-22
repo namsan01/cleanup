@@ -49,7 +49,7 @@ const Diary = () => {
         </FeedList> */}
 
         <MainAddBt>
-          <Link to="/diary/add">
+          <Link to="/add">
             <img
               className="MainAddBt"
               src={process.env.PUBLIC_URL + "../assets/images/bt_main_add.svg"}

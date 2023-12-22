@@ -15,10 +15,8 @@ import Confirm from "./Confirm";
 import { postDiary } from "../api/diaryapi";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../fb/firebaseconfig";
-
 const DiaryAdd = () => {
   const navigate = useNavigate();
-
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [pics, setPics] = useState([]);
@@ -30,76 +28,33 @@ const DiaryAdd = () => {
   const handleChangeContent = e => {
     setContent(e.target.value);
   };
-
-  // 입력 필드의 내용을 지우기
   const handleClearTitle = e => {
+    // 입력 필드의 내용을 지우기
     // e.preventDefault();
     setTitle("");
   };
-
   // 총 개수 파악
   const [fileCount, setFileCount] = useState(0);
-
   // 미리보기 이미지 1
   const [uploadImgBefore, setUploadImgBefore] = useState(
     `${process.env.PUBLIC_URL}/assets/images/bt_media.svg`,
   );
   // 업로드용 이미지 1
-  // 미리보기 이미지 (전)
-  const [uploadImgBefore, setUploadImgBefore] = useState(
-    `${process.env.PUBLIC_URL}/assets/images/bt_media.svg`,
-  );
-  // 업로드용 이미지
   const [uploadImgBeforeFile, setUploadImgBeforeFile] = useState(null);
   // 업로드된 이미지 FB 의 URL
   const [urlBefore, setUrlBefore] = useState("");
-
   // 미리보기 이미지  2
   const [uploadImgAfter, setUploadImgAfter] = useState(
     `${process.env.PUBLIC_URL}/assets/images/bt_media.svg`,
   );
   // 업로드용 이미지 2
-  // 미리보기 이미지 (후)
-  const [uploadImgAfter, setUploadImgAfter] = useState(
-    `${process.env.PUBLIC_URL}/assets/images/bt_media.svg`,
-  );
-  // 업로드용 이미지
   const [uploadImgAfterFile, setUploadImgAfterFile] = useState(null);
   // 업로드된 이미지 FB 의 URL
   const [urlAfter, setUrlAfter] = useState("");
-
-  // 파일 보관 총 갯수
-  const [fileCount, setFileCount] = useState();
-  // 첫번째 이미지 추가 보완 작업 ( 이미지 미리 보기 처리 )
-  const handleChangeFileOne = e => {
-    const file = e.target.files[0];
-    if (file) {
-      // 미리보기
-      // 웹 브라우저 임시주소
-      const tempUrl = URL.createObjectURL(file);
-      setUploadImgBefore(tempUrl); // 미리 보기 끝
-      setUploadImgBeforeFile(file); // FB 업로드를 위한 파일 보관 끝
-      setFileCount(prev => prev + 1); // 파일 추가 되었어요.
-    }
-  };
-  // 두번째 이미지 추가 보완 작업 ( 이미지 미리 보기 처리 )
-  const handleChangeFileTwo = e => {
-    const file = e.target.files[0];
-    if (file) {
-      // 미리보기
-      // 웹 브라우저 임시주소
-      const tempUrl = URL.createObjectURL(file);
-      setUploadImgAfter(tempUrl); // 미리 보기 끝
-      setUploadImgAfterFile(file); // FB 업로드를 위한 파일 보관 끝
-      setFileCount(prev => prev + 1); // 파일 추가 되었어요.
-    }
-  };
-
   // const handleChange = async (event, type) => {
   //   const file = event.target.files[0];
   //   const formData = new FormData();
   //   formData.append("pic", file);
-
   //   try {
   //     const res = await fetch("/upload/images", {
   //       method: "POST",
@@ -108,7 +63,6 @@ const DiaryAdd = () => {
   //         "Content-Type": "multipart/form-data",
   //       },
   //     });
-
   //     console.log("전송완료", res);
   //     // 이미지 타입에 따라 다른 상태 업데이트
   //     if (type === "before") {
@@ -123,7 +77,6 @@ const DiaryAdd = () => {
   useEffect(() => {
     // uploadImgBefore 또는 uploadImgAfter 상태가 변경될 때 실행됩니다.
   }, [uploadImgBefore, uploadImgAfter]);
-
   const handleChange = (event, type) => {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -140,7 +93,6 @@ const DiaryAdd = () => {
       reader.readAsDataURL(file); // 파일을 읽어 URL로 변환
     }
   };
-
   // 첫번째 이미지 추가 작업(이미지 미리 보기 처리)
   const handleChangeFileOne = e => {
     const file = e.target.files[0];
@@ -163,17 +115,22 @@ const DiaryAdd = () => {
       setFileCount(prev => prev + 1); // 파일 추가 되었어요.
     }
   };
-
   // 데이터를 모두 전송하고 나서 post 데이터를 만들자.
   const makePostData = async () => {
     try {
       // 그냥 파일을 그대로 올리지 마시고, 중복을 고려해서 이름 만들어주세요.
       const fileNameBefore = `images/_${uploadImgBeforeFile.name}`;
-      const urlOne = await uploadImage(fileNameBefore, uploadImgBeforeFile, setUrlBefore);
-
+      const urlOne = await uploadImage(
+        fileNameBefore,
+        uploadImgBeforeFile,
+        setUrlBefore,
+      );
       const fileNameAfter = `images/_${uploadImgAfterFile.name}`;
-      const urlTwo = await uploadImage(fileNameAfter, uploadImgAfterFile, setUrlAfter);
-
+      const urlTwo = await uploadImage(
+        fileNameAfter,
+        uploadImgAfterFile,
+        setUrlAfter,
+      );
       diaryAction(urlOne, urlTwo);
       // const obj = {
       //   loginedUserId: 3,
@@ -182,41 +139,34 @@ const DiaryAdd = () => {
       //   pics: [urlBefore, urlAfter],
       // };
       // console.log("백엔드 보낼 데이터", obj);
-
       // postDiary(obj, postSuccess, postFail);
     } catch (error) {
       console.log(error);
     }
   };
-
-  const diaryAction = (_one,_two) => {
-    console.log("보낸다!")
+  const diaryAction = (_one, _two) => {
+    console.log("보낸다!");
     const obj = {
       loginedUserId: 3,
       title: title,
       contents: content,
-      pics: [_one,_two],
+      pics: [_one, _two],
     };
     // console.log("백엔드 보낼 데이터", obj);
-
     postDiary(obj, postSuccess, postFail);
   };
-
   const [confirmOpen, setConfirmOpen] = useState(false);
   const handleButtonClick = () => {
     setConfirmOpen(true);
   };
   const handleConfirm = e => {
-
     e.preventDefault();
     if (title === "") {
       setConfirmOpen(false);
-    if (title === "") {
       alert("제목을 입력하세요.");
       return;
     }
     if (content === "") {
-
       setConfirmOpen(false);
       alert("내용을 입력하세요.");
       return;
@@ -231,15 +181,12 @@ const DiaryAdd = () => {
       alert("청소 후 사진을 선택해주세요.");
       return;
     }
-
     //저장할 내용(타이틀, 본문 공백 등등)을 먼저 체크 하고
     // FB 올릴 자료가 있으면 보낸다.
-
     // 업로드가 끝나면 데이터를 전송한다.
     // await 필요합니다.
     makePostData();
   };
-
   // 실제 이미지 업로드를 실행 함수
   const uploadImage = async (_fileName, _file, _set) => {
     try {
@@ -255,21 +202,6 @@ const DiaryAdd = () => {
       console.log("FB 오류", error);
     }
   };
-
-      alert("내용을 입력하세요.");
-      return;
-    }
-    const obj = {
-      loginedUserId: 3,
-      title: title,
-      contents: content,
-      pics: [
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/NewJeans_X_OLENS_1_%28cropped%29.jpg/250px-NewJeans_X_OLENS_1_%28cropped%29.jpg",
-        "",
-      ],
-    };
-    postDiary(obj, postSuccess, postFail);
-  };
   const postSuccess = () => {
     navigate(`/diary`);
   };
@@ -277,11 +209,9 @@ const DiaryAdd = () => {
     alert("서버가 불안정합니다. 다시 작성해주세요.");
     setConfirmOpen(false);
   };
-
   const handleCancel = () => {
     setConfirmOpen(false);
   };
-
   return (
     <DiaryAddStyle>
       <DiaryAddHeader>
@@ -382,7 +312,6 @@ const DiaryAdd = () => {
           />
           저장
         </button>
-
         {confirmOpen && (
           <Confirm
             type={1}
@@ -399,5 +328,4 @@ const DiaryAdd = () => {
     </DiaryAddStyle>
   );
 };
-
 export default DiaryAdd;

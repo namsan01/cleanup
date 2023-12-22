@@ -5,6 +5,7 @@ import SubBar from "./SubBar";
 import Confirm from "./Confirm";
 import { getTodo } from "../api/todo/todo_api";
 const Header = ({ text, type }) => {
+  const navigate = useNavigate();
   const location = useLocation();
   const pathname = location.pathname;
   // console.log(pathname);
@@ -12,7 +13,7 @@ const Header = ({ text, type }) => {
 
   const haldeClickBt = () => {
     // console.log(pathname);
-    if (pathname === "/diary/add" || pathname.startsWith("/diary/edit/")) {
+    if (pathname === "/add" || pathname.startsWith("/edit")) {
       setIsModal(true);
     }
   };
@@ -33,7 +34,7 @@ const Header = ({ text, type }) => {
   };
   const handleConfirm = e => {
     // e.preventDefault();
-    Navigate(`/diary`);
+    navigate(`/diary`);
   };
   const handleCancel = () => {
     setConfirmOpen(false);
@@ -71,8 +72,19 @@ const Header = ({ text, type }) => {
         </div>
       </div>
 
-      {isModal && <Confirm setIsModal={setIsModal} isModal={isModal} />}
-
+      {isModal && (
+        <Confirm
+          setIsModal={setIsModal}
+          isModal={isModal}
+          txt={
+            <div>
+              <span>취소</span>하고 나가시겠습니까?
+            </div>
+          }
+          onOk={handleConfirm}
+          onNo={handleCancel}
+        />
+      )}
     </Topbar>
   );
 };

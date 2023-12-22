@@ -21,7 +21,7 @@ const MenuTab = props => {
   const handleClickEdit = () => {
     // 여기서 item을 넘겨야 해요.
     console.log("보자", item);
-    navigate(`/diary/edit/${item.diaryId}`);
+    navigate(`/edit/${item.diaryId}`);
   };
 
   const pk = props.pk;
