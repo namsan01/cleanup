@@ -1,21 +1,9 @@
 import React, { useState } from "react";
-import {
-  DiaryAddFooter,
-  DiaryAddHeader,
-  DiaryAddHeaderComment,
-  DiaryAddMain,
-  DiaryAddMainButton,
-  DiaryAddMainContent,
-  DiaryAddMainImage,
-  DiaryAddMainTitle,
-  DiaryAddStyle,
-} from "../styles/diaryaddstyle";
-import { postData, postDiary } from "../api/diaryapi";
+import { postDiary } from "../api/diaryapi";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import styled from "@emotion/styled";
-import Confirm from "../components/Confirm";
 import DiaryAdd from "../components/DiaryAdd";
 
 const Wrap = styled.div`
@@ -24,9 +12,8 @@ const Wrap = styled.div`
   max-height: ${props => props.maxh + "px"};
 `;
 
-const DiaryAddPage = (props) => {
-
-  const [ diaryList, setDiaryList ] = useState([]);
+const DiaryAddPage = props => {
+  const [diaryList, setDiaryList] = useState([]);
   // const handleClickPostDiary = () => {
   //   postDiary(postResultAction, obj)
   // }
@@ -39,7 +26,6 @@ const DiaryAddPage = (props) => {
   const [content, setContent] = useState("");
   const [pic1, setPic1] = useState("");
   const [pic2, setPic2] = useState("");
-
 
   const [confirmOpen, setConfirmOpen] = useState(false);
 
@@ -60,7 +46,6 @@ const DiaryAddPage = (props) => {
     postDiary();
     navigate(`/diary`);
   };
-
 
   return (
     <Wrap maxw={1024} maxh={1366}>

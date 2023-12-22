@@ -14,10 +14,29 @@ import {
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { getDiary } from "../api/diary/diary_api";
-import { Navigate } from "react-router";
+import { Navigate, useNavigate } from "react-router-dom";
 import Confirm from "./Confirm";
 
-const DiaryEdit = () => {
+// 나도 작업해야지
+const obj = {
+  loginedUserId: 3,
+  title: "제목이지",
+  contents: "내용입니다.",
+  pics: [
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/NewJeans_X_OLENS_1_%28cropped%29.jpg/250px-NewJeans_X_OLENS_1_%28cropped%29.jpg",
+    "",
+  ],
+};
+
+const DiaryEdit = props => {
+  const navigate = useNavigate();
+
+  const item = props.item ? props.item : obj;
+
+  const [title, setTitle] = useState(item.title);
+  const [content, setContent] = useState(item.contents);
+  const [pics, setPics] = useState([...item.pics]);
+
   const init = "";
   const [cleanList, setCleanList] = useState([]);
 
@@ -62,6 +81,15 @@ const DiaryEdit = () => {
   //   getDiary(loginedUserId, page, diary);
   // });
 
+  const postSuccess = () => {
+    navigate(`/diary`);
+  };
+
+  const postFail = () => {
+    alert("서버가 불안정합니다. 다시 작성해주세요.");
+    setConfirmOpen(false);
+  };
+
   useEffect(() => {
     // uploadImgBefore 또는 uploadImgAfter 상태가 변경될 때 실행됩니다.
   }, [uploadImgBefore, uploadImgAfter]);
@@ -85,10 +113,14 @@ const DiaryEdit = () => {
     }
   };
 
-  const [title, setTitle] = useState("");
   const handleChangeTitle = e => {
     // 입력 값 업데이트
     setTitle(e.target.value);
+  };
+
+  const handleChangeContent = e => {
+    // 입력 값 업데이트
+    setContent(e.target.value);
   };
   const handleClearTitle = e => {
     // 입력 필드의 내용을 지우기
@@ -159,6 +191,8 @@ const DiaryEdit = () => {
           <DiaryAddMainContent>
             <textarea
               type="text"
+              value={content}
+              onChange={handleChangeContent}
               maxLength={2000}
               placeholder="내용을 입력해 주세요."
               name="content"
