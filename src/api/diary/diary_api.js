@@ -78,6 +78,7 @@ export const putDiary = async (
       fnc([...res.data]);
       postSuccess();
       putSuccess();
+
     } else {
       // 리액트가 잘못인 경우 : 약속된 단어 또는 값을 잘못인 경우
       // 백엔드의 문제인 경우 : 서버가 수정된 단어 및 값을 잘못 전달되거나 안 알려준 경우
@@ -89,6 +90,7 @@ export const putDiary = async (
   } catch (error) {
     console.log(error);
     postFail();
+
       putFail();
     }
   } catch (error) {

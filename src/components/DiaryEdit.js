@@ -101,6 +101,7 @@ const DiaryEdit = props => {
     setConfirmOpen(false);
   };
 
+
   const [uploadImgBefore, setUploadImgBefore] = useState(
     `${process.env.PUBLIC_URL}/assets/images/bt_media.svg`,
   );
