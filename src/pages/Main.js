@@ -4,8 +4,9 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import List from "../components/MainList";
 import { MainAddBt } from "../styles/basic";
-import CreateEditList from "../components/CreateEditList";
 import { getTodo } from "../api/todo/todo_api";
+import CreateAdd from "../components/CreateAdd";
+import CreateEdit from "../components/CreateEdit";
 
 const Main = () => {
   const [isPopupOpen, setPopupOpen] = useState(false);
@@ -13,28 +14,43 @@ const Main = () => {
     setPopupOpen(true);
   };
   const handleCancel = () => {
-    setPopupOpen(isPopupOpen => !isPopupOpen);
+    setPopupOpen(false);
+    setPopupOpenEdit(false);
+  };
+
+  const [isPopupOpenEdit, setPopupOpenEdit] = useState(false);
+  const handleButtonClickEdit = () => {
+    setPopupOpenEdit(true);
+  };
+  const handleCancelEdit = () => {
+    setPopupOpen(isPopupOpenEdit => !isPopupOpenEdit);
   };
 
   const [loginedUserId, setLoginedUserId] = useState("2");
   const [page, setPage] = useState(1);
   const [cleanList, setCleanList] = useState([]);
 
-  useEffect(() => {
+  const getTodoAllfn = () => {
     getTodo(loginedUserId, page, setCleanList);
+  };
+
+  useEffect(() => {
+    getTodoAllfn();
   }, []);
 
   return (
     <Wrap maxw={1024} maxh={1366}>
       <Header text="메인화면" type={1} />
       <div style={{ paddingTop: "90px", paddingBottom: "300px " }}>
-
         {cleanList.map(item => (
           <List
             key={item.todoId}
             item={item}
             loginedUserId={loginedUserId}
-handleButtonClick={handleButtonClick}  
+            handleButtonClick={handleButtonClick}
+            handleButtonClickEdit={handleButtonClickEdit}
+            handleCancelEdit={handleCancelEdit}
+            getTodoAllfn={getTodoAllfn}
           ></List>
         ))}
 
@@ -57,8 +73,16 @@ handleButtonClick={handleButtonClick}
             src={process.env.PUBLIC_URL + "../assets/images/bt_main_add.svg"}
           />
         </MainAddBt>
-        {isPopupOpen && (
-          <CreateEditList text="작성" handleCancel={handleCancel} />
+
+        {/* 작성 */}
+        {isPopupOpen && <CreateAdd text="작성" handleCancel={handleCancel} />}
+        {/* 수정 */}
+        {isPopupOpenEdit && (
+          <CreateEdit
+            text="수정"
+            handleCancel={handleCancel}
+            handleButtonClickEdit={handleButtonClickEdit}
+          />
         )}
       </div>
       <Footer type={1}></Footer>

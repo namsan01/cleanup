@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React from "react";
+import React, { useState } from "react";
 import {
   MenuTabDelete,
   MenuTabEdit,
@@ -7,11 +7,16 @@ import {
 } from "../styles/menutabstyle";
 import { Divider } from "antd";
 import { useNavigate } from "react-router-dom";
-import CreateEditList from "./CreateEditList";
+import CreateEdit from "./CreateEdit";
 
 const MenuTab = props => {
   const item = props.item;
   const navigate = useNavigate();
+  const [isPopupOpen, setPopupOpen] = useState(false);
+  const handlePopupToggle = () => {
+    // setPopupOpen 함수를 사용하여 isPopupOpen 상태를 반전시킴
+    setPopupOpen(true);
+  };
 
   const handleClickEdit = () => {
     // 여기서 item을 넘겨야 해요.
@@ -22,11 +27,12 @@ const MenuTab = props => {
   const pk = props.pk;
   const handleClick = props.handleClick;
   const handleButtonClick = props.handleButtonClick;
+
   return (
     <MenuTabStyle>
       {props.type === 1 ? (
         <>
-          <MenuTabEdit onClick={handleButtonClick}>
+          <MenuTabEdit onClick={props.handleButtonClickEdit}>
             <h3>수정하기</h3>
           </MenuTabEdit>
         </>

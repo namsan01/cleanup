@@ -5,6 +5,7 @@ export const CreateListBg = styled.div`
   height: 1500px;
   background: rgba(0, 0, 0, 0.3);
   position: fixed;
+  z-index: 9999;
   top: 0%;
 `;
 
@@ -74,6 +75,18 @@ export const CreateList = styled.div`
     border-radius: 4px 4px 0px 0px;
     justify-content: center;
     align-items: center;
+    color: var(--M3-sys-light-on-surface, #1b1b1f);
+    input {
+      position: relative;
+      width: 170px;
+      border: none;
+      border-radius: 4px 4px 0px 0px;
+      text-align: center;
+      ::placeholder {
+        color: var(--M3-sys-light-on-surface, #1b1b1f);
+        font-weight: 700;
+      }
+    }
   }
 
   .create-main-ft {
@@ -85,7 +98,8 @@ export const CreateList = styled.div`
     border-bottom: 3px solid rgba(23, 107, 255, 0.3);
   }
   .create-main-txt {
-    color: rgba(0, 0, 0, 0.3);
+    color: rgba(0, 0, 0, 0.4);
+    font-weight: 700;
     width: 725px;
     font-family: Roboto;
     font-size: 30px;
