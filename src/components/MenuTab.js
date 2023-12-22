@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import CreateEdit from "./CreateEdit";
 
 const MenuTab = props => {
+  const item = props.item;
   const navigate = useNavigate();
   const [isPopupOpen, setPopupOpen] = useState(false);
   const handlePopupToggle = () => {
@@ -18,7 +19,9 @@ const MenuTab = props => {
   };
 
   const handleClickEdit = () => {
-    navigate("/diary/edit ");
+    // 여기서 item을 넘겨야 해요.
+    console.log("보자", item);
+    navigate(`/diary/edit/${item.diaryId}`);
   };
 
   const pk = props.pk;
