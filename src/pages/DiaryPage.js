@@ -16,12 +16,17 @@ const Diary = () => {
     navigate(`/main`);
   };
 
-  const [loginedUserId, setLoginedUserId] = useState("2");
-  const [page, setPage] = useState(1);
+  const [userId, setUserId] = useState("2");
+  const [diaryId, setDiaryId] = useState(1);
   const [diaryList, setDiaryList] = useState([]);
 
+  const reloadGetDiary = () => {
+    getDiary(userId, diaryId, setDiaryList);
+  };
+
   useEffect(() => {
-    getDiary(loginedUserId, page, setDiaryList);
+    reloadGetDiary();
+    // diaryList(setDiaryList);
   }, []);
 
   return (
@@ -30,11 +35,11 @@ const Diary = () => {
       <DiaryMain>
         {diaryList.map(item => (
           <FeedList
-            nickname={item.nickname}
             key={item.diaryId}
-            title={item.title}
-            loginedUserId={loginedUserId}
-            contents={item.contents}
+            item={item}
+            // page 에 있는 변수라서
+            userId={userId}
+            reloadGetDiary={reloadGetDiary}
           ></FeedList>
         ))}
         {/* <FeedList>
@@ -48,7 +53,7 @@ const Diary = () => {
         </FeedList> */}
 
         <MainAddBt>
-          <Link to="/diary/add">
+          <Link to="/add">
             <img
               className="MainAddBt"
               src={process.env.PUBLIC_URL + "../assets/images/bt_main_add.svg"}
@@ -58,7 +63,7 @@ const Diary = () => {
         </MainAddBt>
       </DiaryMain>
       <Footer type={2}></Footer>
-    </div>
+    </Wrap>
   );
 };
 

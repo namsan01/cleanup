@@ -28,6 +28,7 @@ export const ErrorCodeSpan = styled.span`
   font-size: 20px;
   color: #176bff;
   font-weight: 600;
+  margin-bottom: 20px;
 `;
 export const ErrorCodeNum = styled.h2`
   color: #176bff;
