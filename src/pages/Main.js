@@ -48,11 +48,9 @@ const Main = () => {
             item={item}
             loginedUserId={loginedUserId}
             handleButtonClick={handleButtonClick}
-
             handleButtonClickEdit={handleButtonClickEdit}
             handleCancelEdit={handleCancelEdit}
             getTodoAllfn={getTodoAllfn}
-
           ></List>
         ))}
 
