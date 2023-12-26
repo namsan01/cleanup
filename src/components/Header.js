@@ -78,7 +78,7 @@ const Header = ({ text, type }) => {
           isModal={isModal}
           txt={
             <div>
-              <span>취소</span>하고 나가시겠습니까?
+              <span>취소</span>하고 나가시겠습니까??
             </div>
           }
           onOk={handleConfirm}
