@@ -19,7 +19,7 @@ const DiaryEditPage = () => {
     <Wrap maxw={1024} maxh={1366}>
       <Header text="수정하기"></Header>
       <DiaryEdit></DiaryEdit>
-      <Footer></Footer>
+      <Footer type={2}></Footer>
     </Wrap>
   );
 };
