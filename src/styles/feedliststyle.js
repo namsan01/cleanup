@@ -9,7 +9,7 @@ export const Feedliststyle = styled.section`
   border-radius: 12px;
   border: 1px solid var(--m-3-sys-light-outline-variant, #C5C6D0);
   flex-direction: column;
-  margin: 0 auto;
+  margin: 30px auto;
 `;
 export const FeedListHeader = styled.div`
   display: flex;

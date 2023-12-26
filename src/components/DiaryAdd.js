@@ -202,6 +202,7 @@ const DiaryAdd = () => {
       const url = await getDownloadURL(fbRes.ref);
       console.log(url);
       _set(url);
+      return url;
     } catch (error) {
       console.log("FB 오류", error);
     }

@@ -27,7 +27,8 @@ const Diary = () => {
   return (
     <Wrap maxw={1024} maxh={1366}>
       <Header text={"내 청소일기"} type={1}></Header>
-      <DiaryMain style={{ paddingBottom: "80px" }}>
+      <DiaryMain>
+        <div style={{ paddingBottom: "150px" }}>
         {diaryList.map(item => (
           <FeedList
             nickname={item.nickname}
@@ -37,7 +38,7 @@ const Diary = () => {
             contents={item.contents}
             item={item}
           ></FeedList>
-        ))}
+        ))}</div>
         {/* <FeedList>
           {diary.map((item, index) => {
             return (
@@ -52,7 +53,7 @@ const Diary = () => {
           <Link to="/add">
             <img
               className="MainAddBt"
-              src={process.env.PUBLIC_URL + "../assets/images/bt_main_add.svg"}
+              src={process.env.PUBLIC_URL + "../assets/images/bt_diary_add.svg"}
               alt=""
             />
           </Link>
