@@ -20,7 +20,7 @@ import CreateEdit from "./CreateEdit";
 const MainList = props => {
   const item = props.item;
   const loginedUserId = props.loginedUserId;
-  console.log("item", item);
+  //console.log("item", item);
   // check박스 체크 시 ListWrap 배경색 갱신
   const [isChecked, setChecked] = useState(false);
   // 체크 된 상태 표현
@@ -47,7 +47,7 @@ const MainList = props => {
   };
 
   const deleteTodoResultAction = obj => {
-    console.log("여기요..", obj);
+
     const result = parseInt(obj.result);
 
     if (result === 0) {
