@@ -34,6 +34,10 @@ const Main = () => {
     getTodo(loginedUserId, page, setCleanList);
   };
 
+  const cleanListUpdate = () => {
+    getTodoAllfn();
+  };
+
   useEffect(() => {
     getTodoAllfn();
   }, []);
@@ -41,7 +45,7 @@ const Main = () => {
   return (
     <Wrap maxw={1024} maxh={1366}>
       <Header text="메인화면" type={1} />
-      <div style={{ paddingTop: "90px", paddingBottom: "300px " }}>
+      <div style={{ paddingTop: "90px", paddingBottom: "150px " }}>
         {cleanList.map(item => (
           <List
             key={item.todoId}
@@ -53,8 +57,6 @@ const Main = () => {
             getTodoAllfn={getTodoAllfn}
           ></List>
         ))}
-
-        
 
         {/* <List mgt={false}></List>
         <List></List>
@@ -77,7 +79,13 @@ const Main = () => {
         </MainAddBt>
 
         {/* 작성 */}
-        {isPopupOpen && <CreateAdd text="작성" handleCancel={handleCancel} />}
+        {isPopupOpen && (
+          <CreateAdd
+            text="작성"
+            handleCancel={handleCancel}
+            cleanListUpdate={cleanListUpdate}
+          />
+        )}
         {/* 수정 */}
         {isPopupOpenEdit && (
           <CreateEdit
