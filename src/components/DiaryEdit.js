@@ -10,7 +10,7 @@ import {
   DiaryAddMainTitle,
   DiaryAddStyle,
 } from "../styles/diaryaddstyle";
-import { getDiary, getDiaryFind, putDiary } from "../api/diary/diary_api";
+import { getDiaryId, putDiary } from "../api/diary/diary_api";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import Confirm from "./Confirm";
 
@@ -28,21 +28,25 @@ const obj = {
 // ==============================================================
 
 const DiaryEdit = props => {
-  const params = useParams();
-  const diaryId = params.diaryId;
+  const [diaryId, setDiaryId] = useState("2");
+  const [diaryEditList, setEditDiaryList] = useState([]);
+  // useEffect(() => {
+  //   getDiaryId(diaryId, setEditDiaryList);
+  // }, []);
+  //   const params = useParams();
+  //   const diaryId = params.diaryId;
 
-  console.log("편집할 ID", diaryId);
+  //   console.log("편집할 ID", diaryId);
   const [loginedUserId, setLoginedUserId] = useState("2");
-  const [page, setPage] = useState(1);
-  const [diaryList, setDiaryList] = useState([]);
+  //   const [page, setPage] = useState(1);
+  //   const [diaryList, setDiaryList] = useState([]);
   const [nowDiary, setNowDiary] = useState({});
 
   useEffect(() => {
-    getDiaryFind(loginedUserId, page, setNowDiary, diaryId);
+    getDiaryId(diaryId, setEditDiaryList);
   }, []);
   const findeDiary = () => {
-    const tempDiary = diaryList.filter(item => item.diaryId === diaryId);
-    setNowDiary(tempDiary);
+    setNowDiary();
   };
 
   const navigate = useNavigate();
@@ -129,7 +133,7 @@ const DiaryEdit = props => {
   // ==============================================================
   // 제목입력 업데이트
   const handleChangeTitle = e => {
-    setNowDiary(prevDiary => ({
+    setEditDiaryList(prevDiary => ({
       ...prevDiary,
       title: e.target.value,
     }));
@@ -167,82 +171,84 @@ const DiaryEdit = props => {
           alt=""
         />
       </DiaryAddHeader>
-      <DiaryAddMain>
-        <DiaryAddMainTitle>
-          <form>
-            <input
+      {diaryEditList.map(item => (
+        <DiaryAddMain key={item.diaryId}>
+          <DiaryAddMainTitle>
+            <form>
+              <input
+                type="text"
+                maxLength={50}
+                placeholder="제목을 입력해 주세요"
+                name="title"
+                value={item.title}
+                className="diaryadd-title"
+                onChange={handleChangeTitle}
+              />
+              <input
+                type="button"
+                className="diaryadd-title-bt"
+                onClick={handleClearTitle}
+              />
+            </form>
+          </DiaryAddMainTitle>
+          <DiaryAddMainContent>
+            <textarea
               type="text"
-              maxLength={50}
-              placeholder="제목을 입력해 주세요"
-              name="title"
-              value={nowDiary.title}
-              className="diaryadd-title"
-              onChange={handleChangeTitle}
+              maxLength={2000}
+              value={item.contents}
+              onChange={handleChangeContent}
+              placeholder="내용을 입력해 주세요."
+              name="content"
             />
+          </DiaryAddMainContent>
+          <DiaryAddMainImage>
+            <img src={item.pics} alt="" className="diaryadd-img-before" />
+            <img src={item.pics} alt="" className="diaryadd-img-after" />
+          </DiaryAddMainImage>
+          <DiaryAddMainButton>
+            <label htmlFor="input-file-before">
+              <button
+                type="button"
+                onClick={() => {
+                  document.getElementById("input-file-before").click();
+                }}
+                className="diaryadd-img-input-button-before"
+              >
+                청소 전 사진 업로드
+              </button>
+            </label>
             <input
-              type="button"
-              className="diaryadd-title-bt"
-              onClick={handleClearTitle}
+              type="file"
+              accept="image/png, image/gif, image/jpeg"
+              onChange={event => {
+                handleChange(event, "before");
+              }}
+              id="input-file-before"
+              style={{ display: "none" }}
             />
-          </form>
-        </DiaryAddMainTitle>
-        <DiaryAddMainContent>
-          <textarea
-            type="text"
-            maxLength={2000}
-            value={nowDiary.contents}
-            onChange={handleChangeContent}
-            placeholder="내용을 입력해 주세요."
-            name="content"
-          />
-        </DiaryAddMainContent>
-        <DiaryAddMainImage>
-          <img src={uploadImgBefore} alt="" className="diaryadd-img-before" />
-          <img src={uploadImgAfter} alt="" className="diaryadd-img-after" />
-        </DiaryAddMainImage>
-        <DiaryAddMainButton>
-          <label htmlFor="input-file-before">
-            <button
-              type="button"
-              onClick={() => {
-                document.getElementById("input-file-before").click();
+            <label htmlFor="input-file-after">
+              <button
+                type="button"
+                onClick={() => {
+                  document.getElementById("input-file-after").click();
+                }}
+                className="diaryadd-img-input-button-after"
+              >
+                청소 후 사진 업로드
+              </button>
+            </label>
+            <input
+              type="file"
+              accept="image/png, image/gif, image/jpeg"
+              onChange={event => {
+                handleChange(event, "after");
               }}
-              className="diaryadd-img-input-button-before"
-            >
-              청소 전 사진 업로드
-            </button>
-          </label>
-          <input
-            type="file"
-            accept="image/png, image/gif, image/jpeg"
-            onChange={event => {
-              handleChange(event, "before");
-            }}
-            id="input-file-before"
-            style={{ display: "none" }}
-          />
-          <label htmlFor="input-file-after">
-            <button
-              type="button"
-              onClick={() => {
-                document.getElementById("input-file-after").click();
-              }}
-              className="diaryadd-img-input-button-after"
-            >
-              청소 후 사진 업로드
-            </button>
-          </label>
-          <input
-            type="file"
-            accept="image/png, image/gif, image/jpeg"
-            onChange={event => {
-              handleChange(event, "after");
-            }}
-            id="input-file-after"
-            style={{ display: "none" }}
-          />
-        </DiaryAddMainButton>
-      </DiaryAddMain>
+              id="input-file-after"
+              style={{ display: "none" }}
+            />
+          </DiaryAddMainButton>
+        </DiaryAddMain>
+      ))}
       <DiaryAddFooter>
         <button onClick={handleButtonClick}>
           <img
