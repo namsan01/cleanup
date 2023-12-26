@@ -4,6 +4,7 @@ import {
   CreateListBg,
   CreateTitle,
 } from "../styles/createeditstyle";
+
 import { postTodo } from "../api/todo/todo_api";
 
 const CreateAdd = ({ text, handleCancel }) => {
@@ -80,6 +81,7 @@ const CreateAdd = ({ text, handleCancel }) => {
       setDoDay(e.target.value);
     };
 
+
   return (
     <CreateListBg>
       <CreateList>
@@ -100,6 +102,7 @@ const CreateAdd = ({ text, handleCancel }) => {
             </div>
             <div className="create-main-right">
               <div className="create-date">
+
                 <input
                   type="text"
                   placeholder="yyyy-mm-dd"
@@ -109,10 +112,12 @@ const CreateAdd = ({ text, handleCancel }) => {
                   // value={inputNumber}
                   // onChange={handleInputChange}
                 />
+
               </div>
               <h2>날짜를 입력해 주세요!</h2>
             </div>
           </div>
+
           <form className="create-main-ft">
             <input
               className="create-main-txt"
@@ -130,6 +135,7 @@ const CreateAdd = ({ text, handleCancel }) => {
               className="create-main-bt"
             />
           </form>
+
         </div>
         <div className="create-footer">
           <div className="create-footer">
@@ -141,6 +147,7 @@ const CreateAdd = ({ text, handleCancel }) => {
             >
               취 소
             </button>
+
             <button className="bt-yes" type="submit" onClick={handleConfirm}>
               완 료
             </button>

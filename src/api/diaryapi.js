@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import { SERVER_URL } from "./config";
 //  Header.js 에서 사용
 export const getDiary = async (loginedUserId, page, setDiaryList) => {
@@ -25,6 +26,7 @@ export const postDiary = async (obj, postSuccess, postFail) => {
   try {
     const res = await axios.post(`api/diary`, obj);
     console.log(res.data);
+
     // 상태 코드를 글자로 만들어서 첫 글자만 추출
     const resStatus = res.status.toString();
     // 정상이라면
@@ -44,14 +46,16 @@ export const postDiary = async (obj, postSuccess, postFail) => {
   }
 };
 export const patchDiary = async () => {
+
   const obj = {
     diaryId: 0,
     title: "string",
     contents: "string",
     pics: ["", ""],
   };
+
   try {
-    const res = await axios.patch(`api/diary`, obj);
+    const res = await axios.patch(`api/diary`);
     console.log(res.data);
   } catch (error) {
     console.log(error);

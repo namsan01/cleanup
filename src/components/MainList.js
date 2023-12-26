@@ -47,6 +47,7 @@ const MainList = props => {
   };
 
   const deleteTodoResultAction = obj => {
+
     const result = parseInt(obj.result);
 
     if (result === 0) {

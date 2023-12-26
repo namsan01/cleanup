@@ -88,11 +88,23 @@ export const patchDiary = async (loginedUserId, page, fnc) => {
   fnc([...res.data]);
 };
 // 내용 삭제하기
-export const deleteDiary = async diaryListClean => {
-  const res = await axios.delete(`${SERVER_URL}/api/diary`);
-  diaryListClean([...res.data]);
-  // try {
-  // } catch (error) {
-  //   console.log(error)
-  // }
+
+export const deleteDiary = async (
+  _userId,
+  _diaryId,
+  deleteDiaryResultAction,
+) => {
+  const _url = `${SERVER_URL}/api/diary?loginedUserId=${_userId}&diaryId=${_diaryId}`;
+  console.log(_url);
+  try {
+    const res = await axios.delete(_url);
+    // 삭제 완료 : 1
+    // 삭제 실패 : 0
+    deleteDiaryResultAction(res.data);
+  } catch (error) {
+    console.log(error);
+    alert(` ${error} 가 발생했습니다. 데모데이터를 쓸게요.`);
+    deleteDiaryResultAction(500);
+  }
+
 };

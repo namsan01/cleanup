@@ -4,7 +4,9 @@ import { useEffect, useState } from "react";
 import SubBar from "./SubBar";
 import Confirm from "./Confirm";
 import { getTodo } from "../api/todo/todo_api";
+
 import { getDiary } from "../api/diaryapi";
+
 const Header = ({ text, type }) => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -24,7 +26,9 @@ const Header = ({ text, type }) => {
     // setPopupOpen 함수를 사용하여 isPopupOpen 상태를 반전시킴
     setPopupOpen(!isPopupOpen);
   };
+
   const [confirmOpen, setConfirmOpen] = useState(false);
+
   const handleButtonClick = () => {
     setConfirmOpen(true);
   };
@@ -34,6 +38,10 @@ const Header = ({ text, type }) => {
   };
   const handleCancel = () => {
     setConfirmOpen(false);
+
+  };
+
+
     setIsModal(false);
   };
   const [loginedUserId, setLoginedUserId] = useState("2");
@@ -43,6 +51,7 @@ const Header = ({ text, type }) => {
     getDiary(loginedUserId, page, setDiaryList);
   }, []);
  
+
   return (
     <Topbar>
       <div className="header-wrap">
@@ -72,6 +81,7 @@ const Header = ({ text, type }) => {
           </button>
         </div>
       </div>
+
       {isModal && (
         <Confirm
           setIsModal={setIsModal}
