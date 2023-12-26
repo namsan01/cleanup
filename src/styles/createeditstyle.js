@@ -111,18 +111,21 @@ export const CreateList = styled.div`
   }
 
   .create-main-bt {
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
+    width: 28px;
+    height: 28px;
+    border-radius: 100%;
+    background-color: transparent;
+    flex-shrink: 0;
+    border: none;
+    background-image: url("../assets/images/bt_cancel.svg");
   }
 
   .create-footer {
     display: flex;
     width: 100%;
-    height: 168px;
+    height: 100px;
     justify-content: end;
     align-items: end;
-    padding-bottom: 20px;
   }
 
   .bt-yes {

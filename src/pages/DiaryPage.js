@@ -16,7 +16,7 @@ const Diary = () => {
     navigate(`/main`);
   };
 
-  const [loginedUserId, setLoginedUserId] = useState("2");
+  const [loginedUserId, setLoginedUserId] = useState("6");
   const [page, setPage] = useState(1);
   const [diaryList, setDiaryList] = useState([]);
 
