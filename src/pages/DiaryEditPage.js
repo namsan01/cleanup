@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 
 import Header from "../components/Header";
@@ -15,16 +14,13 @@ const Wrap = styled.div`
   max-height: ${props => props.maxh + "px"};
 `;
 
-const DiaryEditPage = props => {
-
-
+const DiaryEditPage = () => {
   return (
     <Wrap maxw={1024} maxh={1366}>
       <Header text="수정하기"></Header>
       <DiaryEdit></DiaryEdit>
       <Footer></Footer>
     </Wrap>
-
   );
 };
 

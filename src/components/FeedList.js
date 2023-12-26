@@ -42,7 +42,10 @@ const FeedList = props => {
   const pk = props.pk;
   const handleClcik = props.handleClick;
 
-  // const [diaryListClean, setDiaryListClean] = useState();
+
+  const [diaryListClean, setDiaryListClean] = useState();
+  const [a, b] = useState([]);
+
 
   const deleteDiaryResultAction = obj => {
     console.log("여기요..", obj);
