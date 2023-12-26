@@ -30,11 +30,7 @@ const obj = {
 const DiaryEdit = props => {
   const params = useParams();
   const diaryId = params.diaryId;
-  // ==========================================
-  // const { diaryId } = useParams();
-  // const diaryData = params.find(Diary => props.diaryId === parseInt(diaryId));
-  // console.log("나와주세요..", diaryData);
-  // ====================================================
+
   console.log("편집할 ID", diaryId);
   const [loginedUserId, setLoginedUserId] = useState("2");
   const [page, setPage] = useState(1);
