@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import SubBar from "./SubBar";
 import Confirm from "./Confirm";
 import { getTodo } from "../api/todo/todo_api";
+import { getDiary } from "../api/diaryapi";
+
 const Header = ({ text, type }) => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -38,8 +40,17 @@ const Header = ({ text, type }) => {
   };
   const handleCancel = () => {
     setConfirmOpen(false);
+    setIsModal(false);
   };
 
+  const [loginedUserId, setLoginedUserId] = useState("2");
+  const [page, setPage] = useState(1);
+  const [diaryList, setDiaryList] = useState([]);
+
+  useEffect(() => {
+    getDiary(loginedUserId, page, setDiaryList);
+  }, []);
+  
   return (
     <Topbar>
       <div className="header-wrap">
@@ -59,16 +70,16 @@ const Header = ({ text, type }) => {
               />
             )}
           </button>
-          <h2>{type === 1 ? "userName" : ""}</h2>
+          <h2>{type === 1 ? `${diaryList[0]?.nickname}` : ""}</h2>
         </div>
 
         <div>
           <span>{text}</span>
-
           <button onClick={handlePopupToggle}>
             <img src={process.env.PUBLIC_URL + "/assets/images/bt_menu.svg"} />
-            {isPopupOpen && <SubBar />}
+            {isPopupOpen && <SubBar nickname={diaryList[0]?.nickname}/>}
           </button>
+
         </div>
       </div>
 

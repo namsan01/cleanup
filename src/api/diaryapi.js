@@ -1,5 +1,27 @@
 import axios from "axios";
+import { SERVER_URL } from "./config";
 
+//  Header.js 에서 사용
+export const getDiary = async (loginedUserId, page, setDiaryList) => {
+  try {
+    const url = `${SERVER_URL}/api/diary?loginedUserId=${loginedUserId}&page=${page}`;
+    console.log(url);
+    const res = await axios.get(url);
+    const resStatus = res.status.toString();
+    // 정상이라면
+    if (resStatus.charAt(0) === "2") {
+      setDiaryList([...res.data]);
+    }
+  } catch (error) {
+    // 개발 중에만 활용. 실제 서비스에서는 경고창 마무리
+    alert(` ${error} 가 발생했습니다. 데모데이터를 쓸게요.`);
+    // 데모 데이터를 이용하여 작업은 진행
+    const demo = await axios.get("getDiary.json");
+    setDiaryList(demo.data);
+  }
+};
+
+// DiaryAdd.js 에서 사용
 export const postDiary = async (obj, postSuccess, postFail) => {
   console.log("저장해요.");
   try {

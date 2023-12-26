@@ -98,10 +98,10 @@ export const FeedListTxt = styled.div`
     line-height: 20px; /* 142.857% */
     letter-spacing: 0.25px;
     /* 2줄이상 말줄임 */
-    overflow: hidden;
+    /* overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+    -webkit-box-orient: vertical; */
   }
 `;
