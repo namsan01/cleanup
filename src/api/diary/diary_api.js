@@ -9,7 +9,7 @@ export const getDiary = async (loginedUserId, page, setDiaryList) => {
     console.log("diary Url : ", url);
     const res = await axios.get(url);
     console.log(res.data);
-    
+
     const resStatus = res.status.toString();
     // 정상이라면
     if (resStatus.charAt(0) === "2") {
@@ -24,36 +24,34 @@ export const getDiary = async (loginedUserId, page, setDiaryList) => {
     setDiaryList(demo.data);
   }
 };
-export const getDiaryFind = async (
-  loginedUserId,
-  page,
-  setNowDiary,
-  diaryId,
-) => {
+export const getDiaryId = async (diaryId, setEditDiaryList) => {
   try {
-    const url = `${SERVER_URL}/api/diary?loginedUserId=${loginedUserId}&page=${page}`;
-    console.log(url);
+    // http://192.168.0.144:5215/api/diary/edit?diary_id=1
+    const url = `${SERVER_URL}/api/diary?diary_id=${diaryId}`;
+    console.log("diary url : ", url);
     const res = await axios.get(url);
-    // 전달받은 diaryId 를 이용해서 하나의 객체를 찾는다.
-    const tempDiary = res.data.filter(item => item.diaryId === diaryId);
-    // 찾았으면 Edit 창의 set 을 통해서 자료를 넘기나.
-    setNowDiary(tempDiary);
+    console.log(res.data);
+    const resStatus = res.status.toString();
+    // 정상이라면
+    if (resStatus.charAt(0) === "2") {
+      console.log("전송성공");
+      setEditDiaryList([...res.data]);
+    }
   } catch (error) {
     // 개발 중에만 활용. 실제 서비스에서는 경고창 마무리
     alert(` ${error} 가 발생했습니다. 데모데이터를 쓸게요.`);
     // 데모 데이터를 이용하여 작업은 진행
     const demo = await axios.get("getDiary.json");
-    // 전달받은 diaryId 를 이용해서 하나의 객체를 찾는다.
-    const tempDiary = demo.filter(item => item.diaryId === diaryId);
-    // 찾았으면 Edit 창의 set 을 통해서 자료를 넘기나.
-    setNowDiary(tempDiary);
+    setEditDiaryList(demo.data);
   }
 };
+
 // 내용 추가하기
 export const postDiary = async (loginedUserId, page, fnc) => {
   const res = await axios.post(`${SERVER_URL}/api/diary`);
   fnc([...res.data]);
 };
+
 // 내용 수정하기
 export const putDiary = async (
   loginedUserId,
@@ -108,5 +106,4 @@ export const deleteDiary = async (
     alert(` ${error} 가 발생했습니다. 데모데이터를 쓸게요.`);
     deleteDiaryResultAction(500);
   }
-
 };

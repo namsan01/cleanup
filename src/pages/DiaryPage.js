@@ -39,10 +39,10 @@ const Diary = () => {
         {diaryList.map(item => (
           <FeedList
             key={item.diaryId}
-            item={item}
-            // page 에 있는 변수라서
-            userId={userId}
-            reloadGetDiary={reloadGetDiary}
+
+            title={item.title}
+            loginedUserId={loginedUserId}
+            contents={item.contents}
           ></FeedList>
         ))}</div>
         {/* <FeedList>
