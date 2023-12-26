@@ -14,6 +14,7 @@ import styled from "@emotion/styled";
 import { deleteDiary } from "../api/diary/diary_api";
 
 const FeedList = props => {
+
   // const {title, nickname, contents, diaryId}= props.item;
   const item = props.item;
   const title = props.item.title;
@@ -23,6 +24,7 @@ const FeedList = props => {
   const diaryId = props.item.diaryId;
   const userId = parseInt(props.userId);
   console.log(props);
+
 
   // isPopupOpen: 현재 팝업의 열림/닫힘 상태를 나타내는 상태
   // setPopupOpen: isPopupOpen 상태를 갱신하는 함수
@@ -64,6 +66,7 @@ const FeedList = props => {
     deleteDiary(userId, diaryId, deleteDiaryResultAction);
   };
 
+
   // 미리보기 이미지 1
   const [uploadImgBefore, setUploadImgBefore] = useState(
     `${process.env.PUBLIC_URL}/assets/images/bt_media.svg`,
@@ -72,6 +75,7 @@ const FeedList = props => {
   const [uploadImgAfter, setUploadImgAfter] = useState(
     `${process.env.PUBLIC_URL}/assets/images/bt_media.svg`,
   );
+
   return (
     <Feedliststyle>
       <FeedListHeader>
@@ -93,7 +97,9 @@ const FeedList = props => {
             {isPopupOpen && (
               <EditDelete>
                 {/* 팝업 컴포넌트 넣기 */}
-                <MenuTab handleClick={handleClick} item={item} />
+
+                <MenuTab onClick={() => handleClick()} item={item} />
+
                 {/* 오버레이 */}
                 <div onClick={handlePopupToggle}></div>
               </EditDelete>

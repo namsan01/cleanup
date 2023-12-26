@@ -4,24 +4,24 @@ import { useEffect, useState } from "react";
 import SubBar from "./SubBar";
 import Confirm from "./Confirm";
 import { getTodo } from "../api/todo/todo_api";
+
+import { getDiary } from "../api/diaryapi";
+
 const Header = ({ text, type }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const pathname = location.pathname;
   // console.log(pathname);
   const [isModal, setIsModal] = useState(false);
-
   const haldeClickBt = () => {
     // console.log(pathname);
     if (pathname === "/add" || pathname.startsWith("/edit")) {
       setIsModal(true);
     }
   };
-
   // isPopupOpen: 현재 팝업의 열림/닫힘 상태를 나타내는 상태
   // setPopupOpen: isPopupOpen 상태를 갱신하는 함수
   const [isPopupOpen, setPopupOpen] = useState(false);
-
   const handlePopupToggle = () => {
     // setPopupOpen 함수를 사용하여 isPopupOpen 상태를 반전시킴
     setPopupOpen(!isPopupOpen);
@@ -38,7 +38,19 @@ const Header = ({ text, type }) => {
   };
   const handleCancel = () => {
     setConfirmOpen(false);
+
   };
+
+
+    setIsModal(false);
+  };
+  const [loginedUserId, setLoginedUserId] = useState("2");
+  const [page, setPage] = useState(1);
+  const [diaryList, setDiaryList] = useState([]);
+  useEffect(() => {
+    getDiary(loginedUserId, page, setDiaryList);
+  }, []);
+ 
 
   return (
     <Topbar>
@@ -59,15 +71,13 @@ const Header = ({ text, type }) => {
               />
             )}
           </button>
-          <h2>{type === 1 ? "userName" : ""}</h2>
+          <h2>{type === 1 ? `${diaryList[0]?.nickname}` : ""}</h2>
         </div>
-
         <div>
           <span>{text}</span>
-
           <button onClick={handlePopupToggle}>
             <img src={process.env.PUBLIC_URL + "/assets/images/bt_menu.svg"} />
-            {isPopupOpen && <SubBar />}
+            {isPopupOpen && <SubBar nickname={diaryList[0]?.nickname}/>}
           </button>
         </div>
       </div>

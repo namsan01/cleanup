@@ -87,8 +87,8 @@ export const patchDiary = async (loginedUserId, page, fnc) => {
   );
   fnc([...res.data]);
 };
-
 // 내용 삭제하기
+
 export const deleteDiary = async (
   _userId,
   _diaryId,
@@ -106,4 +106,5 @@ export const deleteDiary = async (
     alert(` ${error} 가 발생했습니다. 데모데이터를 쓸게요.`);
     deleteDiaryResultAction(500);
   }
+
 };

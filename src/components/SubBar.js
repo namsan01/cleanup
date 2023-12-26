@@ -17,14 +17,15 @@ import {
   UserName,
 } from "../styles/subbarstyle";
 // {jsonData.nickName}
-const SubBar = () => {
+const SubBar = (props) => {
+  const nickname = props.nickname;
   return (
     <SubBarBody>
       <SubBarDiv>
         <HiUser>
           <HiUserDiv>
             <SubBarSayHi>안녕하세요</SubBarSayHi>
-            <UserName>userName</UserName>
+            <UserName>{nickname}</UserName>
           </HiUserDiv>
           <div>
             <ArrowButton></ArrowButton>
@@ -58,5 +59,4 @@ const SubBar = () => {
     </SubBarBody>
   );
 };
-
 export default SubBar;

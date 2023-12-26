@@ -40,6 +40,7 @@ const Diary = () => {
             // page 에 있는 변수라서
             userId={userId}
             reloadGetDiary={reloadGetDiary}
+
           ></FeedList>
         ))}
         {/* <FeedList>
