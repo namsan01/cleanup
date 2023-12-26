@@ -16,26 +16,31 @@ const Diary = () => {
     navigate(`/main`);
   };
 
-  const [loginedUserId, setLoginedUserId] = useState("2");
-  const [page, setPage] = useState(1);
+  const [userId, setUserId] = useState("2");
+  const [diaryId, setDiaryId] = useState(1);
   const [diaryList, setDiaryList] = useState([]);
 
+  const reloadGetDiary = () => {
+    // axios.get 에서 userId, diaryId, 그리고 setDiaryList 다이어리 목록을 불러온다?
+    getDiary(userId, diaryId, setDiaryList);
+  };
+
+  // 화면 준비되면 그때 반영
   useEffect(() => {
-    getDiary(loginedUserId, page, setDiaryList);
+    reloadGetDiary();
   }, []);
 
   return (
     <Wrap maxw={1024} maxh={1366}>
       <Header text={"내 청소일기"} type={1}></Header>
-      <DiaryMain style={{ paddingBottom: "80px" }}>
+      <DiaryMain>
         {diaryList.map(item => (
           <FeedList
-            nickname={item.nickname}
             key={item.diaryId}
-            title={item.title}
-            loginedUserId={loginedUserId}
-            contents={item.contents}
             item={item}
+            // page 에 있는 변수라서
+            userId={userId}
+            reloadGetDiary={reloadGetDiary}
           ></FeedList>
         ))}
         {/* <FeedList>
