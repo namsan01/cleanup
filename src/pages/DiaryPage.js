@@ -19,6 +19,7 @@ const Diary = () => {
   const [userId, setUserId] = useState("2");
   const [diaryId, setDiaryId] = useState(1);
   const [diaryList, setDiaryList] = useState([]);
+  const [loginedUserId, setLoginedUserId] = useState("2");
 
   const reloadGetDiary = () => {
     // axios.get 에서 userId, diaryId, 그리고 setDiaryList 다이어리 목록을 불러온다?
@@ -35,16 +36,15 @@ const Diary = () => {
       <Header text={"내 청소일기"} type={1}></Header>
       <DiaryMain>
         <div style={{ paddingBottom: "150px" }}>
-
-        {diaryList.map(item => (
-          <FeedList
-            key={item.diaryId}
-
-            title={item.title}
-            loginedUserId={loginedUserId}
-            contents={item.contents}
-          ></FeedList>
-        ))}</div>
+          {diaryList.map(item => (
+            <FeedList
+              key={item.diaryId}
+              item={item}
+              userId={userId}
+              reloadGetDiary={reloadGetDiary}
+            ></FeedList>
+          ))}
+        </div>
         {/* <FeedList>
           {diary.map((item, index) => {
             return (
