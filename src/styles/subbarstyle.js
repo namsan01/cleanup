@@ -18,7 +18,7 @@ export const SubBarDiv = styled.div`
 export const HiUser = styled.div`
   height: 150px;
   width: 100%;
-  padding: 45px 42px 28px 50px;
+  padding: 35px 42px 28px 50px;
   display: flex;
   justify-content: space-between;
   border-bottom: 1.5px solid #176bff;
@@ -31,6 +31,7 @@ export const UserName = styled.p`
   color: #176bff;
   font-size: 45px;
   position: absolute;
+  margin-top: 10px;
   margin-bottom: auto;
   line-height: 1.1;
   font-weight: 900;
@@ -38,6 +39,7 @@ export const UserName = styled.p`
 export const ArrowButton = styled.div`
   width: 66px;
   height: 66px;
+  margin-top: 10px;
   background-image: url(${process.env.PUBLIC_URL}/assets/images/subbar_arrow.svg);
   object-fit: cover;
   

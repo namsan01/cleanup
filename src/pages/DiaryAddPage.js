@@ -51,7 +51,7 @@ const DiaryAddPage = props => {
     <Wrap maxw={1024} maxh={1366}>
       <Header text="작성하기"></Header>
       <DiaryAdd></DiaryAdd>
-      <Footer></Footer>
+      <Footer type={2}></Footer>
     </Wrap>
   );
 };
