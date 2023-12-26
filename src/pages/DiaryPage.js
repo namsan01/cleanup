@@ -16,31 +16,26 @@ const Diary = () => {
     navigate(`/main`);
   };
 
-  const [userId, setUserId] = useState("2");
-  const [diaryId, setDiaryId] = useState(1);
+  const [loginedUserId, setLoginedUserId] = useState("2");
+  const [page, setPage] = useState(1);
   const [diaryList, setDiaryList] = useState([]);
 
-  const reloadGetDiary = () => {
-    getDiary(userId, diaryId, setDiaryList);
-  };
-
   useEffect(() => {
-    reloadGetDiary();
-    // diaryList(setDiaryList);
+    getDiary(loginedUserId, page, setDiaryList);
   }, []);
 
   return (
     <Wrap maxw={1024} maxh={1366}>
       <Header text={"내 청소일기"} type={1}></Header>
-      <DiaryMain>
+      <DiaryMain style={{ paddingBottom: "80px" }}>
         {diaryList.map(item => (
           <FeedList
+            nickname={item.nickname}
             key={item.diaryId}
+            title={item.title}
+            loginedUserId={loginedUserId}
+            contents={item.contents}
             item={item}
-            // page 에 있는 변수라서
-            userId={userId}
-            reloadGetDiary={reloadGetDiary}
-
           ></FeedList>
         ))}
         {/* <FeedList>

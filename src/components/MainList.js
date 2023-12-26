@@ -47,13 +47,12 @@ const MainList = props => {
   };
 
   const deleteTodoResultAction = obj => {
-
     const result = parseInt(obj.result);
 
     if (result === 0) {
-      alert("수정이 실패하였습니다.");
+      alert("삭제를 실패하였습니다.");
     } else if (result === 1) {
-      alert("수정이 성공하였습니다.");
+      alert("삭제를 성공하였습니다.");
       props.getTodoAllfn();
     } else if (result === 500) {
       alert("서버가 불안정합니다. ");

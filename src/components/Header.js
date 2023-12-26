@@ -4,9 +4,7 @@ import { useEffect, useState } from "react";
 import SubBar from "./SubBar";
 import Confirm from "./Confirm";
 import { getTodo } from "../api/todo/todo_api";
-
 import { getDiary } from "../api/diaryapi";
-
 const Header = ({ text, type }) => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -26,9 +24,7 @@ const Header = ({ text, type }) => {
     // setPopupOpen 함수를 사용하여 isPopupOpen 상태를 반전시킴
     setPopupOpen(!isPopupOpen);
   };
-
   const [confirmOpen, setConfirmOpen] = useState(false);
-
   const handleButtonClick = () => {
     setConfirmOpen(true);
   };
@@ -37,12 +33,7 @@ const Header = ({ text, type }) => {
     navigate(`/diary`);
   };
   const handleCancel = () => {
-    console.log("handleCancel 함수 호출");
     setConfirmOpen(false);
-
-  };
-
-
     setIsModal(false);
   };
   const [loginedUserId, setLoginedUserId] = useState("2");
@@ -51,7 +42,6 @@ const Header = ({ text, type }) => {
   useEffect(() => {
     getDiary(loginedUserId, page, setDiaryList);
   }, []);
- 
 
   return (
     <Topbar>
@@ -78,11 +68,10 @@ const Header = ({ text, type }) => {
           <span>{text}</span>
           <button onClick={handlePopupToggle}>
             <img src={process.env.PUBLIC_URL + "/assets/images/bt_menu.svg"} />
-            {isPopupOpen && <SubBar nickname={diaryList[0]?.nickname}/>}
+            {isPopupOpen && <SubBar nickname={diaryList[0]?.nickname} />}
           </button>
         </div>
       </div>
-
       {isModal && (
         <Confirm
           setIsModal={setIsModal}
