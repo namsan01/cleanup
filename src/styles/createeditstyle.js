@@ -108,6 +108,11 @@ export const CreateList = styled.div`
     line-height: 28px;
     margin-bottom: 15px;
     border: none;
+    color: var(--M3-sys-light-on-surface, #1b1b1f);
+    ::placeholder {
+      color: var(--M3-sys-light-on-surface, #1b1b1f);
+      font-weight: 400;
+    }
   }
 
   .create-main-bt {

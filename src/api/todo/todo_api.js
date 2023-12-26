@@ -49,7 +49,7 @@ export const postTodo = async (obj, postSuccess, postFail) => {
 
 export const fetchTodo = async () => {
   const obj = {
-    loginedUserId: 0,
+    loginedUserId: 2,
     todoId: 0,
     cleaning: "string",
     doDay: "string",

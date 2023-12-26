@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   CreateList,
   CreateListBg,
   CreateTitle,
 } from "../styles/createeditstyle";
 
-import { postTodo } from "../api/todo/todo_api";
+import { postTodo, fetchTodo } from "../api/todo/todo_api";
+import moment from "moment/moment";
 
-const CreateAdd = ({ text, handleCancel }) => {
-  const [title , setTitle] = useState("")
+const CreateAdd = ({ text, handleCancel, cleanListUpdate }) => {
+  const [title, setTitle] = useState("");
   const [cleaning, setCleaning] = useState("");
   const [doDay, setDoDay] = useState("");
   const [inputNumber, setInputNumber] = useState("");
@@ -40,47 +41,58 @@ const CreateAdd = ({ text, handleCancel }) => {
 
   const postSuccess = () => {
     alert("할일이 추가되었습니다");
+
+    cleanListUpdate();
     handleCancel(true);
   };
   const postFail = () => {
     alert("서버가 불안정합니다. 다시 작성해주세요.");
     handleCancel(false);
   };
-
-  const handleConfirm = e => {
-    e.preventDefault();
-    if (cleaning === "") {
-      handleCancel(false);
-      alert("제목을 입력하세요.");
-      return;
-    }
-    if (doDay === "") {
-      handleCancel(false);
-      alert("날짜를 입력하세요.");
-      return;
-    }
-    diaryAction()
-  };
-
-  const diaryAction = () => {
+  const diaryPost = () => {
     const obj = {
       loginedUserId: 2,
       cleaning: cleaning,
       doDay: doDay,
-      
     };
     // console.log("백엔드 보낼 데이터", obj);
     postTodo(obj, postSuccess, postFail);
   };
+
+  const diaryFetch = () => {
+    const obj = {
+      loginedUserId: 2,
+      todoId: 0,
+      cleaning: "string",
+      doDay: "string",
+    };
+  };
+
+  const handleConfirm = e => {
+    if (cleaning === "") {
+      alert("일정을 입력하세요.");
+      return;
+    }
+    if (doDay === "") {
+      alert("날짜를 입력하세요.");
+      return;
+    }
+    diaryPost();
+  };
+
   // 제목입력 업데이트
   const handleChangeTitle = e => {
     setCleaning(e.target.value);
   };
-    // 내용 입력 값 업데이트
-    const handleChangeDate = e => {
-      setDoDay(e.target.value);
-    };
+  // 내용 입력 값 업데이트
+  const handleChangeDate = e => {
+    setDoDay(e.target.value);
+  };
 
+  useEffect(() => {
+    const now = moment();
+    setDoDay(now.format("YYYY-MM-DD"));
+  }, []);
 
   return (
     <CreateListBg>
@@ -102,9 +114,8 @@ const CreateAdd = ({ text, handleCancel }) => {
             </div>
             <div className="create-main-right">
               <div className="create-date">
-
                 <input
-                  type="text"
+                  type="date"
                   placeholder="yyyy-mm-dd"
                   maxLength="10"
                   value={doDay}
@@ -112,7 +123,6 @@ const CreateAdd = ({ text, handleCancel }) => {
                   // value={inputNumber}
                   // onChange={handleInputChange}
                 />
-
               </div>
               <h2>날짜를 입력해 주세요!</h2>
             </div>
@@ -135,7 +145,6 @@ const CreateAdd = ({ text, handleCancel }) => {
               className="create-main-bt"
             />
           </form>
-
         </div>
         <div className="create-footer">
           <div className="create-footer">
