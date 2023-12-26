@@ -28,8 +28,8 @@ const DiaryAdd = () => {
   const handleChangeContent = e => {
     setContent(e.target.value);
   };
+  // 입력 필드의 내용을 지우기
   const handleClearTitle = e => {
-    // 입력 필드의 내용을 지우기
     // e.preventDefault();
     setTitle("");
   };
@@ -147,7 +147,7 @@ const DiaryAdd = () => {
   const diaryAction = (_one, _two) => {
     console.log("보낸다!");
     const obj = {
-      loginedUserId: 3,
+      loginedUserId: 2,
       title: title,
       contents: content,
       pics: [_one, _two],
@@ -202,6 +202,7 @@ const DiaryAdd = () => {
       console.log("FB 오류", error);
     }
   };
+ 
   const postSuccess = () => {
     navigate(`/diary`);
   };
