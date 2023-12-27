@@ -1,16 +1,20 @@
 import styled from "@emotion/styled";
 import React, { useEffect } from "react";
+import { useHistory, useNavigate } from "react-router-dom"; // react-router-dom에서 useHistory 가져오기
 
 const IntroPage = () => {
+  const navigate = useNavigate(); // useHistory 훅을 사용하여 history 객체 얻기
+
   useEffect(() => {
     // 페이지가 로드된 후 2초 후에 메인 페이지로 이동
     const timer = setTimeout(() => {
-      window.location.href = "/main"; // 메인 페이지의 경로로 수정
+      // history 객체를 사용하여 메인 페이지로 이동
+      navigate("/main");
     }, 2000);
 
     // 컴포넌트가 언마운트되면 타이머를 클리어하여 메모리 누수 방지
     return () => clearTimeout(timer);
-  }, []);
+  }, [navigate]); // history를 의존성으로 추가
 
   const IntroBack = styled.div`
     width: 1024px;

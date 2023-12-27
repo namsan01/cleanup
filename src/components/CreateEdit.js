@@ -5,19 +5,30 @@ import {
   CreateTitle,
 } from "../styles/createeditstyle";
 
-import { fetchTodo } from "../api/todo/todo_api";
+import { fetchTodo, getEdit } from "../api/todo/todo_api";
 import moment from "moment/moment";
 
-const CreateEdit = ({ text, handleCancel }) => {
-  const [title, setTitle] = useState("");
-  const [cleaning, setCleaning] = useState("");
-  const [doDay, setDoDay] = useState("");
+const CreateEdit = ({ text, handleCancel, todoId, getTodoAllfn }) => {
+  const [title, setTitle] = useState();
+  const [cleaning, setCleaning] = useState();
+  const [doDay, setDoDay] = useState();
+
+  const getTodoItemA = () => {
+    getEdit(todoId, successGetEdit);
+  };
+  const successGetEdit = _data => {
+    setCleaning(_data.cleaning);
+    setDoDay(_data.doday);
+  };
+
+  useEffect(() => {
+    getTodoItemA();
+  }, []);
 
   const handleClearTitle = e => {
     e.preventDefault();
     setTitle("");
   };
-
   const postSuccess = () => {
     alert("할일이 추가되었습니다");
     handleCancel(true);
@@ -40,17 +51,12 @@ const CreateEdit = ({ text, handleCancel }) => {
       return;
     }
     diaryFetch();
+    handleCancel(true);
   };
 
   const diaryFetch = () => {
-    const obj = {
-      loginedUserId: 2,
-      todoId: 0,
-      cleaning: "string",
-      doDay: "string",
-    };
-    // console.log("백엔드 보낼 데이터", obj);
-    fetchTodo(obj, postSuccess, postFail);
+    fetchTodo(cleaning, doDay, todoId);
+    getTodoAllfn();
   };
 
   // 제목입력 업데이트
@@ -87,13 +93,7 @@ const CreateEdit = ({ text, handleCancel }) => {
             </div>
             <div className="create-main-right">
               <div className="create-date">
-                <input
-                  type="date"
-                  value={doDay}
-                  onChange={handleChangeDate}
-                  // value={inputNumber}
-                  // onChange={handleInputChange}
-                />
+                <input type="date" value={doDay} onChange={handleChangeDate} />
               </div>
               <h2>날짜를 입력해 주세요!</h2>
             </div>

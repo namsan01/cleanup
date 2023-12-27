@@ -5,6 +5,7 @@ import {
   ListCheckbox,
   ListContent,
   ListDate,
+  ListDeleteButton,
   ListDiv,
   ListEditButton,
   ListImg,
@@ -12,13 +13,13 @@ import {
   ListText,
   ListTitle,
 } from "../styles/mainliststyle";
-import MenuTab from "./MenuTab";
-import { deleteTodo } from "../api/todo/todo_api";
+import { deleteTodo, postTodoCheck } from "../api/todo/todo_api";
 import CreateEdit from "./CreateEdit";
 // {jsonData.title}
 
 const MainList = props => {
   const item = props.item;
+  console.log(item);
   const loginedUserId = props.loginedUserId;
   //console.log("item", item);
   // check박스 체크 시 ListWrap 배경색 갱신
@@ -35,15 +36,10 @@ const MainList = props => {
     setChecked(!isChecked);
   };
 
-  // 갱신
-
-  // isPopupOpen: 현재 팝업의 열림/닫힘 상태를 나타내는 상태
-  // setPopupOpen: isPopupOpen 상태를 갱신하는 함수
-  const [isPopupOpen, setPopupOpen] = useState();
-
   const handlePopupToggle = () => {
     // setPopupOpen 함수를 사용하여 isPopupOpen 상태를 반전시킴
-    setPopupOpen(!isPopupOpen);
+    // setPopupOpen(!isPopupOpen);
+    props.handleButtonClickEdit(item);
   };
 
   const deleteTodoResultAction = obj => {
@@ -62,6 +58,10 @@ const MainList = props => {
     //  todo를 삭제하고 싶은 유저의 PK
     // 	해당 todo의 PK
     deleteTodo(loginedUserId, item.todoId, deleteTodoResultAction);
+  };
+
+  const handleCheckbox = () => {
+    postTodoCheck(item.todoId, loginedUserId);
   };
 
   return (
@@ -84,26 +84,17 @@ const MainList = props => {
               type="checkbox"
               checked={isChecked}
               onChange={handleCheckboxChange}
+              onClick={handleCheckbox}
             ></ListCheckbox>
           </CheckboxDiv>
           <ListEditButton onClick={handlePopupToggle}>
-            <img src="../assets/images/bt_scissors.svg" />
-            {isPopupOpen && (
-              <EditDelete>
-                {/* 팝업 컴포넌트 넣기 */}
-
-                <MenuTab
-                  type={1}
-                  handleButtonClick={props.handleButtonClick}
-                  handleButtonClickEdit={props.handleButtonClickEdit}
-                  handleClick={handleClick}
-                />
-
-                {/* 오버레이 */}
-                <div onClick={handlePopupToggle}></div>
-              </EditDelete>
-            )}
+            <img src={process.env.PUBLIC_URL + "/assets/images/bt_pen.svg"} />
           </ListEditButton>
+          <ListDeleteButton onClick={handleClick}>
+            <img
+              src={process.env.PUBLIC_URL + "/assets/images/bt_xdelete.svg"}
+            />
+          </ListDeleteButton>
         </ListDiv>
       </ListContent>
     </ListMain>

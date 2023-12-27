@@ -5,35 +5,14 @@ import {
   CreateTitle,
 } from "../styles/createeditstyle";
 
-import { postTodo, fetchTodo } from "../api/todo/todo_api";
+import { postTodo, fetchTodo, postTodoCheck } from "../api/todo/todo_api";
 import moment from "moment/moment";
 
-const CreateAdd = ({ text, handleCancel, cleanListUpdate }) => {
+const CreateAdd = ({ text, handleCancel, cleanListUpdate, loginedUserId }) => {
   const [title, setTitle] = useState("");
   const [cleaning, setCleaning] = useState("");
   const [doDay, setDoDay] = useState("");
-  const [inputNumber, setInputNumber] = useState("");
 
-  const handleInputChange = e => {
-    const value = e.target.value;
-
-    // 입력 값이 숫자이거나 빈 문자열인 경우에만 업데이트
-    if (!isNaN(value) || value === "") {
-      // 숫자가 아닌 문자는 제거하고 숫자만 남기기
-      const numericValue = value.replace(/[^0-9]/g, "");
-
-      // 8자 이상이면 초과된 부분은 잘라내기
-      const trimmedValue = numericValue.slice(0, 8);
-
-      // 숫자만 남긴 값을 이용하여 포맷팅 수행
-      const formatted = trimmedValue.replace(
-        /(\d{4})(\d{2})(\d{2})/,
-        "$1-$2-$3",
-      );
-
-      setInputNumber(formatted);
-    }
-  };
   const handleClearTitle = e => {
     e.preventDefault();
     setTitle("");
@@ -59,14 +38,15 @@ const CreateAdd = ({ text, handleCancel, cleanListUpdate }) => {
     postTodo(obj, postSuccess, postFail);
   };
 
-  const diaryFetch = () => {
-    const obj = {
-      loginedUserId: 2,
-      todoId: 0,
-      cleaning: "string",
-      doDay: "string",
-    };
-  };
+  // const diaryFetch = () => {
+  //   const obj = {
+  //     loginedUserId: 2,
+  //     todoId: 0,
+  //     cleaning: "string",
+  //     doDay: "string",
+  //   };
+  //   postTodoCheck(obj, todoId, loginedUserId);
+  // };
 
   const handleConfirm = e => {
     if (cleaning === "") {

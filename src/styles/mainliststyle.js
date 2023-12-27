@@ -93,6 +93,16 @@ export const ListEditButton = styled.button`
   }
 `;
 
+export const ListDeleteButton = styled.button`
+  background-color: transparent;
+  border: none;
+  position: relative;
+  &:hover {
+    background-color: #dae2ff;
+    transition: 0.7s;
+  }
+`;
+
 export const EditDelete = styled.div`
   position: absolute;
   cursor: pointer;
