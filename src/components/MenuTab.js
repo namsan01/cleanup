@@ -33,7 +33,7 @@ const MenuTab = props => {
     <MenuTabStyle>
       {props.type === 1 ? (
         <>
-          <MenuTabEdit onClick={props.handleButtonClickEdit}>
+          <MenuTabEdit onClick={props.handleButtonClickEdit(item)}>
             <h3>수정하기</h3>
           </MenuTabEdit>
         </>

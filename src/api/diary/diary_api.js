@@ -1,7 +1,6 @@
 import axios from "axios";
 import { SERVER_URL } from "../config";
-import { Route } from "react-router";
-import ErrorPage from "../../pages/ErrorPage";
+
 // 내용 가져오기
 export const getDiary = async (loginedUserId, page, setDiaryList) => {
   try {

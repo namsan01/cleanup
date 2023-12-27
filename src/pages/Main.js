@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import List from "../components/MainList";
 import { MainAddBt } from "../styles/basic";
-import { getTodo } from "../api/todo/todo_api";
+import { getEdit, getTodo } from "../api/todo/todo_api";
 import CreateAdd from "../components/CreateAdd";
 import CreateEdit from "../components/CreateEdit";
 
@@ -19,7 +19,8 @@ const Main = () => {
   };
 
   const [isPopupOpenEdit, setPopupOpenEdit] = useState(false);
-  const handleButtonClickEdit = () => {
+  const handleButtonClickEdit = _item => {
+    setNowItem(_item);
     setPopupOpenEdit(true);
   };
   const handleCancelEdit = () => {
@@ -29,6 +30,8 @@ const Main = () => {
   const [loginedUserId, setLoginedUserId] = useState("2");
   const [page, setPage] = useState(1);
   const [cleanList, setCleanList] = useState([]);
+  const [getTodoId, getSetTodoId] = useState("2");
+  const [getList, setGetList] = useState([]);
 
   const getTodoAllfn = () => {
     getTodo(loginedUserId, page, setCleanList);
@@ -42,30 +45,32 @@ const Main = () => {
     getTodoAllfn();
   }, []);
 
+  // 일부내용 가져오기
+  const getEditAllfn = () => {
+    getEdit(getTodoId);
+    console.log(getEdit, setGetList);
+  };
+
+  const [nowItem, setNowItem] = useState(null);
+
   return (
     <Wrap maxw={1024} maxh={1366}>
       <Header text="메인화면" type={1} />
       <div style={{ paddingTop: "90px", paddingBottom: "150px " }}>
         {cleanList.map(item => (
-          <List
-            key={item.todoId}
-            item={item}
-            loginedUserId={loginedUserId}
-            handleButtonClick={handleButtonClick}
-            handleButtonClickEdit={handleButtonClickEdit}
-            handleCancelEdit={handleCancelEdit}
-            getTodoAllfn={getTodoAllfn}
-          ></List>
+          <>
+            <List
+              key={item.todoId}
+              item={item}
+              loginedUserId={loginedUserId}
+              handleButtonClick={handleButtonClick}
+              handleButtonClickEdit={handleButtonClickEdit}
+              handleCancelEdit={handleCancelEdit}
+              getTodoAllfn={getTodoAllfn}
+              getEditAllfn={getEditAllfn}
+            ></List>
+          </>
         ))}
-
-        {/* <List mgt={false}></List>
-        <List></List>
-        <List></List>
-        <List></List>
-        <List></List>
-        <List></List>
-        <List></List>
-        <List mgb={false}></List> */}
 
         <MainAddBt
           onClick={() => {
@@ -74,7 +79,7 @@ const Main = () => {
         >
           <img
             className="MainAddBt"
-            src={process.env.PUBLIC_URL + "../assets/images/bt_main_add.svg"}
+            src={process.env.PUBLIC_URL + "./assets/images/bt_main_add.svg"}
           />
         </MainAddBt>
 
@@ -84,16 +89,32 @@ const Main = () => {
             text="작성"
             handleCancel={handleCancel}
             cleanListUpdate={cleanListUpdate}
+            loginedUserId={loginedUserId}
           />
         )}
+
         {/* 수정 */}
         {isPopupOpenEdit && (
           <CreateEdit
             text="수정"
             handleCancel={handleCancel}
             handleButtonClickEdit={handleButtonClickEdit}
+            getSetTodoId={getSetTodoId}
+            item={nowItem}
+            todoId={nowItem.todoId}
+            getTodoAllfn={getTodoAllfn}
+            // getEditAllfn={getEditAllfn}
           />
         )}
+
+        {/* <List mgt={false}></List>
+        <List></List>
+        <List></List>
+        <List></List>
+        <List></List>
+        <List></List>
+        <List></List>
+        <List mgb={false}></List> */}
       </div>
       <Footer type={1}></Footer>
     </Wrap>
