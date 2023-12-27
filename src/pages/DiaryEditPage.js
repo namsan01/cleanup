@@ -1,12 +1,8 @@
-import React, { useState, useEffect } from "react";
-
+import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import DiaryEdit from "../components/DiaryEdit";
-import { patchDiary } from "../api/diaryapi";
-import { useNavigate } from "react-router";
 import styled from "@emotion/styled";
-import { getDiary } from "../api/diary/diary_api";
 
 const Wrap = styled.div`
   position: relative;
