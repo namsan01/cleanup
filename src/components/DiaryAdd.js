@@ -15,10 +15,11 @@ import Confirm from "./Confirm";
 import { postDiary } from "../api/diaryapi";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../fb/firebaseconfig";
+import moment from "moment";
 const DiaryAdd = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [contents, setContents] = useState("");
   const [pics, setPics] = useState([]);
   // 제목입력 업데이트
   const handleChangeTitle = e => {
@@ -26,7 +27,7 @@ const DiaryAdd = () => {
   };
   // 내용 입력 값 업데이트
   const handleChangeContent = e => {
-    setContent(e.target.value);
+    setContents(e.target.value);
   };
 
   // 입력 필드의 내용을 지우기
@@ -119,15 +120,16 @@ const DiaryAdd = () => {
   };
   // 데이터를 모두 전송하고 나서 post 데이터를 만들자.
   const makePostData = async () => {
+    const tempName = moment().format("YYYYMMDDhhmmss");
     try {
       // 그냥 파일을 그대로 올리지 마시고, 중복을 고려해서 이름 만들어주세요.
-      const fileNameBefore = `images/_${uploadImgBeforeFile.name}`;
+      const fileNameBefore = `images/_${tempName}${uploadImgBeforeFile.name}`;
       const urlOne = await uploadImage(
         fileNameBefore,
         uploadImgBeforeFile,
         setUrlBefore,
       );
-      const fileNameAfter = `images/_${uploadImgAfterFile.name}`;
+      const fileNameAfter = `images/_${tempName}${uploadImgAfterFile.name}`;
       const urlTwo = await uploadImage(
         fileNameAfter,
         uploadImgAfterFile,
@@ -149,11 +151,10 @@ const DiaryAdd = () => {
   const diaryAction = (_one, _two) => {
     console.log("보낸다!");
     const obj = {
-
       loginedUserId: 2,
 
       title: title,
-      contents: content,
+      contents: contents,
       pics: [_one, _two],
     };
     // console.log("백엔드 보낼 데이터", obj);
@@ -170,25 +171,26 @@ const DiaryAdd = () => {
       alert("제목을 입력하세요.");
       return;
     }
-    if (content === "") {
+    if (contents === "") {
       setConfirmOpen(false);
       alert("내용을 입력하세요.");
       return;
     }
-    if (uploadImgBeforeFile === null) {
-      setConfirmOpen(false);
-      alert("청소 전 사진을 선택해주세요.");
-      return;
-    }
-    if (uploadImgAfterFile === null) {
-      setConfirmOpen(false);
-      alert("청소 후 사진을 선택해주세요.");
-      return;
-    }
+    // if (uploadImgBeforeFile === null) {
+    //   setConfirmOpen(false);
+    //   alert("청소 전 사진을 선택해주세요.");
+    //   return;
+    // }
+    // if (uploadImgAfterFile === null) {
+    //   setConfirmOpen(false);
+    //   alert("청소 후 사진을 선택해주세요.");
+    //   return;
+    // }
     //저장할 내용(타이틀, 본문 공백 등등)을 먼저 체크 하고
     // FB 올릴 자료가 있으면 보낸다.
     // 업로드가 끝나면 데이터를 전송한다.
     // await 필요합니다.
+    alert("파일이 저장되었습니다.")
     makePostData();
   };
   // 실제 이미지 업로드를 실행 함수
@@ -258,10 +260,10 @@ const DiaryAdd = () => {
           <textarea
             type="text"
             maxLength={2000}
-            value={content}
+            value={contents}
             onChange={handleChangeContent}
             placeholder="내용을 입력해 주세요."
-            name="content"
+            name="contents"
           />
         </DiaryAddMainContent>
         <DiaryAddMainImage>

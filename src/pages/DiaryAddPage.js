@@ -23,7 +23,7 @@ const DiaryAddPage = props => {
   const navigate = useNavigate();
 
   const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [contents, setContents] = useState("");
   const [pic1, setPic1] = useState("");
   const [pic2, setPic2] = useState("");
 
@@ -36,7 +36,7 @@ const DiaryAddPage = props => {
     e.preventDefault();
     const item = {
       title: title,
-      content: content,
+      contents: contents,
       pic1: pic1,
       pic2: pic2,
     };
