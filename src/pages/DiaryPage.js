@@ -12,7 +12,6 @@ const Diary = () => {
   const navigate = useNavigate();
   // main 탭으로 가기
 
-
   const [userId, setUserId] = useState("2");
   const [diaryId, setDiaryId] = useState(1);
   const [diaryList, setDiaryList] = useState([]);
@@ -42,12 +41,11 @@ const Diary = () => {
           ))}
         </div>
 
-
         <MainAddBt>
           <Link to="/add">
             <img
               className="MainAddBt"
-              src={process.env.PUBLIC_URL + "../assets/images/bt_diary_add.svg"}
+              src={process.env.PUBLIC_URL + "/assets/images/bt_diary_add.svg"}
               alt=""
             />
           </Link>

@@ -14,7 +14,6 @@ import {
 } from "../styles/mainliststyle";
 import { deleteTodo, postTodoCheck } from "../api/todo/todo_api";
 
-
 const MainList = props => {
   const item = props.item;
   const loginedUserId = props.loginedUserId;

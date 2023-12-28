@@ -9,8 +9,8 @@
 ### 프로젝트 정보
 
 - [FE_Notion](https://torpid-ski-c77.notion.site/1-Team-Project-5-a0da51eb12214ccbbafe6ae7303bfd45)
-- [Figma](https://www.figma.com/file/YIlMhVHQRo1ykY8umHg2uR/%EC%B2%AD%EC%86%8C%ED%95%98%EC%9E%90?node-id=54757%3A1139&mode=dev)
-- [PPT](https://www.canva.com/design/DAFn7epFDNc/yS3NMGHExnrP95tK7zTr0Q/view?utm_content=DAFn7epFDNc&utm_campaign=share_your_design&utm_medium=link&utm_source=shareyourdesignpanel)
+- [Figma](https://www.figma.com/file/X7EqS5yDNSuhUB6IvU3lD2/5%EC%A1%B0-%EC%B2%AD%EC%86%8C%ED%[…]%90?type=design&node-id=0%3A1&mode=design&t=wTgXwzbtWONwjWX0-1)
+- [Canvas](https://www.miricanvas.com/v/12r2l4v)
 
 <h4>기획 목적</h4>
 
@@ -54,8 +54,7 @@
 
 #### 사공은진 (팀원)
 
-- 변수& 클래스,
-- 폴더 명 정의
+- 변수& 클래스폴더 명 정의
 - 푸터 구현
 - DiaryAddPage 담당
 - component

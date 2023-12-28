@@ -41,10 +41,7 @@ const Header = ({ text, type }) => {
     <Topbar>
       <div className="header-wrap">
         <div className="header-left">
-          <button
-            disabled={type === 1}
-            onClick={() => haldeClickBt()}
-          >
+          <button disabled={type === 1} onClick={() => haldeClickBt()}>
             {type === 1 ? (
               <img
                 src={process.env.PUBLIC_URL + "/assets/images/bt_user.svg"}
@@ -55,13 +52,27 @@ const Header = ({ text, type }) => {
               />
             )}
           </button>
-          {type === 1 && <h2>{diaryList[0]?.nickname !== "" ? diaryList[0]?.nickname : []}</h2>}
+          {type === 1 && (
+            <h2>
+              {diaryList[0]?.nickname !== ""
+                ? diaryList[0]?.nickname
+                : "로그인되었습니다."}
+            </h2>
+          )}
         </div>
         <div>
           <span>{text}</span>
           <button onClick={handlePopupToggle}>
             <img src={process.env.PUBLIC_URL + "/assets/images/bt_menu.svg"} />
-            {isPopupOpen && <SubBar nickname={diaryList[0]?.nickname !== "" ? diaryList[0]?.nickname : []} />}
+            {isPopupOpen && (
+              <SubBar
+                nickname={
+                  diaryList[0]?.nickname !== ""
+                    ? diaryList[0]?.nickname
+                    : "로그인되었습니다."
+                }
+              />
+            )}
           </button>
         </div>
       </div>

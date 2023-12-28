@@ -50,12 +50,23 @@ const CreateEdit = ({ text, handleCancel, todoId, getTodoAllfn }) => {
       return;
     }
     diaryFetch();
-    handleCancel(true);
   };
 
   const diaryFetch = () => {
-    fetchTodo(cleaning, doDay, todoId);
-    getTodoAllfn();
+    fetchTodo(cleaning, doDay, todoId, successFetchTodo, failFn);
+  };
+  const successFetchTodo = _data => {
+    // console.log(_data);
+    if (_data.result === 1) {
+      getTodoAllfn();
+      alert("수정이 완료되었습니다");
+      handleCancel(true);
+    }
+  };
+
+  const failFn = () => {
+    alert("서버가 불안정합니다. \n잠시 후 시도해 주세요.");
+    handleCancel(true);
   };
 
   // 제목입력 업데이트
@@ -92,29 +103,42 @@ const CreateEdit = ({ text, handleCancel, todoId, getTodoAllfn }) => {
             </div>
             <div className="create-main-right">
               <div className="create-date">
-                <input type="date" value={doDay} onChange={handleChangeDate} />
+                {doDay ? (
+                  <input
+                    type="date"
+                    value={doDay}
+                    onChange={handleChangeDate}
+                  />
+                ) : (
+                  ""
+                )}
               </div>
               <h2>날짜를 입력해 주세요!</h2>
             </div>
           </div>
 
-          <form className="create-main-ft">
-            <input
-              className="create-main-txt"
-              type="text"
-              name="title"
-              value={cleaning}
-              maxLength={50}
-              placeholder="일정을 입력해 주세요."
-              onChange={handleChangeTitle}
-            />
+          {/* form 자리 */}
+          {cleaning ? (
+            <form className="create-main-ft">
+              <input
+                className="create-main-txt"
+                type="text"
+                name="title"
+                value={cleaning}
+                maxLength={50}
+                placeholder="일정을 입력해 주세요."
+                onChange={handleChangeTitle}
+              />
 
-            <input
-              type="button"
-              onClick={handleClearTitle}
-              className="create-main-bt"
-            />
-          </form>
+              <input
+                type="button"
+                onClick={handleClearTitle}
+                className="create-main-bt"
+              />
+            </form>
+          ) : (
+            ""
+          )}
         </div>
         <div className="create-footer">
           <div className="create-footer">

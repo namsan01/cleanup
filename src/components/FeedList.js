@@ -57,9 +57,7 @@ const FeedList = props => {
       <FeedListHeader>
         <FeedListHeaderContent>
           <img
-            src={
-              process.env.PUBLIC_URL + "./assets/images/bt_feedlist_user.svg"
-            }
+            src={process.env.PUBLIC_URL + "/assets/images/bt_feedlist_user.svg"}
             alt=""
           />
           <h2>{nickname}</h2>
@@ -67,7 +65,7 @@ const FeedList = props => {
         <FeedListHeaderMenu>
           <button onClick={handlePopupToggle}>
             <img
-              src={process.env.PUBLIC_URL + "./assets/images/bt_etc_icon.svg"}
+              src={process.env.PUBLIC_URL + "/assets/images/bt_etc_Icon.svg"}
               alt=""
             />
             {isPopupOpen && (
@@ -83,28 +81,20 @@ const FeedList = props => {
       </FeedListHeader>
       <FeedListMedia>
         {item.pics[0] ? (
-          <img
-            src={item.pics[0]}
-            alt=""
-            className="feed-img-after"
-          />
+          <img src={item.pics[0]} alt="" className="feed-img-after" />
         ) : (
           <img
-            src={process.env.PUBLIC_URL + "../assets/images/bt_media.svg"}
+            src={process.env.PUBLIC_URL + "/assets/images/bt_media.svg"}
             alt=""
             className="feed-img-after"
           />
         )}
 
         {item.pics[1] ? (
-          <img
-            src={item.pics[1]}
-            alt=""
-            className="feed-img-after"
-          />
+          <img src={item.pics[1]} alt="" className="feed-img-after" />
         ) : (
           <img
-            src={process.env.PUBLIC_URL + "../assets/images/bt_media.svg"}
+            src={process.env.PUBLIC_URL + "/assets/images/bt_media.svg"}
             alt=""
             className="feed-img-after"
           />

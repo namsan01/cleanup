@@ -125,6 +125,7 @@ const DiaryEdit = () => {
 
     // 내용 모두 입력확인 -> 업로드
     // 업로드 완료 -> patch 를 보낸다.
+    alert("파일이 수정되었습니다.");
     makePatchData();
   };
 

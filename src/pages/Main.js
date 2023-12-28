@@ -34,7 +34,12 @@ const Main = () => {
   const [getList, setGetList] = useState([]);
 
   const getTodoAllfn = () => {
-    getTodo(loginedUserId, page, setCleanList);
+    getTodo(loginedUserId, page, successGetTodoAllFn);
+  };
+
+  const successGetTodoAllFn = _data => {
+    setCleanList(_data);
+    // console.log(_data);
   };
 
   const cleanListUpdate = () => {
@@ -57,18 +62,16 @@ const Main = () => {
       <Header text="메인화면" type={1} />
       <div style={{ paddingTop: "90px", paddingBottom: "150px " }}>
         {cleanList.map(item => (
-          <>
-            <List
-              key={item.todoId}
-              item={item}
-              loginedUserId={loginedUserId}
-              handleButtonClick={handleButtonClick}
-              handleButtonClickEdit={handleButtonClickEdit}
-              handleCancelEdit={handleCancelEdit}
-              getTodoAllfn={getTodoAllfn}
-              getEditAllfn={getEditAllfn}
-            ></List>
-          </>
+          <List
+            key={item.todoId}
+            item={item}
+            loginedUserId={loginedUserId}
+            handleButtonClick={handleButtonClick}
+            handleButtonClickEdit={handleButtonClickEdit}
+            handleCancelEdit={handleCancelEdit}
+            getTodoAllfn={getTodoAllfn}
+            getEditAllfn={getEditAllfn}
+          ></List>
         ))}
 
         <MainAddBt
@@ -104,8 +107,6 @@ const Main = () => {
             getTodoAllfn={getTodoAllfn}
           />
         )}
-
-
       </div>
       <Footer type={1}></Footer>
     </Wrap>
