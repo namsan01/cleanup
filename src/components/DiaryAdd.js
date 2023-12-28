@@ -20,7 +20,6 @@ const DiaryAdd = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [contents, setContents] = useState("");
-  const [pics, setPics] = useState([]);
   // 제목입력 업데이트
   const handleChangeTitle = e => {
     setTitle(e.target.value);
@@ -31,9 +30,7 @@ const DiaryAdd = () => {
   };
 
   // 입력 필드의 내용을 지우기
-
   const handleClearTitle = e => {
-    // e.preventDefault();
     setTitle("");
   };
   // 총 개수 파악
@@ -54,29 +51,6 @@ const DiaryAdd = () => {
   const [uploadImgAfterFile, setUploadImgAfterFile] = useState(null);
   // 업로드된 이미지 FB 의 URL
   const [urlAfter, setUrlAfter] = useState("");
-  // const handleChange = async (event, type) => {
-  //   const file = event.target.files[0];
-  //   const formData = new FormData();
-  //   formData.append("pic", file);
-  //   try {
-  //     const res = await fetch("/upload/images", {
-  //       method: "POST",
-  //       body: formData,
-  //       headers: {
-  //         "Content-Type": "multipart/form-data",
-  //       },
-  //     });
-  //     console.log("전송완료", res);
-  //     // 이미지 타입에 따라 다른 상태 업데이트
-  //     if (type === "before") {
-  //       setUploadImgBefore(URL.createObjectURL(file));
-  //     } else if (type === "after") {
-  //       setUploadImgAfter(URL.createObjectURL(file));
-  //     }
-  //   } catch (error) {
-  //     console.log("업로드 실패", error);
-  //   }
-  // };
   useEffect(() => {
     // uploadImgBefore 또는 uploadImgAfter 상태가 변경될 때 실행됩니다.
   }, [uploadImgBefore, uploadImgAfter]);
@@ -136,20 +110,11 @@ const DiaryAdd = () => {
         setUrlAfter,
       );
       diaryAction(urlOne, urlTwo);
-      // const obj = {
-      //   loginedUserId: 3,
-      //   title: title,
-      //   contents: content,
-      //   pics: [urlBefore, urlAfter],
-      // };
-      // console.log("백엔드 보낼 데이터", obj);
-      // postDiary(obj, postSuccess, postFail);
     } catch (error) {
       console.log(error);
     }
   };
   const diaryAction = (_one, _two) => {
-    console.log("보낸다!");
     const obj = {
       loginedUserId: 2,
 
@@ -157,7 +122,6 @@ const DiaryAdd = () => {
       contents: contents,
       pics: [_one, _two],
     };
-    // console.log("백엔드 보낼 데이터", obj);
     postDiary(obj, postSuccess, postFail);
   };
   const [confirmOpen, setConfirmOpen] = useState(false);
@@ -176,16 +140,16 @@ const DiaryAdd = () => {
       alert("내용을 입력하세요.");
       return;
     }
-    // if (uploadImgBeforeFile === null) {
-    //   setConfirmOpen(false);
-    //   alert("청소 전 사진을 선택해주세요.");
-    //   return;
-    // }
-    // if (uploadImgAfterFile === null) {
-    //   setConfirmOpen(false);
-    //   alert("청소 후 사진을 선택해주세요.");
-    //   return;
-    // }
+    if (uploadImgBeforeFile === null) {
+      setConfirmOpen(false);
+      alert("청소 전 사진을 선택해주세요.");
+      return;
+    }
+    if (uploadImgAfterFile === null) {
+      setConfirmOpen(false);
+      alert("청소 후 사진을 선택해주세요.");
+      return;
+    }
     //저장할 내용(타이틀, 본문 공백 등등)을 먼저 체크 하고
     // FB 올릴 자료가 있으면 보낸다.
     // 업로드가 끝나면 데이터를 전송한다.
@@ -197,16 +161,12 @@ const DiaryAdd = () => {
   const uploadImage = async (_fileName, _file, _set) => {
     try {
       const imageRef = ref(storage, _fileName);
-      console.log("imageRef", imageRef);
       const fbRes = await uploadBytes(imageRef, _file);
-      console.log("imageRef", fbRes);
-      console.log("업로드 성공", fbRes);
       const url = await getDownloadURL(fbRes.ref);
-      console.log(url);
       _set(url);
       return url;
     } catch (error) {
-      console.log("FB 오류", error);
+      console.log(error);
     }
   };
 

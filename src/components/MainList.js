@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
   CheckboxDiv,
-  EditDelete,
   ListCheckbox,
   ListContent,
   ListDate,
@@ -14,14 +13,11 @@ import {
   ListTitle,
 } from "../styles/mainliststyle";
 import { deleteTodo, postTodoCheck } from "../api/todo/todo_api";
-import CreateEdit from "./CreateEdit";
-// {jsonData.title}
+
 
 const MainList = props => {
   const item = props.item;
-  console.log(item);
   const loginedUserId = props.loginedUserId;
-  //console.log("item", item);
   // check박스 체크 시 ListWrap 배경색 갱신
   const [isChecked, setChecked] = useState(false);
   // 체크 된 상태 표현

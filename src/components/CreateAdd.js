@@ -5,17 +5,16 @@ import {
   CreateTitle,
 } from "../styles/createeditstyle";
 
-import { postTodo, fetchTodo, postTodoCheck } from "../api/todo/todo_api";
+import { postTodo } from "../api/todo/todo_api";
 import moment from "moment/moment";
 
-const CreateAdd = ({ text, handleCancel, cleanListUpdate, loginedUserId }) => {
-  const [title, setTitle] = useState("");
+const CreateAdd = ({ text, handleCancel, cleanListUpdate}) => {
   const [cleaning, setCleaning] = useState("");
   const [doDay, setDoDay] = useState("");
 
   const handleClearTitle = e => {
     e.preventDefault();
-    setTitle("");
+    setCleaning("");
   };
 
   const postSuccess = () => {
@@ -34,19 +33,9 @@ const CreateAdd = ({ text, handleCancel, cleanListUpdate, loginedUserId }) => {
       cleaning: cleaning,
       doDay: doDay,
     };
-    // console.log("백엔드 보낼 데이터", obj);
     postTodo(obj, postSuccess, postFail);
   };
 
-  // const diaryFetch = () => {
-  //   const obj = {
-  //     loginedUserId: 2,
-  //     todoId: 0,
-  //     cleaning: "string",
-  //     doDay: "string",
-  //   };
-  //   postTodoCheck(obj, todoId, loginedUserId);
-  // };
 
   const handleConfirm = e => {
     if (cleaning === "") {
@@ -100,8 +89,6 @@ const CreateAdd = ({ text, handleCancel, cleanListUpdate, loginedUserId }) => {
                   maxLength="10"
                   value={doDay}
                   onChange={handleChangeDate}
-                  // value={inputNumber}
-                  // onChange={handleInputChange}
                 />
               </div>
               <h2>날짜를 입력해 주세요!</h2>

@@ -12,40 +12,7 @@ const Wrap = styled.div`
   max-height: ${props => props.maxh + "px"};
 `;
 
-const DiaryAddPage = props => {
-  const [diaryList, setDiaryList] = useState([]);
-  // const handleClickPostDiary = () => {
-  //   postDiary(postResultAction, obj)
-  // }
-
-  const list = props.list;
-  const setList = props.setList;
-  const navigate = useNavigate();
-
-  const [title, setTitle] = useState("");
-  const [contents, setContents] = useState("");
-  const [pic1, setPic1] = useState("");
-  const [pic2, setPic2] = useState("");
-
-  const [confirmOpen, setConfirmOpen] = useState(false);
-
-  const handleButtonClick = () => {
-    setConfirmOpen(true);
-  };
-  const handleConfirm = e => {
-    e.preventDefault();
-    const item = {
-      title: title,
-      contents: contents,
-      pic1: pic1,
-      pic2: pic2,
-    };
-    const arr = [...list, item];
-    setList(arr);
-    // 데이터 전송 ()
-    postDiary();
-    navigate(`/diary`);
-  };
+const DiaryAddPage = () => {
 
   return (
     <Wrap maxw={1024} maxh={1366}>

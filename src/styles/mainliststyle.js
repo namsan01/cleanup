@@ -52,7 +52,6 @@ export const ListDate = styled.div`
   font-weight: 400;
 `;
 export const CheckboxDiv = styled.div`
-  /* margin: auto 7px; */
 `;
 
 export const checkboxStyles = css`

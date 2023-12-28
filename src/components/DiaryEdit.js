@@ -28,7 +28,6 @@ const DiaryEdit = () => {
     getDiaryId(diaryId, successGetDiaryId);
   };
   const successGetDiaryId = data => {
-    // console.log(data);
     // 미리보기 이미지
     setUploadImgBefore(data.pics[0] ? data.pics[0] : defaultImgUrl);
     setUploadImgAfter(data.pics[1] ? data.pics[1] : defaultImgUrl);
@@ -168,14 +167,13 @@ const DiaryEdit = () => {
     try {
       // FB 문법                    (_fileName : " images/_a.png ")
       const imageRef = ref(storage, _fileName);
-      // console.log("imageRef", imageRef);
       // FB 문법
       const fbRes = await uploadBytes(imageRef, _file);
       // FB 문법
       const url = await getDownloadURL(fbRes.ref);
       return url;
     } catch (error) {
-      console.log("FB 오류", error);
+      console.log(error);
     }
   };
 

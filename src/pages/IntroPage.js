@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import React, { useEffect } from "react";
-import { useHistory, useNavigate } from "react-router-dom"; // react-router-dom에서 useHistory 가져오기
+import { useNavigate } from "react-router-dom"; // react-router-dom에서 useHistory 가져오기
 
 const IntroPage = () => {
   const navigate = useNavigate(); // useHistory 훅을 사용하여 history 객체 얻기

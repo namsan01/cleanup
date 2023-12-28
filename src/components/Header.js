@@ -1,19 +1,16 @@
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Topbar } from "../styles/headerstyle";
 import { useEffect, useState } from "react";
 import SubBar from "./SubBar";
 import Confirm from "./Confirm";
-import { getTodo } from "../api/todo/todo_api";
 import { getDiary } from "../api/diaryapi";
 
 const Header = ({ text, type }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const pathname = location.pathname;
-  // console.log(pathname);
   const [isModal, setIsModal] = useState(false);
   const haldeClickBt = () => {
-    // console.log(pathname);
     if (pathname === "/add" || pathname.startsWith("/edit")) {
       setIsModal(true);
     }
@@ -26,11 +23,7 @@ const Header = ({ text, type }) => {
     setPopupOpen(!isPopupOpen);
   };
   const [confirmOpen, setConfirmOpen] = useState(false);
-  const handleButtonClick = () => {
-    setConfirmOpen(true);
-  };
   const handleConfirm = e => {
-    // e.preventDefault();
     navigate(`/diary`);
   };
   const handleCancel = () => {
@@ -50,7 +43,6 @@ const Header = ({ text, type }) => {
         <div className="header-left">
           <button
             disabled={type === 1}
-            // onClick={type !== 1 ? confirmBt : undefined}
             onClick={() => haldeClickBt()}
           >
             {type === 1 ? (

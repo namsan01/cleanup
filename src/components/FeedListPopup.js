@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { EditDelete } from "../styles/mainliststyle";
 import MenuTab from "./MenuTab";
-import styled from "@emotion/styled";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -20,7 +19,7 @@ import {
   FeedListPopupTitle,
 } from "../styles/feedlistpopupstyle";
 
-const FeedListPopup = ({ title, children }) => {
+const FeedListPopup = () => {
   const [isPopupOpen, setPopupOpen] = useState(false);
 
   const handlePopupToggle = () => {

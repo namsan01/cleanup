@@ -10,7 +10,6 @@ const Diary = () => {
   useEffect(() => {
     // 화면이 완료되면 get 호출
     const getdiary = getDiary();
-    console.log(getdiary);
     setDiary(getdiary);
   }, []);
   return (

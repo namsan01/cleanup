@@ -5,14 +5,14 @@ import { SERVER_URL } from "../config";
 export const getDiary = async (loginedUserId, page, setDiaryList) => {
   try {
     const url = `${SERVER_URL}/api/diary?loginedUserId=${loginedUserId}&page=${page}`;
-    // console.log("diary Url : ", url);
+
     const res = await axios.get(url);
-    // console.log(res.data);
+
 
     const resStatus = res.status.toString();
     // 정상이라면
     if (resStatus.charAt(0) === "2") {
-      // console.log("전송성공");
+
       setDiaryList([...res.data]);
     }
   } catch (error) {
@@ -54,7 +54,7 @@ export const patchDiary = async (obj, patchFail, patchSuccess) => {
 
     // 정상이라면
     if (resStatus.charAt(0) === "2") {
-      // console.log("전송성공");
+
       patchSuccess();
     } else {
       alert("데이터 전송에 실패했습니다.");
@@ -73,7 +73,7 @@ export const deleteDiary = async (
   deleteDiaryResultAction,
 ) => {
   const _url = `${SERVER_URL}/api/diary?loginedUserId=${_userId}&diaryId=${_diaryId}`;
-  console.log(_url);
+
   try {
     const res = await axios.delete(_url);
     // 삭제 완료 : 1

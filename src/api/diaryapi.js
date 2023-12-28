@@ -5,7 +5,7 @@ import { SERVER_URL } from "./config";
 export const getDiary = async (loginedUserId, page, setDiaryList) => {
   try {
     const url = `${SERVER_URL}/api/diary?loginedUserId=${loginedUserId}&page=${page}`;
-    console.log(url);
+    
     const res = await axios.get(url);
     const resStatus = res.status.toString();
     // 정상이라면
@@ -22,16 +22,13 @@ export const getDiary = async (loginedUserId, page, setDiaryList) => {
 };
 // DiaryAdd.js 에서 사용
 export const postDiary = async (obj, postSuccess, postFail) => {
-  console.log("저장해요.");
   try {
     const res = await axios.post(`api/diary`, obj);
-    console.log(res.data);
 
     // 상태 코드를 글자로 만들어서 첫 글자만 추출
     const resStatus = res.status.toString();
     // 정상이라면
     if (resStatus.charAt(0) === "2") {
-      console.log("전송성공");
       postSuccess(res.data);
     } else {
       // 리액트가 잘못인 경우 : 약속된 단어 또는 값을 잘못인 경우
@@ -56,7 +53,6 @@ export const patchDiary = async () => {
 
   try {
     const res = await axios.patch(`api/diary`);
-    console.log(res.data);
   } catch (error) {
     console.log(error);
   }
