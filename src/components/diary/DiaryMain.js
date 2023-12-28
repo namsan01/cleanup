@@ -7,7 +7,6 @@ const DiaryMain = props => {
     max-height: 1108px;
     display: flex;
     flex-direction: column;
-    // border: 1px solid black;
     padding: 110px 0;
     gap: 50px;
   `;

@@ -12,14 +12,10 @@ const Diary = () => {
   const navigate = useNavigate();
   // main 탭으로 가기
 
-  const handleClickMain = () => {
-    navigate(`/main`);
-  };
 
   const [userId, setUserId] = useState("2");
   const [diaryId, setDiaryId] = useState(1);
   const [diaryList, setDiaryList] = useState([]);
-  const [loginedUserId, setLoginedUserId] = useState("2");
 
   const reloadGetDiary = () => {
     // axios.get 에서 userId, diaryId, 그리고 setDiaryList 다이어리 목록을 불러온다?
@@ -45,15 +41,7 @@ const Diary = () => {
             ></FeedList>
           ))}
         </div>
-        {/* <FeedList>
-          {diary.map((item, index) => {
-            return (
-              <div key={index}>
-                <FeedList><h2>{item}</h2></FeedList>
-              </div>
-            );
-          })}
-        </FeedList> */}
+
 
         <MainAddBt>
           <Link to="/add">

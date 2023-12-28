@@ -5,7 +5,6 @@ export const DiaryAddStyle = styled.div`
   padding: 100px 0;
   width: 918px;
   min-height: 100vh;
-  /* height: 1108px; */
   flex-shrink: 0;
 `;
 export const DiaryAddHeader = styled.div`
@@ -42,14 +41,11 @@ export const DiaryAddHeaderComment = styled.div`
     display: flex;
     width: 758px;
 
-    /* flex-direction: column; */
-    /* justify-content: center; */
 
     color: rgba(0, 0, 0, 0.4);
     font-family: Roboto;
     font-size: 50px;
     font-weight: 700;
-    /* letter-spacing: 0.5px; */
     line-height: 1.2;
   }
   b {

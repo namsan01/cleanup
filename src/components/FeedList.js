@@ -14,7 +14,6 @@ import styled from "@emotion/styled";
 import { deleteDiary } from "../api/diary/diary_api";
 
 const FeedList = props => {
-  // const {title, nickname, contents, diaryId}= props.item;
   const item = props.item;
   const title = props.item.title;
   const nickname = props.item.nickname;
@@ -22,7 +21,6 @@ const FeedList = props => {
 
   const diaryId = props.item.diaryId;
   const userId = parseInt(props.userId);
-  // console.log(props);
 
   // isPopupOpen: 현재 팝업의 열림/닫힘 상태를 나타내는 상태
   // setPopupOpen: isPopupOpen 상태를 갱신하는 함수
@@ -33,11 +31,7 @@ const FeedList = props => {
     setPopupOpen(!isPopupOpen);
   };
 
-  const pk = props.pk;
-  const handleClcik = props.handleClick;
-
   const deleteDiaryResultAction = obj => {
-    // console.log("여기요..", obj);
     const result = parseInt(obj.result);
 
     if (result === 0) {
@@ -90,24 +84,30 @@ const FeedList = props => {
       <FeedListMedia>
         {item.pics[0] ? (
           <img
-            // src={process.env.PUBLIC_URL + "../assets/images/bt_media.svg"}
             src={item.pics[0]}
             alt=""
             className="feed-img-after"
           />
         ) : (
-          ""
+          <img
+            src={process.env.PUBLIC_URL + "../assets/images/bt_media.svg"}
+            alt=""
+            className="feed-img-after"
+          />
         )}
 
         {item.pics[1] ? (
           <img
-            // src={process.env.PUBLIC_URL + "../assets/images/bt_media.svg"}
             src={item.pics[1]}
             alt=""
             className="feed-img-after"
           />
         ) : (
-          ""
+          <img
+            src={process.env.PUBLIC_URL + "../assets/images/bt_media.svg"}
+            alt=""
+            className="feed-img-after"
+          />
         )}
       </FeedListMedia>
       <FeedListTxt>

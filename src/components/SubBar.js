@@ -16,7 +16,6 @@ import {
   SubBarWrite,
   UserName,
 } from "../styles/subbarstyle";
-// {jsonData.nickName}
 const SubBar = (props) => {
   const nickname = props.nickname;
   return (

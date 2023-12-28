@@ -9,7 +9,6 @@ import { fetchTodo, getEdit } from "../api/todo/todo_api";
 import moment from "moment/moment";
 
 const CreateEdit = ({ text, handleCancel, todoId, getTodoAllfn }) => {
-  const [title, setTitle] = useState();
   const [cleaning, setCleaning] = useState();
   const [doDay, setDoDay] = useState();
 
@@ -27,7 +26,7 @@ const CreateEdit = ({ text, handleCancel, todoId, getTodoAllfn }) => {
 
   const handleClearTitle = e => {
     e.preventDefault();
-    setTitle("");
+    setCleaning("");
   };
   const postSuccess = () => {
     alert("할일이 추가되었습니다");

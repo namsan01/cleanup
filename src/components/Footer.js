@@ -4,7 +4,7 @@ import {
   FooterDiaryList,
   FooterStyle,
 } from "../styles/footerstyle";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Footer = ({ type }) => {
   const navigate = useNavigate();
@@ -41,12 +41,7 @@ const Footer = ({ type }) => {
           </>
         )}
 
-        {/* <section className="bt-active">
-          <img
-            src={process.env.PUBLIC_URL + "../assets/images/bt_calendar.svg"}
-            alt=""
-          />
-        </section> */}
+
         <h3>일정 관리</h3>
       </FooterCalendar>
 
@@ -55,7 +50,7 @@ const Footer = ({ type }) => {
           <>
             <section className="bt-active">
               <img
-                src={process.env.PUBLIC_URL + "../assets/images/bt_diarylist.svg"}
+                src={process.env.PUBLIC_URL + "/assets/images/bt_diarylist.svg"}
               />
             </section>
           </>
@@ -65,19 +60,13 @@ const Footer = ({ type }) => {
               <img
                 src={
                   process.env.PUBLIC_URL +
-                  "../assets/images/bt_diarylist_black.svg"
+                  "/assets/images/bt_diarylist_black.svg"
                 }
               />
             </section>
           </>
         )}
 
-        {/* <section>
-          <img
-            src={process.env.PUBLIC_URL + "../assets/images/bt_diarylist_black.svg"}
-            alt=""
-          />
-        </section> */}
         <h3>내 청소일기</h3>
       </FooterDiaryList>
     </FooterStyle>

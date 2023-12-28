@@ -48,7 +48,6 @@ const Main = () => {
   // 일부내용 가져오기
   const getEditAllfn = () => {
     getEdit(getTodoId);
-    console.log(getEdit, setGetList);
   };
 
   const [nowItem, setNowItem] = useState(null);
@@ -103,18 +102,10 @@ const Main = () => {
             item={nowItem}
             todoId={nowItem.todoId}
             getTodoAllfn={getTodoAllfn}
-            // getEditAllfn={getEditAllfn}
           />
         )}
 
-        {/* <List mgt={false}></List>
-        <List></List>
-        <List></List>
-        <List></List>
-        <List></List>
-        <List></List>
-        <List></List>
-        <List mgb={false}></List> */}
+
       </div>
       <Footer type={1}></Footer>
     </Wrap>
