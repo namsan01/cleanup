@@ -5,7 +5,7 @@
 
 ### 시연영상
 
-<img width="80%" src=(https://github.com/namsan01/react-study/assets/148168775/1c5cde31-7097-4ff0-a220-f6e8c5ba69aa) />
+<img width="80%" src="https://github.com/namsan01/cleanup/assets/148168775/f10c463a-26df-4e7e-a674-c43d4bcf4b1a" />
 
 ### 프로젝트 정보
 
