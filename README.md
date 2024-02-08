@@ -10,7 +10,7 @@
 ### 프로젝트 정보
 
 - [FE_Notion](https://torpid-ski-c77.notion.site/1-Team-Project-5-a0da51eb12214ccbbafe6ae7303bfd45)
-- [Figma](https://www.figma.com/file/X7EqS5yDNSuhUB6IvU3lD2/5%EC%A1%B0-%EC%B2%AD%EC%86%8C%ED%[…]%90?type=design&node-id=0%3A1&mode=design&t=wTgXwzbtWONwjWX0-1)
+- [Figma](https://www.figma.com/file/X7EqS5yDNSuhUB6IvU3lD2/5%EC%A1%B0-%EC%B2%AD%EC%86%8C%ED%95%98%EC%9E%90?type=design&node-id=0%3A1&mode=design&t=9y3YA4XPuKrntMV1-1)
 - [Canvas](https://www.miricanvas.com/v/12r2l4v)
 
 <h4>기획 목적</h4>
