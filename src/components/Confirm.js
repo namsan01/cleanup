@@ -13,10 +13,10 @@ const Confirm = ({ txt, onNo, onOk, type }) => {
       <ConfirmHeader>
         <ConfirmImage>
           {type === 1 ? (
-            <img
-              src={process.env.PUBLIC_URL + "/assets/images/bt_save.svg"}
-              alt=""
-            />
+              <img
+                src={process.env.PUBLIC_URL + "/assets/images/bt_save.svg"}
+                alt=""
+              />
           ) : (
             <img
               src={process.env.PUBLIC_URL + "/assets/images/bt_alert.svg"}

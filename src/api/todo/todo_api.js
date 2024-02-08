@@ -62,7 +62,7 @@ export const fetchTodo = async (
   failFn,
 ) => {
   try {
-    const res = await axios.patch(`${SERVER_URL}/api/todo`, {
+    const res = await axios.patch(`${SERVER_URL}/api/todo   `, {
       loginedUserId: 2,
       todoId: todoId,
       cleaning: cleaning,

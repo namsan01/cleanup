@@ -1,10 +1,11 @@
 <div align= "center">
-    <img src="https://capsule-render.vercel.app/api?type=waving&color=0055d5&height=180&text=Cleanup&animation=&fontColor=ffffff&fontSize=70" />
 </div>
 
 # KDT React 1차 프로젝트
 
 ### 시연영상
+
+<img width="80%" src=(https://github.com/namsan01/react-study/assets/148168775/1c5cde31-7097-4ff0-a220-f6e8c5ba69aa) />
 
 ### 프로젝트 정보
 
